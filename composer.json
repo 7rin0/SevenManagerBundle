@@ -2,7 +2,7 @@
   "name": "luiseverino-com/seven-manager-bundle",
   "type": "symfony-bundle",
   "keywords": ["seven-manager", "sonata", "symfony"],
-  "description": "Seven Manager - Bundle",
+  "description": "Seven Manager Platform",
   "license": "MIT",
   "minimum-stability": "dev",
   "prefer-stable": true,
