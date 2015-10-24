@@ -7,8 +7,8 @@
 
     namespace SevenManagerBundle\Admin\Pages;
 
-    use SevenManagerBundle\Admin\SimplePageAdmin;
-    use SevenManagerBundle\BasicCmsBundle\Document\SimplePost;
+    use Sonata\AdminBundle\Admin\Admin;
+    use SevenManagerBundle\Fixtures\Document\SimplePost;
     use Sonata\AdminBundle\Datagrid\DatagridMapper;
     use Sonata\AdminBundle\Datagrid\ListMapper;
     use Sonata\AdminBundle\Form\FormMapper;
@@ -18,7 +18,7 @@
      *
      * @package SevenManagerBundle\Admin\Pages
      */
-    class SimplePostAdmin extends SimplePageAdmin
+    class SimplePostAdmin extends Admin
     {
         /**
          * @param FormMapper $formMapper

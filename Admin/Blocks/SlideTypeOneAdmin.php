@@ -9,7 +9,7 @@
 
     use SevenManagerBundle\Admin\Traits\DefaultAdmin;
     use SevenManagerBundle\Document\Blocks\SlideTypeOne;
-    use Sonata\DoctrinePHPCRAdminBundle\Admin\Admin;
+    use Sonata\AdminBundle\Admin\Admin;
     use Sonata\AdminBundle\Form\FormMapper;
     use Sonata\AdminBundle\Datagrid\ListMapper;
 

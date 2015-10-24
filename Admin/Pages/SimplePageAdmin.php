@@ -7,8 +7,8 @@
 
     namespace SevenManagerBundle\Admin\Pages;
 
-    use SevenManagerBundle\BasicCmsBundle\Document\SimplePage;
-    use Sonata\DoctrinePHPCRAdminBundle\Admin\Admin;
+    use SevenManagerBundle\Fixtures\Document\SimplePage;
+    use Sonata\AdminBundle\Admin\Admin;
     use Sonata\AdminBundle\Datagrid\DatagridMapper;
     use Sonata\AdminBundle\Datagrid\ListMapper;
     use Sonata\AdminBundle\Form\FormMapper;
