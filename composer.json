@@ -14,8 +14,9 @@
     }
   ],
   "autoload": {
-    "psr-4": { "SevenManagerBundle\\": "" }
+    "psr-0": { "SevenManagerBundle": "" }
   },
+  "target-dir": "SevenManagerBundle",
   "require": {
     "php": ">=5.3.9",
     "symfony/symfony": "2.7.5 as 2.3.x-dev",
