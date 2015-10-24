@@ -14,10 +14,7 @@
     }
   ],
   "autoload": {
-    "psr-0": {
-      "": "src/",
-      "Application": "app/"
-    }
+    "psr-4": { "SevenManagerBundle\\": "" }
   },
   "require": {
     "php": ">=5.3.9",
