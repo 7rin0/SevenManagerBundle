@@ -22,7 +22,10 @@
   },
   "autoload": {
     "psr-4": {
-      "SevenManager\\SevenManagerBundle\\": ""
+      "SevenManagerBundle\\": ""
+    },
+    "psr-0" : {
+      "SevenManager\\SevenManagerBundle" : ""
     }
   },
   "extra": {
