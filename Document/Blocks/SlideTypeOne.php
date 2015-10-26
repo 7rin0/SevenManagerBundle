@@ -25,7 +25,6 @@
     {
 
         // Shared properties
-
         // Custom Properties
 
         /**

@@ -8,7 +8,7 @@
     namespace SevenManagerBundle\Admin\Pages;
 
     use Sonata\AdminBundle\Form\FormMapper;
-    use Sonata\AdminBundle\Admin\Admin;
+    use Sonata\DoctrinePHPCRAdminBundle\Admin\Admin;
     use SevenManagerBundle\Document\Pages\Homepage;
     use SevenManagerBundle\Admin\Traits\DefaultAdmin;
     use Sonata\AdminBundle\Datagrid\DatagridMapper;
