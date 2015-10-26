@@ -14,8 +14,7 @@
     }
   ],
   "require": {
-    "php": ">=5.3.9",
-    "sonata-project/admin-bundle": "^2.4@dev"
+    "php": ">=5.3.9"
   },
   "require-dev": {
   },
