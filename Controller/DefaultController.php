@@ -28,6 +28,7 @@
         public function indexAction()
         {
             // Get Station manager
+            $renderArray = array();
             $stationManager = $this->get('seven_manager.station_manager');
 
             // Get Homepage
@@ -77,13 +78,15 @@
 
                     }
 
+                    // Add Slider to front
+                    $renderArray['slider'] = $children;
+
                 }
 
             }
 
             //cmf_media_display_url
-
-            return array('slider' => $children);
+            return $renderArray;
 
         }
 
