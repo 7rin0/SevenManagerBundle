@@ -14,10 +14,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    <meta name="description" content="{{ homepage.content }}">
     <meta name="author" content="">
 
-    <title>Seven Manager! </title>
+    <title> {{ homepage.title }} - Seven Manager </title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -52,9 +52,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="index.html">
-                {% image '@SevenManagerBundle/Resources/public/img/logo.png' %}
-                    <img src="{{ asset_url }}" alt="Seven Manager" />
-                {% endimage %}
+                {{ "Seven Manager"|upper }}
             </a>
         </div>
         <div class="collapse navbar-collapse">
@@ -93,23 +91,24 @@
             <li data-target="#main-slider" data-slide-to="2"></li>
         </ol>
 
-        {% if slider is defined and slider is not empty %}
+        {% if slideshow is defined and slideshow is not empty %}
 
             <div class="carousel-inner">
 
-                {% for images in slider %}
+                {% for images in slideshow %}
 
                     <div class="item {{ loop.index == 1 ? 'active' : '' }}" style="background-image: url({{ cmf_media_display_url(images.image) }})">
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="carousel-content centered">
-                                        <h2 class="animation animated-item-1">Welcome to Seven Manager! A Bootstrap3
-                                            Template</h2>
+                                        <h2 class="animation animated-item-1">
+                                            {{ images.title }}
+                                        </h2>
 
-                                        <p class="animation animated-item-2">Sed mattis enim in nulla blandit tincidunt.
-                                            Phasellus vel sem convallis, mattis est id, interdum augue. Integer luctus massa in
-                                            arcu euismod venenatis. </p>
+                                        <p class="animation animated-item-2">
+                                            {{ images.subtitle }}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -140,9 +139,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="calltoaction-wrapper">
-                    <h3>Welcome to <span
-                                style="color:#aec62c; text-transform:uppercase;font-size:24px;">Seven Manager!</span> A
-                        free fully responsive Bootstrap 3 HTML5 template!</h3> <a
+                    <h3>
+                        {{ homepage.subtitle }}
+                    </h3> <a
                             href="http://www.vactualart.com/portfolio-item/Seven Manager-a-free-html5-template/"
                             class="btn btn-orange">Download here!</a>
                 </div>
@@ -154,6 +153,12 @@
 
 
 <!-- Services -->
+<div class="section section-white">
+    <div class="container">
+        {{ homepage.body|raw }}
+    </div>
+</div>
+
 <div class="section section-white">
     <div class="container">
         <div class="row">

@@ -43,14 +43,21 @@
                         ->add('name', 'text', array('required' => true))
                         ->add('content', 'textarea', array('required' => true))
                     ->end()
-                ->with('Optional', array(
-                    'class'       => 'col-md-6',
-                    'box_class'   => 'box box-solid box-danger',
-                    'description' => 'Optional Content',
-                ))
-                ->add('subtitle', 'text', array('required' => false))
-                ->add('image', 'cmf_media_image', array('required' => false))
+                    ->with('Optional', array(
+                        'class'       => 'col-md-6',
+                        'box_class'   => 'box box-solid box-danger',
+                        'description' => 'Optional Content',
+                    ))
+                    ->add('subtitle', 'text', array('required' => false))
+                    ->add('image', 'cmf_media_image', array('required' => false))
+                    ->end()
                 ->end()
+                ->tab('Principal labels')
+                    ->with('Optional', array())
+                     ->add('labelOne', 'text', array('required' => false))
+                     ->add('labelTwo', 'text', array('required' => false))
+                     ->add('labelThree', 'text', array('required' => false))
+                    ->end()
                 ->end()
                 ->tab('Body')
                     ->with('Body')
@@ -106,12 +113,12 @@
                     'box_class'   => 'box box-solid box-danger',
                     'description' => 'Relate an existing content',
                 ))
-                ->add('mapNode', 'sonata_type_model', array('label' => 'Related Node', 'required' => false, 'multiple' => true,))
-                ->add('mapPage', 'sonata_type_model', array('label' => 'Related Page', 'required' => false, 'multiple' => false,))
-                ->add('mapPost', 'sonata_type_model', array('label' => 'Related Post', 'required' => false, 'multiple' => true,))
-                ->add('mapArticle', 'sonata_type_model', array('label' => 'Related Article', 'required' => false, 'multiple' => false,))
-                ->add('mapGallery', 'sonata_type_model', array('label' => 'Related Gallery', 'required' => false, 'multiple' => true,))
-                ->add('mapForm', 'sonata_type_model', array('label' => 'Related Form', 'required' => false, 'multiple' => false,))
+                ->add('mapNode', 'sonata_type_model', array('label' => 'Related Node', 'required' => false, 'multiple' => false))
+                ->add('mapPage', 'sonata_type_model', array('label' => 'Related Page', 'required' => false, 'multiple' => false))
+                ->add('mapPost', 'sonata_type_model', array('label' => 'Related Post', 'required' => false, 'multiple' => false))
+                ->add('mapArticle', 'sonata_type_model', array('label' => 'Related Article', 'required' => false, 'multiple' => false))
+                ->add('mapGallery', 'sonata_type_model', array('label' => 'Related Gallery', 'required' => false, 'multiple' => false))
+                ->add('mapForm', 'sonata_type_model', array('label' => 'Related Form', 'required' => false, 'multiple' => false))
                 ->end()
                 ->end()
                 ->tab('Blocks')

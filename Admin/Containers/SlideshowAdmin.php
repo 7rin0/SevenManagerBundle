@@ -89,7 +89,6 @@
                         'label'      => 'images',
                         'edit'       => 'inline',
                         'inline'     => 'table',
-                        'multiple'   => false,
                         'sortable'   => 'position',
                         'admin_code' => $this->slideTypeOne,
                     )

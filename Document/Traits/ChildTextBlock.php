@@ -9,6 +9,7 @@
 
     use Sonata\BlockBundle\Model\BlockInterface;
     use Doctrine\ODM\PHPCR\ChildrenCollection;
+    use Doctrine\Common\Collections\ArrayCollection;
 
     /**
      * Class childTextBlock

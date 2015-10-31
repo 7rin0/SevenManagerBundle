@@ -32,61 +32,16 @@
             $stationManager = $this->get('seven_manager.station_manager');
 
             // Get Homepage
-            $homepage = $stationManager->getOneDocumentBy(
-                array(
-                    'document' => 'Pages\Homepage',
-                    'property' => 'name',
-                    'value'    => 'homepage',
-                    'dump'     => false,
-                )
-            );
+            $homepage = $stationManager->getHomepage();
 
-            // If Homepage is defined
-            if ($homepage) {
-
-                // Selected slideshow
-                $slideshowName = $homepage->getMapSlideshow();
-
-                // If Slideshow is selected
-                if ($slideshowName) {
-
-                    // Get Slideshow
-                    $slideshow = $stationManager->getOneDocumentBy(
-                        array(
-                            'document' => 'Containers\\' . $stationManager->getClassName($slideshowName),
-                            'property' => 'name',
-                            'value'    => $slideshowName->getName(),
-                            'dump'     => false,
-                        )
-                    );
-
-                    // Get Slideshow Images
-                    $children = $this->get('doctrine_phpcr')->getManager()->getChildren($slideshow);
-
-                    // Dev Slideshow
-                    foreach ($children as $imageBlock) {
-
-                        // Get Slideshow
-                        $slideTypeOne = $stationManager->getOneDocumentBy(
-                            array(
-                                'document' => 'Blocks\\' . $stationManager->getClassName($imageBlock),
-                                'property' => 'name',
-                                'value'    => $imageBlock->getName(),
-                                'dump'     => true,
-                            )
-                        );
-
-                    }
-
-                    // Add Slider to front
-                    $renderArray['slider'] = $children;
-
-                }
-
-            }
+            // Get associated slideshow and them childrens
+            $slideshow = $stationManager->getSlideshowByEntity($homepage);
 
             //cmf_media_display_url
-            return $renderArray;
+            return array(
+                'homepage' => $homepage,
+                'slideshow' => $slideshow,
+            );
 
         }
 

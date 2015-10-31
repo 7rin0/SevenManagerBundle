@@ -40,6 +40,12 @@
         protected $title;
 
         /**
+         * @PHPCR\String(nullable=true)
+         * @var string
+         */
+        protected $subtitle;
+
+        /**
          * @PHPCR\Child(cascade="persist")
          * @var Image
          */
@@ -134,5 +140,25 @@
         {
             return 'restructure.block.imagem';
         }
+
+        /**
+         * @return string
+         */
+        public function getSubtitle()
+        {
+            return $this->subtitle;
+        }
+
+        /**
+         * @param string $subtitle
+         */
+        public function setSubtitle($subtitle)
+        {
+            $this->subtitle = $subtitle;
+
+            return $this;
+        }
+
+
 
     }

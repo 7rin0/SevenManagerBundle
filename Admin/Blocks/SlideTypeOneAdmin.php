@@ -57,6 +57,7 @@
                 ->tab('Image content')
                 ->with('Image Restructure')
                 ->add('title', 'text', array('required' => false))
+                ->add('subtitle', 'text', array('required' => false))
                 ->add('label', 'text', array('required' => false))
                 ->add('image', 'cmf_media_image', array('required' => false))
                 ->end()

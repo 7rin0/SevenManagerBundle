@@ -63,4 +63,75 @@ class StationManager extends DocumentManager
         return end($className);
     }
 
+    /**
+     * @return mixed
+     */
+    public function getHomepage()
+    {
+        return $this->getOneDocumentBy(
+            array(
+                'document' => 'Pages\Homepage',
+                'property' => 'name',
+                'value'    => 'homepage',
+                'dump'     => false,
+            )
+        );
+    }
+
+    /**
+     * @param $homepage
+     *
+     * @return array
+     */
+    public function getSlideshowByEntity($homepage)
+    {
+
+        // If Homepage is defined
+        if ($homepage) {
+
+            // Selected slideshow
+            $slideshowName = $homepage->getMapSlideshow();
+
+            // If Slideshow is selected
+            if ($slideshowName) {
+
+                // Get Slideshow
+                $slideshow = $this->getOneDocumentBy(
+                    array(
+                        'document' => 'Containers\\' . $this->getClassName($slideshowName),
+                        'property' => 'name',
+                        'value'    => $slideshowName->getName(),
+                        'dump'     => false,
+                    )
+                );
+
+                // Get Slideshow Images
+                $children = $this->documentManager->getChildren($slideshow);
+
+                // Dev Slideshow
+                foreach ($children as $imageBlock) {
+
+                    // Get Slideshow
+                    $slideTypeOne = $this->getOneDocumentBy(
+                        array(
+                            'document' => 'Blocks\\' . $this->getClassName($imageBlock),
+                            'property' => 'name',
+                            'value'    => $imageBlock->getName(),
+                            'dump'     => true,
+                        )
+                    );
+
+                }
+
+                // Add Slider to front
+                return $children;
+
+            }
+
+        }
+
+        return array();
+
+    }
+
 }

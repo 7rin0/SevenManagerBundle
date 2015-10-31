@@ -7,16 +7,18 @@
 
     namespace SevenManagerBundle\Document\Pages;
 
-    use SevenManagerBundle\Document\Traits\MapPages;
-    use SevenManagerBundle\Document\Traits\MapBlocks;
     use SevenManagerBundle\Document\Traits\ChildMediaBlock;
+    use SevenManagerBundle\Document\Traits\MapBlocks;
+    use SevenManagerBundle\Document\Traits\MapPages;
+    use SevenManagerBundle\Document\Traits\OptionalLabels;
     use SevenManagerBundle\Document\Traits\SharedParentProperties;
-    use Symfony\Cmf\Bundle\MediaBundle\ImageInterface;
-    use Symfony\Component\HttpFoundation\File\UploadedFile;
-    use Symfony\Cmf\Bundle\MediaBundle\Doctrine\Phpcr\Image;
     use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
+    use Symfony\Cmf\Bundle\MediaBundle\Doctrine\Phpcr\Image;
+    use Symfony\Cmf\Bundle\MediaBundle\ImageInterface;
     use Symfony\Cmf\Component\Routing\RouteReferrersReadInterface;
+    use Symfony\Component\HttpFoundation\File\UploadedFile;
     use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
+
 
     /**
      * @PHPCR\Document(referenceable=true, translator="attribute")
@@ -30,6 +32,7 @@
         use MapBlocks;
         use ChildMediaBlock;
         use SharedParentProperties;
+        use OptionalLabels;
 
 
         /*************************** TESTE **************************/
