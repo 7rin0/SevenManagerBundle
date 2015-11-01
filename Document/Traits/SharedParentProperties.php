@@ -16,7 +16,7 @@
      */
     trait SharedParentProperties
     {
-        use FormatterProperties;
+        use CustomFields;
 
         /**
          * @PHPCR\Referrers(
@@ -37,24 +37,9 @@
         protected $parentDocument;
 
         /**
-         * @PHPCR\String()
-         */
-        protected $title;
-
-        /**
          * @PHPCR\Nodename()
          */
         protected $name;
-
-        /**
-         * @PHPCR\String(nullable=true)
-         */
-        protected $content;
-
-        /**
-         * @PHPCR\String(nullable=true)
-         */
-        protected $body;
 
         /**
          * @var string
@@ -83,26 +68,6 @@
         /**
          * @return mixed
          */
-        public function getTitle()
-        {
-            return $this->title;
-        }
-
-        /**
-         * @param $title
-         *
-         * @return $this
-         */
-        public function setTitle($title)
-        {
-            $this->title = $title;
-
-            return $this;
-        }
-
-        /**
-         * @return mixed
-         */
         public function getName()
         {
             return $this->name;
@@ -120,44 +85,7 @@
             return $this;
         }
 
-        /**
-         * @return mixed
-         */
-        public function getContent()
-        {
-            return $this->content;
-        }
 
-        /**
-         * @param $content
-         *
-         * @return $this
-         */
-        public function setContent($content)
-        {
-            $this->content = $content;
-
-            return $this;
-        }
-
-        /**
-         * @return mixed
-         */
-        public function getBody()
-        {
-            return $this->body;
-        }
-
-        /**
-         * @param $body
-         *
-         * @return $this
-         */
-        public function setBody($body)
-        {
-            $this->body = $body;
-            return $this;
-        }
 
 
         /**

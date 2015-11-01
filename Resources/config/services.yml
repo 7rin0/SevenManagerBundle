@@ -4,7 +4,7 @@ services:
         class: Doctrine\Bundle\PHPCRBundle\Initializer\GenericInitializer
         arguments:
             - Seven Manager - Initializer
-            - ["/seven-manager", "/seven-manager/homepage", "/seven-manager/page", "/seven-manager/article", "/seven-manager/node", "/seven-manager/post", "/seven-manager/form", "/seven-manager/gallery", "/seven-manager/slideshow", "/seven-manager/images", ]
+            - ["/seven-manager", "/seven-manager/boilerplate", "/seven-manager/homepage", "/seven-manager/page", "/seven-manager/article", "/seven-manager/node", "/seven-manager/post", "/seven-manager/form", "/seven-manager/gallery", "/seven-manager/slideshow", "/seven-manager/images", ]
         tags:
             - { name: doctrine_phpcr.initializer }
     seven_manager.fixtures.phpcr.initializer:
@@ -20,6 +20,16 @@ services:
         class:  SevenManagerBundle\Manager\StationManager
             
     # Seven Manager - Call Content Bundle
+    seven_manager.admin.pages.boilerplate:
+        class: SevenManagerBundle\Admin\Pages\BoilerplateAdmin
+        arguments:
+            - ''
+            - SevenManagerBundle\Document\Pages\Boilerplate
+            - 'SonataAdminBundle:CRUD'
+        tags:
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'Seven Manager - Boilerplate', label: Boilerplate }
+        calls:
+            - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
     seven_manager.admin.pages.homepage:
         class: SevenManagerBundle\Admin\Pages\HomepageAdmin
         arguments:

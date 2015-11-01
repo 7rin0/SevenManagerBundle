@@ -9,12 +9,13 @@
 
     use SevenManagerBundle\Document\Traits\ChildMediaBlock;
     use SevenManagerBundle\Document\Traits\SharedContainerProperties;
+    use SevenManagerBundle\Document\Traits\SharedParentProperties;
     use Symfony\Cmf\Component\Routing\RouteReferrersReadInterface;
     use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
     /**
      * Class Slideshow
-     * @PHPCR\Document(referenceable=true)
+     * @PHPCR\Document(referenceable=true, translator="attribute")
      *
      * @package SevenManagerBundle\Document\Containers
      */
@@ -22,34 +23,7 @@
     {
 
         // Shared properties
-        use SharedContainerProperties;
+        use SharedParentProperties;
         use ChildMediaBlock;
-
-        // Custom Properties
-
-        /**
-         * @PHPCR\String(nullable=true)
-         */
-        protected $subtitle;
-
-        /**
-         * @return mixed
-         */
-        public function getSubtitle()
-        {
-            return $this->subtitle;
-        }
-
-        /**
-         * @param $subtitle
-         *
-         * @return $this
-         */
-        public function setSubtitle($subtitle)
-        {
-            $this->subtitle = $subtitle;
-
-            return $this;
-        }
 
     }

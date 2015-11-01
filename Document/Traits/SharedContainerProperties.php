@@ -16,6 +16,9 @@
      */
     trait SharedContainerProperties
     {
+
+        use CustomFields;
+
         /**
          * @PHPCR\Referrers(
          *     referringDocument="Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\Route",
@@ -37,37 +40,7 @@
         /**
          * @PHPCR\String()
          */
-        protected $title;
-
-        /**
-         * @PHPCR\String()
-         */
         protected $name;
-
-        /**
-         * @PHPCR\String(nullable=true)
-         */
-        protected $content;
-
-        /**
-         * @return mixed
-         */
-        public function getTitle()
-        {
-            return $this->title;
-        }
-
-        /**
-         * @param $title
-         *
-         * @return $this
-         */
-        public function setTitle($title)
-        {
-            $this->title = $title;
-
-            return $this;
-        }
 
         /**
          * @return mixed
@@ -85,26 +58,6 @@
         public function setName($name)
         {
             $this->name = $name;
-
-            return $this;
-        }
-
-        /**
-         * @return mixed
-         */
-        public function getContent()
-        {
-            return $this->content;
-        }
-
-        /**
-         * @param $content
-         *
-         * @return $this
-         */
-        public function setContent($content)
-        {
-            $this->content = $content;
 
             return $this;
         }

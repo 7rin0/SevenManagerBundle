@@ -7,10 +7,10 @@
 
     namespace SevenManagerBundle\Document\Pages;
 
-    use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
     use SevenManagerBundle\Document\Traits\SharedParentProperties;
     use Symfony\Cmf\Component\Routing\RouteReferrersReadInterface;
     use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
+    use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
     /**
      * @PHPCR\Document(referenceable=true, translator="attribute")
@@ -20,56 +20,4 @@
         TranslatableInterface
     {
         use SharedParentProperties;
-
-        /**
-         * @PHPCR\String(type="string", nullable=true)
-         */
-        protected $label;
-
-        /**
-         * @PHPCR\String(type="string", nullable=true)
-         */
-        protected $subtitle;
-
-        /**
-         * @return mixed
-         */
-        public function getLabel()
-        {
-            return $this->label;
-        }
-
-        /**
-         * @param $label
-         *
-         * @return $this
-         */
-        public function setLabel($label)
-        {
-            $this->label = $label;
-
-            return $this;
-        }
-
-        /**
-         * @return mixed
-         */
-        public function getSubtitle()
-        {
-            return $this->label;
-        }
-
-        /**
-         * @param $subtitle
-         *
-         * @return $this
-         */
-        public function setSubtitle($subtitle)
-        {
-            $this->label = $subtitle;
-
-            return $this;
-        }
-
-
     }

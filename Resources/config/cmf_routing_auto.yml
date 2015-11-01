@@ -1,8 +1,14 @@
-SevenManagerBundle\Document\Pages\Homepage:
-    #uri_schema:/{locale}/seven-manager/homepage/{date}/{title}
-    uri_schema: /{locale}/seven-manager/homepage/{title}
+SevenManagerBundle\Document\Pages\Boilerplate:
+    #uri_schema:/{locale}/seven-manager/boilerplate/{date}/{title}
+    uri_schema: /{locale}/seven-manager/boilerplate/{title}
     token_providers:
         #date: [content_datetime, { method: getDate }] // Call methods and add to variables used by uri_schema
+        title: [content_method, { method: getTitle }]
+        locale: [content_method, { method: getLocale }]
+
+SevenManagerBundle\Document\Pages\Homepage:
+    uri_schema: /{locale}/seven-manager/homepage/{title}
+    token_providers:
         title: [content_method, { method: getTitle }]
         locale: [content_method, { method: getLocale }]
 

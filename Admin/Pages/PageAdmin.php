@@ -41,7 +41,7 @@
             $formMapper
                 ->with('seven_manager.admin.pages.page.title')
                 ->add('title', 'text')
-                ->add('title1', 'text')
+                ->add('labelOne', 'text')
                 ->add('subtitle', 'text', array('required' => false))
                 ->add('name', 'text', array('required' => true))
                 ->add('content', 'textarea')
