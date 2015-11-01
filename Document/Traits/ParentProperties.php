@@ -151,7 +151,10 @@
          */
         public function __toString()
         {
-            return (string)$this->getTitle();
+            $returnString = count($this->getTitle()) === 0 ?
+                $this->getTitle() : $this->getName();
+
+            return (string)$returnString;
         }
 
     }
