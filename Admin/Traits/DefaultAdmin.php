@@ -108,9 +108,19 @@
          */
         public function prePersist($document)
         {
+
             if (!empty($this->prePersist)) {
                 $parent = $this->getModelManager()->find(null, $this->prePersist);
                 $document->setParentDocument($parent);
+
+                // Assign new names to children
+                foreach ($document->getChildren() as $child) {
+                    if (!$this->modelManager->getNormalizedIdentifier($child)) {
+                        $fatherPrefix = !empty($this->classnameLabel) ? strtolower($this->classnameLabel) : 'undefined_father';
+                        $child->setName($this->generateName($fatherPrefix));
+                    }
+                }
+
             }
 
             return $this;

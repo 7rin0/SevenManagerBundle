@@ -17,22 +17,22 @@ trait ChildProperties
      * @var string
      * @PHPCR\Locale()
      */
-    protected $locale;
+    protected $translatable;
 
     /**
      * @return string
      */
-    public function getLocale()
+    public function getTranslatable()
     {
-        return $this->locale;
+        return $this->translatable;
     }
 
-
-    public function setLocale($locale)
+    /**
+     * @param string $translatable
+     */
+    public function setTranslatable($translatable)
     {
-        $this->locale = $locale;
-
-        return $this;
+        $this->translatable = $translatable;
     }
 
 }

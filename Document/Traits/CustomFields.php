@@ -16,7 +16,7 @@
     {
 
         /**
-         * @PHPCR\String(nullable=false, translated=true)
+         * @PHPCR\String(nullable=true, translated=true)
          */
         protected $title;
 

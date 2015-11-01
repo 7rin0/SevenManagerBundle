@@ -7,10 +7,11 @@
 
     namespace SevenManagerBundle\Document\Blocks;
 
-    use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
     use SevenManagerBundle\Document\Traits\ChildProperties;
     use SevenManagerBundle\Document\Traits\CustomFields;
     use Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\AbstractBlock;
+    use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
+    use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
 
 
     /**
@@ -19,7 +20,7 @@
      *
      * @package SevenManagerBundle\Document\Blocks
      */
-    class ImageOne extends AbstractBlock
+    class ImageOne extends AbstractBlock implements TranslatableInterface
     {
 
         use CustomFields;
