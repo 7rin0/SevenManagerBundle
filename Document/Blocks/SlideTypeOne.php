@@ -150,7 +150,9 @@
         }
 
         /**
-         * @param string $subtitle
+         * @param $subtitle
+         *
+         * @return $this
          */
         public function setSubtitle($subtitle)
         {

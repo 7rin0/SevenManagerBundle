@@ -8,8 +8,9 @@
     namespace SevenManagerBundle\Document\Containers;
 
     use SevenManagerBundle\Document\Traits\ChildMediaBlock;
-    use SevenManagerBundle\Document\Traits\SharedContainerProperties;
-    use SevenManagerBundle\Document\Traits\SharedParentProperties;
+    use SevenManagerBundle\Document\Traits\CustomFields;
+    use SevenManagerBundle\Document\Traits\ParentProperties;
+    use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
     use Symfony\Cmf\Component\Routing\RouteReferrersReadInterface;
     use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
@@ -19,11 +20,13 @@
      *
      * @package SevenManagerBundle\Document\Containers
      */
-    class Slideshow implements RouteReferrersReadInterface
+    class Slideshow implements
+        RouteReferrersReadInterface,
+        TranslatableInterface
     {
 
         // Shared properties
-        use SharedParentProperties;
+        use ParentProperties;
         use ChildMediaBlock;
 
     }

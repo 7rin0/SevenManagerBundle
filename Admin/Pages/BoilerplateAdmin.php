@@ -33,7 +33,7 @@
         protected function configureFormFields(FormMapper $formMapper)
         {
             $formMapper
-                ->tab('seven_manager.admin.pages.boilerplate.title')
+                ->tab('General Content')
                     ->with('Required', array(
                         'class'       => 'col-md-6',
                         'box_class'   => 'box box-solid box-danger',

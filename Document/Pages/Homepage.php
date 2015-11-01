@@ -10,7 +10,7 @@
     use SevenManagerBundle\Document\Traits\ChildMediaBlock;
     use SevenManagerBundle\Document\Traits\MapBlocks;
     use SevenManagerBundle\Document\Traits\MapPages;
-    use SevenManagerBundle\Document\Traits\SharedParentProperties;
+    use SevenManagerBundle\Document\Traits\ParentProperties;
     use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
     use Symfony\Cmf\Bundle\MediaBundle\Doctrine\Phpcr\Image;
     use Symfony\Cmf\Bundle\MediaBundle\ImageInterface;
@@ -27,9 +27,7 @@
         /**
          * Traits
          */
-        use SharedParentProperties;
-        use MapPages;
-        use MapBlocks;
+        use ParentProperties;
         use ChildMediaBlock;
 
 

@@ -14,7 +14,7 @@
      *
      * @package SevenManagerBundle\Document\Traits
      */
-    trait SharedContainerProperties
+    trait ContainersProperties
     {
 
         use CustomFields;
@@ -113,7 +113,7 @@
         /**
          * @param mixed $parentDocument
          *
-         * @return SharedParentProperties
+         * @return ParentProperties
          */
         public function setParentDocument($parentDocument)
         {

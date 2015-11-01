@@ -7,22 +7,20 @@
 
     namespace SevenManagerBundle\Document\Traits;
 
+    use SevenManagerBundle\Document\Traits\CustomFields;
     use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
     /**
-     * Class SharedParentProperties
+     * Class ParentProperties
      *
      * @package SevenManagerBundle\Document\Traits
      */
-    trait SharedParentProperties
+    trait ParentProperties
     {
         use CustomFields;
 
         /**
-         * @PHPCR\Referrers(
-         *     referringDocument="Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\Route",
-         *     referencedBy="content"
-         * )
+         * @PHPCR\Referrers(referringDocument="Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\Route",referencedBy="content")
          */
         protected $routes;
 
@@ -139,7 +137,7 @@
         /**
          * @param mixed $parentDocument
          *
-         * @return SharedParentProperties
+         * @return ParentProperties
          */
         public function setParentDocument($parentDocument)
         {
@@ -153,7 +151,7 @@
          */
         public function __toString()
         {
-            return $this->getTitle();
+            return (string)$this->getTitle();
         }
 
     }

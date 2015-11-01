@@ -8,7 +8,7 @@
     namespace SevenManagerBundle\Document\Pages;
 
     use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
-    use SevenManagerBundle\Document\Traits\SharedParentProperties;
+    use SevenManagerBundle\Document\Traits\ParentProperties;
     use Symfony\Cmf\Component\Routing\RouteReferrersReadInterface;
     use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
 
@@ -19,5 +19,5 @@
         RouteReferrersReadInterface,
         TranslatableInterface
     {
-        use SharedParentProperties;
+        use ParentProperties;
     }
