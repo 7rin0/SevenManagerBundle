@@ -1,0 +1,36 @@
+<?php
+    /**
+     * User: lseverino
+     * Date: 20/10/15
+     * Time: 14:02
+     */
+
+    namespace SevenManagerBundle\Document\Blocks;
+
+    use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
+    use SevenManagerBundle\Document\Traits\ChildProperties;
+    use SevenManagerBundle\Document\Traits\CustomFields;
+    use Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\AbstractBlock;
+
+
+    /**
+     * Class ImageOne
+     * @PHPCR\Document(referenceable=true, translator="attribute")
+     *
+     * @package SevenManagerBundle\Document\Blocks
+     */
+    class ImageOne extends AbstractBlock
+    {
+
+        use CustomFields;
+        use ChildProperties;
+
+        /**
+         * @return string
+         */
+        public function getType()
+        {
+            return 'restructure.block.image.one';
+        }
+
+    }

@@ -38,6 +38,11 @@
         /**
          * @PHPCR\String(nullable=true, translated=true)
          */
+        protected $label;
+
+        /**
+         * @PHPCR\String(nullable=true, translated=true)
+         */
         protected $labelOne;
 
         /**
@@ -158,6 +163,26 @@
         public function setBody($body)
         {
             $this->body = $body;
+            return $this;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getLabel()
+        {
+            return $this->label;
+        }
+
+        /**
+         * @param $label
+         *
+         * @return $this
+         */
+        public function setLabel($label)
+        {
+            $this->label = $label;
+
             return $this;
         }
 
@@ -362,6 +387,17 @@
             }
 
             return $this;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function __toString()
+        {
+            $returnString = count($this->getTitle()) === 0 ?
+                $this->getTitle() : $this->getName();
+
+            return (string)$returnString;
         }
 
     }

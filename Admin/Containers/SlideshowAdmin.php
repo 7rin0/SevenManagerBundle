@@ -23,27 +23,27 @@
     class SlideshowAdmin extends Admin
     {
 
-        protected $slideTypeOne;
-        protected $prePersist = '/seven-manager/slideshow';
-
         use DefaultAdmin;
+
+        protected $imageOne;
+        protected $prePersist = '/seven-manager/slideshow';
 
         /**
          * @return mixed
          */
-        public function getSlideTypeOne()
+        public function getImageOne()
         {
-            return $this->slideTypeOne;
+            return $this->imageOne;
         }
 
         /**
-         * @param mixed $slideTypeOne
+         * @param $imageOne
          *
-         * @return SlideshowAdmin
+         * @return $this
          */
-        public function setSlideTypeOne($slideTypeOne)
+        public function setImageOne($imageOne)
         {
-            $this->slideTypeOne = $slideTypeOne;
+            $this->imageOne = $imageOne;
 
             return $this;
         }
@@ -90,7 +90,7 @@
                         'edit'       => 'inline',
                         'inline'     => 'table',
                         'sortable'   => 'position',
-                        'admin_code' => $this->slideTypeOne,
+                        'admin_code' => $this->imageOne,
                     )
                 )
                 ->end()

@@ -110,12 +110,12 @@ services:
             - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'Seven manager - Containers', label: Slideshow }
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
-            - [setSlideTypeOne, [seven_manager.admin.blocks.slideone]]
+            - [setImageOne, [seven_manager.admin.blocks.slideone]]
     seven_manager.admin.blocks.slideone:
-        class: SevenManagerBundle\Admin\Blocks\SlideTypeOneAdmin
+        class: SevenManagerBundle\Admin\Blocks\ImageOneAdmin
         arguments:
             - ''
-            - SevenManagerBundle\Document\Blocks\SlideTypeOne
+            - SevenManagerBundle\Document\Blocks\ImageOne
             - 'SonataAdminBundle:CRUD'
         tags:
             - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'Seven manager - Blocks', label: Slide Type One }

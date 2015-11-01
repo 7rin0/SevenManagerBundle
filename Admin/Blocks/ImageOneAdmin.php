@@ -8,16 +8,16 @@
     namespace SevenManagerBundle\Admin\Blocks;
 
     use SevenManagerBundle\Admin\Traits\DefaultAdmin;
-    use SevenManagerBundle\Document\Blocks\SlideTypeOne;
+    use SevenManagerBundle\Document\Blocks\ImageOne;
     use Sonata\DoctrinePHPCRAdminBundle\Admin\Admin;
     use Sonata\AdminBundle\Form\FormMapper;
     use Sonata\AdminBundle\Datagrid\ListMapper;
 
     /**
-     * Class SlideTypeOneAdmin
+     * Class ImageOneAdmin
      * @package SevenManagerBundle\Admin\Blocks
      */
-    class SlideTypeOneAdmin extends Admin
+    class ImageOneAdmin extends Admin
     {
 
         use DefaultAdmin;
@@ -66,7 +66,7 @@
 
         public function toString($object)
         {
-            return $object instanceof SlideTypeOne && $object->getLabel()
+            return $object instanceof ImageOne && $object->getLabel()
                 ? $object->getLabel()
                 : parent::toString($object);
         }
