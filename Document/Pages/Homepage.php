@@ -7,9 +7,8 @@
 
     namespace SevenManagerBundle\Document\Pages;
 
-    use SevenManagerBundle\Document\Traits\ChildMediaBlock;
-    use SevenManagerBundle\Document\Traits\MapBlocks;
-    use SevenManagerBundle\Document\Traits\MapPages;
+    use SevenManagerBundle\Document\Traits\CustomCollections;
+    use SevenManagerBundle\Document\Traits\CustomModels;
     use SevenManagerBundle\Document\Traits\ParentProperties;
     use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
     use Symfony\Cmf\Bundle\MediaBundle\Doctrine\Phpcr\Image;
@@ -28,7 +27,8 @@
          * Traits
          */
         use ParentProperties;
-        use ChildMediaBlock;
+        use CustomModels;
+        use CustomCollections;
 
 
         /**

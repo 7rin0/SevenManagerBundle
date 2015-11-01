@@ -7,8 +7,8 @@
 
     namespace SevenManagerBundle\Document\Containers;
 
-    use SevenManagerBundle\Document\Traits\ChildMediaBlock;
-    use SevenManagerBundle\Document\Traits\CustomFields;
+    use SevenManagerBundle\Document\Traits\CustomCollections;
+    use SevenManagerBundle\Document\Traits\CustomModels;
     use SevenManagerBundle\Document\Traits\ParentProperties;
     use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
     use Symfony\Cmf\Component\Routing\RouteReferrersReadInterface;
@@ -27,6 +27,6 @@
 
         // Shared properties
         use ParentProperties;
-        use ChildMediaBlock;
+        use CustomCollections;
 
     }

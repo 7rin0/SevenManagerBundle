@@ -7,7 +7,7 @@
 
     namespace SevenManagerBundle\Document\Pages;
 
-    use SevenManagerBundle\Document\Traits\ChildMediaBlock;
+    use SevenManagerBundle\Document\Traits\CustomCollections;
     use SevenManagerBundle\Document\Traits\CustomModels;
     use SevenManagerBundle\Document\Traits\ParentProperties;
     use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
@@ -28,7 +28,7 @@
          */
         use ParentProperties;
         use CustomModels;
-        use ChildMediaBlock;
+        use CustomCollections;
 
         /**
          * @PHPCR\Child(cascade="persist")
