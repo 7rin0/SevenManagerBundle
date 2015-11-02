@@ -8,16 +8,11 @@
     namespace SevenManagerBundle\Document\Pages;
 
     use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
-    use SevenManagerBundle\Document\Traits\ParentProperties;
-    use Symfony\Cmf\Component\Routing\RouteReferrersReadInterface;
-    use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
+    use SevenManagerBundle\Document\Classes\StructurePages;
 
     /**
      * @PHPCR\Document(referenceable=true, translator="attribute")
      */
-    class Form implements
-        RouteReferrersReadInterface,
-        TranslatableInterface
-    {
-        use ParentProperties;
+    class Form extends StructurePages {
+
     }

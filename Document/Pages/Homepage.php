@@ -7,29 +7,32 @@
 
     namespace SevenManagerBundle\Document\Pages;
 
+    use SevenManagerBundle\Document\Classes\StructurePages;
     use SevenManagerBundle\Document\Traits\CustomCollections;
     use SevenManagerBundle\Document\Traits\CustomModels;
-    use SevenManagerBundle\Document\Traits\ParentProperties;
-    use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
-    use Symfony\Cmf\Bundle\MediaBundle\Doctrine\Phpcr\Image;
-    use Symfony\Cmf\Bundle\MediaBundle\ImageInterface;
-    use Symfony\Component\HttpFoundation\File\UploadedFile;
-    use Symfony\Cmf\Component\Routing\RouteReferrersReadInterface;
+    use SevenManagerBundle\Document\Traits\Seo;
     use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
 
     /**
      * @PHPCR\Document(referenceable=true, translator="attribute")
      */
-    class Homepage implements RouteReferrersReadInterface, TranslatableInterface
+    class Homepage extends StructurePages
     {
-        /**
-         * Traits
-         */
-        use ParentProperties;
-        use CustomModels;
-        use CustomCollections;
 
+        use CustomModels;
+        use Seo {
+            Seo::__construct as private __seoConstruct;
+        }
+        use CustomCollections {
+            CustomCollections::__construct as private __collectionConstruct;
+        }
+
+        public function __construct()
+        {
+            $this->__seoConstruct();
+            $this->__collectionConstruct();
+        }
 
         /**
          * @PHPCR\Child(cascade="persist")
