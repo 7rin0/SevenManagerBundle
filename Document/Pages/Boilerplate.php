@@ -18,7 +18,16 @@
     class Boilerplate extends StructurePages
     {
 
-        use CustomModels, CustomCollections;
+        use CustomModels;
+        use CustomCollections {
+            CustomCollections::__construct as private __collectionConstruct;
+        }
+
+
+        public function __construct()
+        {
+            $this->__collectionConstruct();
+        }
 
         /**
          * @PHPCR\Child(cascade="persist")

@@ -8,9 +8,7 @@
     namespace SevenManagerBundle\Document\Pages;
 
     use SevenManagerBundle\Document\Classes\StructurePages;
-    use SevenManagerBundle\Document\Traits\CustomCollections;
     use SevenManagerBundle\Document\Traits\CustomModels;
-    use SevenManagerBundle\Document\Traits\Seo;
     use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
 
@@ -21,18 +19,6 @@
     {
 
         use CustomModels;
-        use Seo {
-            Seo::__construct as private __seoConstruct;
-        }
-        use CustomCollections {
-            CustomCollections::__construct as private __collectionConstruct;
-        }
-
-        public function __construct()
-        {
-            $this->__seoConstruct();
-            $this->__collectionConstruct();
-        }
 
         /**
          * @PHPCR\Child(cascade="persist")
