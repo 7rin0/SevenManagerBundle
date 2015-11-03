@@ -122,11 +122,10 @@
 
                 // Find Parent
                 $parent = $this->getModelManager()->find(null, $this->prePersist);
+                $document->setParentDocument($parent);
 
                 // Set Father
-                if($parent) {
-
-                    $document->setParentDocument($parent);
+                if(method_exists($document, 'getChildren')) {
 
                     // Assign new names to children
                     foreach ($document->getChildren() as $child) {

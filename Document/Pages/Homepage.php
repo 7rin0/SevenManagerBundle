@@ -8,6 +8,7 @@
     namespace SevenManagerBundle\Document\Pages;
 
     use SevenManagerBundle\Document\Classes\StructurePages;
+    use SevenManagerBundle\Document\Traits\CustomCollections;
     use SevenManagerBundle\Document\Traits\CustomModels;
     use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
@@ -18,6 +19,14 @@
     {
 
         use CustomModels;
+        use CustomCollections {
+            CustomCollections::__construct as private __collectionConstruct;
+        }
+
+        public function __construct()
+        {
+            $this->__collectionConstruct();
+        }
 
         /**
          * @PHPCR\Child(cascade="persist")
