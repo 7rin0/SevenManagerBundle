@@ -10,9 +10,13 @@ namespace SevenManagerBundle\Document\Traits;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
+/**
+ * Class ChildProperties
+ *
+ * @package SevenManagerBundle\Document\Traits
+ */
 trait ChildProperties
 {
-
     /**
      * @var string
      * @PHPCR\Locale()
@@ -34,5 +38,4 @@ trait ChildProperties
     {
         $this->translatable = $translatable;
     }
-
 }

@@ -12,9 +12,13 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 use SevenManagerBundle\Document\Traits\CustomFields;
 use Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\AbstractBlock;
 
+/**
+ * Class TextOne
+ *
+ * @package SevenManagerBundle\Document\Blocks
+ */
 class TextOne extends AbstractBlock
 {
-
     use CustomFields;
 
     /**

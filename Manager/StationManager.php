@@ -16,7 +16,6 @@ use Doctrine\ODM\PHPCR\DocumentManager;
  */
 class StationManager extends DocumentManager
 {
-
     protected $documentManager;
 
     public function __construct()
@@ -122,16 +121,9 @@ class StationManager extends DocumentManager
                     );
 
                 }
-
-                // Add Slider to front
                 return $children;
-
             }
-
         }
-
         return array();
-
     }
-
 }

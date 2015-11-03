@@ -12,7 +12,6 @@ use Doctrine\ODM\PHPCR\ChildrenCollection;
  */
 trait CustomChildren
 {
-
     /**
      * @PHPCR\Children(cascade="all")
      */
@@ -112,5 +111,4 @@ trait CustomChildren
     {
         return 'seven_manager.page.homepage';
     }
-
 }

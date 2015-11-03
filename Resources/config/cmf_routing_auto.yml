@@ -41,15 +41,3 @@ SevenManagerBundle\Document\Pages\Form:
     uri_schema: /{locale}/seven-manager/form/{title}
     token_providers:
         title: [content_method, { method: getTitle }]
-
-# Fixtures
-SevenManagerBundle\Fixtures\Document\SimplePage:
-    uri_schema: /seven-manager/fixtures/simple-page/{title}
-    token_providers:
-        title: [content_method, { method: getTitle }]
-
-SevenManagerBundle\Fixtures\Document\SimplePost:
-    uri_schema: /seven-manager/fixtures/simple-post/{date}/{title}
-    token_providers:
-        date: [content_datetime, { method: getDate }]
-        title: [content_method, { method: getTitle }]

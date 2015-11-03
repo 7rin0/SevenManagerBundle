@@ -17,7 +17,6 @@ use PHPCR\Util\NodeHelper;
  */
 class ParentManager extends DocumentManager
 {
-
     protected $documentManager;
 
     public function __construct()
@@ -33,5 +32,4 @@ class ParentManager extends DocumentManager
     {
         NodeHelper::createPath($this->documentManager->getPhpcrSession(), $path);
     }
-
 }
