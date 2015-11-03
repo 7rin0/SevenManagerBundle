@@ -11,7 +11,6 @@
     use SevenManagerBundle\Document\Traits\CustomModels;
     use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
-
     /**
      * @PHPCR\Document(referenceable=true, translator="attribute")
      */
@@ -33,9 +32,9 @@
             return $this->blockChild;
         }
 
-        /**
-         * @param mixed $blockChild
-         * @return Homepage
+        /**.
+         * @param $blockChild
+         * @return $this
          */
         public function setBlockChild($blockChild)
         {

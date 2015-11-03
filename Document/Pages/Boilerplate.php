@@ -23,7 +23,6 @@
             CustomCollections::__construct as private __collectionConstruct;
         }
 
-
         public function __construct()
         {
             $this->__collectionConstruct();
@@ -44,7 +43,6 @@
 
         /**
          * @param $blockChild
-         *
          * @return $this
          */
         public function setBlockChild($blockChild)

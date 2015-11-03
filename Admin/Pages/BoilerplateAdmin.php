@@ -18,7 +18,6 @@
 
     /**
      * Class BoilerplateAdmin
-     *
      * @package SevenManagerBundle\Admin\Pages
      */
     class BoilerplateAdmin extends Admin

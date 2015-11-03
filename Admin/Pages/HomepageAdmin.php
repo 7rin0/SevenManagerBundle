@@ -108,44 +108,44 @@
                     ->end()
                 ->end()
                 ->tab('Pages')
-                ->with('Relate Pages', array(
-                    'class'       => 'col-md-12',
-                    'box_class'   => 'box box-solid box-danger',
-                    'description' => 'Relate an existing content',
-                ))
-                ->add('mapNode', 'sonata_type_model', array('label' => 'Related Node', 'required' => false, 'multiple' => false))
-                ->add('mapPage', 'sonata_type_model', array('label' => 'Related Page', 'required' => false, 'multiple' => false))
-                ->add('mapPost', 'sonata_type_model', array('label' => 'Related Post', 'required' => false, 'multiple' => false))
-                ->add('mapArticle', 'sonata_type_model', array('label' => 'Related Article', 'required' => false, 'multiple' => false))
-                ->add('mapGallery', 'sonata_type_model', array('label' => 'Related Gallery', 'required' => false, 'multiple' => false))
-                ->add('mapForm', 'sonata_type_model', array('label' => 'Related Form', 'required' => false, 'multiple' => false))
-                ->end()
+                    ->with('Relate Pages', array(
+                        'class'       => 'col-md-12',
+                        'box_class'   => 'box box-solid box-danger',
+                        'description' => 'Relate an existing content',
+                    ))
+                        ->add('mapNode', 'sonata_type_model', array('label' => 'Related Node', 'required' => false, 'multiple' => false))
+                        ->add('mapPage', 'sonata_type_model', array('label' => 'Related Page', 'required' => false, 'multiple' => false))
+                        ->add('mapPost', 'sonata_type_model', array('label' => 'Related Post', 'required' => false, 'multiple' => false))
+                        ->add('mapArticle', 'sonata_type_model', array('label' => 'Related Article', 'required' => false, 'multiple' => false))
+                        ->add('mapGallery', 'sonata_type_model', array('label' => 'Related Gallery', 'required' => false, 'multiple' => false))
+                        ->add('mapForm', 'sonata_type_model', array('label' => 'Related Form', 'required' => false, 'multiple' => false))
+                    ->end()
                 ->end()
                 ->tab('Blocks')
-                ->with('Relate Blocks', array(
-                    'class'       => 'col-md-12',
-                    'box_class'   => 'box box-solid box-danger',
-                    'description' => 'Relate an existing content',
-                ))
-                ->add('mapContainer', 'sonata_type_model', array('label' => 'Related Container Block', 'required' => false,))
-                ->add('mapReference', 'sonata_type_model', array('label' => 'Related Reference Block', 'required' => false,))
-                ->add('mapAction', 'sonata_type_model', array('label' => 'Related Action Block', 'required' => false,))
-                ->add('mapSlideshow', 'sonata_type_model', array('label' => 'Related Slideshow Block', 'required' => false,))
-                ->add('mapImage', 'sonata_type_model', array('label' => 'Related Image Block', 'required' => false,))
-                ->end()
+                    ->with('Relate Blocks', array(
+                        'class'       => 'col-md-12',
+                        'box_class'   => 'box box-solid box-danger',
+                        'description' => 'Relate an existing content',
+                    ))
+                        ->add('mapContainer', 'sonata_type_model', array('label' => 'Related Container Block', 'required' => false,))
+                        ->add('mapReference', 'sonata_type_model', array('label' => 'Related Reference Block', 'required' => false,))
+                        ->add('mapAction', 'sonata_type_model', array('label' => 'Related Action Block', 'required' => false,))
+                        ->add('mapSlideshow', 'sonata_type_model', array('label' => 'Related Slideshow Block', 'required' => false,))
+                        ->add('mapImage', 'sonata_type_model', array('label' => 'Related Image Block', 'required' => false,))
+                    ->end()
                 ->end()
                 ->tab('Auto-complete')
-                ->with('Auto-complete')
-                ->add(
-                    'mapSimple',
-                    'sonata_type_model_autocomplete',
-                    array(
-                        'property' => 'title',
-                        'model_manager' => $this->modelManager,
-                        'required' => false,
-                    )
-                )
-                ->end()
+                    ->with('Auto-complete')
+                        ->add(
+                            'mapSimple',
+                            'sonata_type_model_autocomplete',
+                            array(
+                                'property' => 'title',
+                                'model_manager' => $this->modelManager,
+                                'required' => false,
+                            )
+                        )
+                    ->end()
                 ->end()
                 ->setHelps(array(
                     'title'    => 'seven_manager.admin.fields.title.helper',

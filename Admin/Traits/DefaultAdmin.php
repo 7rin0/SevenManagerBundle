@@ -7,10 +7,13 @@
 
     namespace SevenManagerBundle\Admin\Traits;
 
+    use Doctrine\Bundle\PHPCRBundle\ManagerRegistry;
+    use PHPCR\Util\NodeHelper;
     use Sonata\AdminBundle\Datagrid\DatagridMapper;
     use Sonata\AdminBundle\Datagrid\ListMapper;
     use Sonata\AdminBundle\Show\ShowMapper;
-    use SevenManagerBundle\Document\Pages\Homepage;
+    use Symfony\Component\DependencyInjection\Container;
+    use Symfony\Component\DependencyInjection\ContainerInterface;
 
     /**
      * Class DefaultAdmin
@@ -20,9 +23,6 @@
     trait DefaultAdmin
     {
 
-        // Fix Bundles without suffix Bundle
-        // protected $baseRouteName = 'seven_manager_homepage';
-        // protected $baseRoutePattern = 'homepage';
         public function supportsPreviewMode()
         {
             parent::supportsPreviewMode();
@@ -41,7 +41,7 @@
                 ->add('name')
                 ->add('subtitle')
                 ->add('content')
-                ->add('Boolean one', 'boolean');
+                ->add('True or False', 'boolean');
 
         }
 
@@ -102,8 +102,7 @@
         }
 
         /**
-         * @param mixed $document
-         *
+         * @param $document
          * @return $this
          */
         public function prePersist($document)
@@ -111,14 +110,32 @@
 
             if (!empty($this->prePersist)) {
                 $parent = $this->getModelManager()->find(null, $this->prePersist);
-                $document->setParentDocument($parent);
 
-                // Assign new names to children
-                foreach ($document->getChildren() as $child) {
-                    if (!$this->modelManager->getNormalizedIdentifier($child)) {
-                        $fatherPrefix = !empty($this->classnameLabel) ? strtolower($this->classnameLabel) : 'undefined_father';
-                        $child->setName($this->generateName($fatherPrefix));
+                // If Parent is null create one
+                if(!$parent && !empty($this->prePersist)) {
+
+                    global $kernel;
+                    $dm = $kernel->getContainer()->get('seven_manager.parent_manager');
+                    $dm->createRecursivePaths($this->prePersist);
+
+                }
+
+                // Find Parent
+                $parent = $this->getModelManager()->find(null, $this->prePersist);
+
+                // Set Father
+                if($parent) {
+
+                    $document->setParentDocument($parent);
+
+                    // Assign new names to children
+                    foreach ($document->getChildren() as $child) {
+                        if (!$this->modelManager->getNormalizedIdentifier($child)) {
+                            $fatherPrefix = !empty($this->classnameLabel) ? strtolower($this->classnameLabel) : 'undefined_father';
+                            $child->setName($this->generateName($fatherPrefix));
+                        }
                     }
+
                 }
 
             }
