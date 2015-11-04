@@ -11,6 +11,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\DoctrinePHPCRAdminBundle\Admin\Admin;
 use SevenManagerBundle\Document\Pages\Boilerplate;
 use SevenManagerBundle\Admin\Traits\DefaultAdmin;
+use Symfony\Component\Routing\RouterInterface;
 
 /**
  * Class BoilerplateAdmin
@@ -55,7 +56,15 @@ class BoilerplateAdmin extends Admin
             ->end()
             ->tab('Body')
                 ->with('Body')
-                    ->add('body', 'textarea', array('required' => false, 'attr' => array('class' => 'ckeditor')))
+
+                    ->add('body', 'ckeditor', array(
+                        'config' => array(
+                            'filebrowserBrowseHandler' => function (RouterInterface $router) {
+                                return $router->generate($this->getBaseRouteName() . '_create', array('slug' => 'my-slug', true));
+                            },
+                        ),
+                    ))
+                    //->add('body', 'textarea', array('required' => false, 'attr' => array('class' => 'ckeditor')))
                     ->add('richText1', 'sonata_formatter_type', array(
                         'event_dispatcher' => $formMapper->getFormBuilder()->getEventDispatcher(),
                         'format_field'   => 'contentFormatter',
