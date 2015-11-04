@@ -93,7 +93,7 @@ trait DefaultAdmin
                                 'required' => false
                             )
                         )
-                        ->add('name', 'text')
+                        ->add('name', 'text', array('required' => false))
                     ->end()
                 ->end();
         }
