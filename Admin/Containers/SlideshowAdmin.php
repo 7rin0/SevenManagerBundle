@@ -27,26 +27,6 @@ class SlideshowAdmin extends Admin
     protected $parentPath = '/seven-manager/slideshow';
 
     /**
-     * @return mixed
-     */
-    public function getImageOne()
-    {
-        return $this->imageOne;
-    }
-
-    /**
-     * @param $imageOne
-     *
-     * @return $this
-     */
-    public function setImageOne($imageOne)
-    {
-        $this->imageOne = $imageOne;
-
-        return $this;
-    }
-
-    /**
      * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper)
@@ -77,6 +57,26 @@ class SlideshowAdmin extends Admin
                     )
                 ->end()
             ->end();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImageOne()
+    {
+        return $this->imageOne;
+    }
+
+    /**
+     * @param $imageOne
+     *
+     * @return $this
+     */
+    public function setImageOne($imageOne)
+    {
+        $this->imageOne = $imageOne;
+
+        return $this;
     }
 
     /**

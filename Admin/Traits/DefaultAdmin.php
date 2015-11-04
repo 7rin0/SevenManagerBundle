@@ -102,8 +102,7 @@ trait DefaultAdmin
         $formMapper
             ->tab('Configuration')
                 ->with('Configuration')
-                    ->add('name', 'text', array('required' => false))
-                    ->add('name', 'text', array('required' => false))
+                    // Shared Fields across all Admins in child/parent context
                 ->end()
             ->end()
             ->tab('Content')

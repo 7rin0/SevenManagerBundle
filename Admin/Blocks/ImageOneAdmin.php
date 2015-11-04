@@ -18,7 +18,10 @@ use Sonata\AdminBundle\Form\FormMapper;
  */
 class ImageOneAdmin extends Admin
 {
-    use DefaultAdmin;
+    use DefaultAdmin {
+        configureFormFields as traitFormFields;
+    }
+
     protected $parentPath = '/seven-manager/images';
 
     /**
@@ -26,40 +29,27 @@ class ImageOneAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        parent::configureFormFields($formMapper);
-        if ($parentAdmin = null === $this->getParentFieldDescription()) {
-            $formMapper
-                ->tab('Configuration')
-                    ->with('Image Restructure')
-                        ->add(
-                            'parentDocument',
-                            'doctrine_phpcr_odm_tree',
-                            array('root_node' => $this->getRootPath(), 'choice_list' => array(), 'select_root_node' => true)
-                        )
-                        ->add('name', 'text')
-                    ->end()
-                ->end();
-        } else {
+        $this->traitFormFields($formMapper);
+
+        if ($parentAdmin = $this->getParentFieldDescription() != null) {
             $parentAdmin = $this->getClassName($this->getParentFieldDescription()->getAdmin());
         }
 
         $formMapper
-                ->tab('Content')
-                    ->with('Image Restructure')
-                        ->add('title', 'text', array('required' => false));
-
-        if ($parentAdmin !== 'HomepageAdmin') {
-            $formMapper
-                ->add('subtitle', 'text', array('required' => false))
-                ->add('label', 'text', array('required' => false))
-                ->remove('publishable')
-                ->remove('start_date');
-        }
-
-        $formMapper
-                ->add('image', 'cmf_media_image', array('required' => false))
+            ->tab('Content')
+                ->with('Content')
+                    ->add('label', 'text', array('required' => false))
+                    ->add('image', 'cmf_media_image', array('required' => false))
+                    ->remove('resume')
+                    ->remove('body')
                 ->end()
-                    ->end();
+            ->end();
+
+        if ($parentAdmin === 'HomepageAdmin') {
+            $formMapper
+                ->remove('subtitle')
+                ->remove('label');
+        }
 
     }
 

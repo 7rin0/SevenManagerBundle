@@ -19,7 +19,10 @@ use Sonata\AdminBundle\Form\FormMapper;
  */
 class TextOneAdmin extends Admin
 {
-    use DefaultAdmin;
+    use DefaultAdmin {
+        configureFormFields as traitFormFields;
+    }
+
     protected $parentPath = '/seven-manager/text';
 
     /**
@@ -27,40 +30,25 @@ class TextOneAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        parent::configureFormFields($formMapper);
-        if ($parentAdmin = null === $this->getParentFieldDescription()) {
-            $formMapper
-                ->tab('Configuration')
-                    ->with('Image Restructure')
-                        ->add(
-                            'parentDocument',
-                            'doctrine_phpcr_odm_tree',
-                            array('root_node' => $this->getRootPath(), 'choice_list' => array(), 'select_root_node' => true)
-                        )
-                        ->add('name', 'text')
-                    ->end()
-                ->end();
-        } else {
-            $parentAdmin = $this->getClassName($this->getParentFieldDescription()->getAdmin());
-        }
+        $this->traitFormFields($formMapper);
 
         $formMapper
-                ->tab('Content')
-                    ->with('Content')
-                        ->add('title', 'text', array('required' => false))
-                        ->add('subtitle', 'text', array('required' => false))
-                        ->add(
-                            'parentDocument',
-                            'doctrine_phpcr_odm_tree',
-                            array('root_node' => $this->getRootPath(), 'choice_list' => array(), 'select_root_node' => true)
+            ->tab('Content')
+                ->with('Content')
+                    ->add(
+                        'targetContent',
+                        'doctrine_phpcr_odm_tree',
+                        array(
+                            'root_node' => $this->getRootPath(),
+                            'choice_list' => array(),
+                            'select_root_node' => true,
+                            'required' => false
                         )
-                        ->add(
-                            'targetContent',
-                            'doctrine_phpcr_odm_tree',
-                            array('root_node' => $this->getRootPath(), 'choice_list' => array(), 'select_root_node' => true, 'required' => false))
-                    ->end()
-                ->end();
-
+                    )
+                    ->remove('resume')
+                    ->remove('body')
+                ->end()
+            ->end();
     }
 
     /**
