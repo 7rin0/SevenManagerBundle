@@ -25,7 +25,7 @@ class TextOneAdmin extends Admin
 
     protected $parentPath = '/seven-manager/text';
 
-    /**s
+    /**
      * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper)
