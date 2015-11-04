@@ -8,18 +8,19 @@
 namespace SevenManagerBundle\Admin\Blocks;
 
 use SevenManagerBundle\Admin\Traits\DefaultAdmin;
-use SevenManagerBundle\Document\Blocks\ImageOne;
+use SevenManagerBundle\Document\Blocks\TextOne;
 use Sonata\DoctrinePHPCRAdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 
 /**
- * Class ImageOneAdmin
+ * Class TextOneAdmin
+ *
  * @package SevenManagerBundle\Admin\Blocks
  */
-class ImageOneAdmin extends Admin
+class TextOneAdmin extends Admin
 {
     use DefaultAdmin;
-    protected $parentPath = '/seven-manager/images';
+    protected $parentPath = '/seven-manager/text';
 
     /**
      * @param FormMapper $formMapper
@@ -45,21 +46,20 @@ class ImageOneAdmin extends Admin
 
         $formMapper
                 ->tab('Content')
-                    ->with('Image Restructure')
-                        ->add('title', 'text', array('required' => false));
-
-        if($parentAdmin !== 'HomepageAdmin') {
-            $formMapper
-                ->add('subtitle', 'text', array('required' => false))
-                ->add('label', 'text', array('required' => false))
-                ->remove('publishable')
-                ->remove('start_date');
-        }
-
-        $formMapper
-                ->add('image', 'cmf_media_image', array('required' => false))
-                ->end()
-                    ->end();
+                    ->with('Content')
+                        ->add('title', 'text', array('required' => false))
+                        ->add('subtitle', 'text', array('required' => false))
+                        ->add(
+                            'parentDocument',
+                            'doctrine_phpcr_odm_tree',
+                            array('root_node' => $this->getRootPath(), 'choice_list' => array(), 'select_root_node' => true)
+                        )
+                        ->add(
+                            'targetContent',
+                            'doctrine_phpcr_odm_tree',
+                            array('root_node' => $this->getRootPath(), 'choice_list' => array(), 'select_root_node' => true, 'required' => false))
+                    ->end()
+                ->end();
 
     }
 
@@ -70,7 +70,7 @@ class ImageOneAdmin extends Admin
      */
     public function toString($object)
     {
-        return $object instanceof ImageOne && $object->getLabel()
+        return $object instanceof TextOne && $object->getLabel()
             ? $object->getLabel()
             : parent::toString($object);
     }

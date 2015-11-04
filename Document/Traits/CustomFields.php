@@ -86,7 +86,15 @@
          */
         protected $contentFormatter;
 
+        /**
+         * @var
+         */
         protected $position;
+
+        /**
+         * @var
+         */
+        protected $targetContent;
 
         /**
          * @return mixed
@@ -366,6 +374,23 @@
             return $this;
         }
 
+        /**
+         * @return mixed
+         */
+        public function getTargetContent()
+        {
+            return $this->targetContent;
+        }
+
+        /**
+         * @param $targetContent
+         *
+         * @return mixed
+         */
+        public function setTargetContent($targetContent)
+        {
+            return $this->targetContent = $targetContent;
+        }
 
         /**
          * @return mixed

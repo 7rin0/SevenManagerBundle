@@ -15,7 +15,7 @@ use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
 
 /**
  * Class ImageOne
- * @PHPCR\Document(referenceable=true, translator="attribute")
+ * @PHPCR\Document(referenceable=true, translator="child")
  *
  * @package SevenManagerBundle\Document\Blocks
  */

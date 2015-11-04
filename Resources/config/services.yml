@@ -121,6 +121,16 @@ services:
             - SevenManagerBundle\Document\Blocks\ImageOne
             - 'SonataAdminBundle:CRUD'
         tags:
-            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'Seven manager - Blocks', label: Slide Type One }
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'Seven manager - Blocks', label: Image One }
+        calls:
+            - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
+    seven_manager.admin.blocks.textone:
+        class: SevenManagerBundle\Admin\Blocks\TextOneAdmin
+        arguments:
+            - ''
+            - SevenManagerBundle\Document\Blocks\TextOne
+            - 'SonataAdminBundle:CRUD'
+        tags:
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'Seven manager - Blocks', label: Text One }
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
