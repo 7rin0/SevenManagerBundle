@@ -33,6 +33,11 @@
         /**
          * @PHPCR\String(nullable=true, translated=true)
          */
+        protected $resume;
+
+        /**
+         * @PHPCR\String(nullable=true, translated=true)
+         */
         protected $body;
 
         /**
@@ -172,6 +177,25 @@
         {
             $this->content = $content;
 
+            return $this;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getResume()
+        {
+            return $this->resume;
+        }
+
+        /**
+         * @param $resume
+         *
+         * @return $this
+         */
+        public function setResume($resume)
+        {
+            $this->resume = $resume;
             return $this;
         }
 

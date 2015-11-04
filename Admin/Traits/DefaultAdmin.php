@@ -9,7 +9,9 @@ namespace SevenManagerBundle\Admin\Traits;
 
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Symfony\Component\Routing\RouterInterface;
 
 /**
  * Class DefaultAdmin
@@ -18,9 +20,11 @@ use Sonata\AdminBundle\Show\ShowMapper;
  */
 trait DefaultAdmin
 {
+    /**
+     * @return bool
+     */
     public function supportsPreviewMode()
     {
-        parent::supportsPreviewMode();
         return $this->supportsPreviewMode = true;
     }
 
@@ -29,7 +33,6 @@ trait DefaultAdmin
      */
     public function configureShowFields(ShowMapper $showMapper)
     {
-        parent::configureShowFields($showMapper);
         $showMapper
             ->add('id')
             ->add('title')
@@ -45,7 +48,6 @@ trait DefaultAdmin
      */
     protected function configureListFields(ListMapper $listMapper)
     {
-        parent::configureListFields($listMapper);
         $listMapper
             ->addIdentifier('title', 'text')
             ->addIdentifier('name', 'text')
@@ -64,7 +66,6 @@ trait DefaultAdmin
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        parent::configureDatagridFilters($datagridMapper);
         $datagridMapper
             ->add('title', 'doctrine_phpcr_string')
             ->add('subtitle', 'doctrine_phpcr_string')
@@ -73,17 +74,67 @@ trait DefaultAdmin
     }
 
     /**
-     * {@inheritdoc}
+     * @param FormMapper $formMapper
      */
-    public function preUpdate($children)
+    protected function configureFormFields(FormMapper $formMapper)
     {
-        if(method_exists($children, 'getChildren')) {
-            foreach ($children->getChildren() as $child) {
+        // Verify if document is parent or child
+        if ($this->getParentFieldDescription() === null) {
+            $formMapper
+                ->tab('Configuration')
+                    ->with('Configuration')
+                        ->add(
+                            'parentDocument',
+                            'doctrine_phpcr_odm_tree',
+                            array(
+                                'root_node' => $this->getRootPath(),
+                                'choice_list' => array(),
+                                'select_root_node' => true,
+                                'required' => false
+                            )
+                        )
+                        ->add('name', 'text')
+                    ->end()
+                ->end();
+        }
+
+        $formMapper
+            ->tab('Configuration')
+                ->with('Configuration')
+                    ->add('name', 'text', array('required' => false))
+                    ->add('name', 'text', array('required' => false))
+                ->end()
+            ->end()
+            ->tab('Content')
+                ->with('Content')
+                    ->add('title', 'text', array('required' => false))
+                    ->add('subtitle', 'text', array('required' => false))
+                    ->add('resume', 'text', array('required' => false))
+                    ->add('body', 'ckeditor', array(
+                        'config' => array(
+                            'filebrowserBrowseHandler' => function (RouterInterface $router) {
+                                return $router->generate($this->getBaseRouteName() . '_create', array('slug' => 'my-slug', true));
+                            },
+                        ),
+                    ))
+                ->end()
+            ->end();
+    }
+
+    /**
+     * @param $document
+     */
+    public function preUpdate($document)
+    {
+        $fatherPrefix = !empty($this->classnameLabel) ? strtolower($this->classnameLabel) : 'undefined_father';
+
+        // Set Child Names/Parents
+        if (method_exists($document, 'getChildren')) {
+            foreach ($document->getChildren() as $child) {
                 if (!$this->modelManager->getNormalizedIdentifier($child)) {
-
-                    $fatherPrefix = !empty($this->classnameLabel) ? strtolower($this->classnameLabel) : 'undefined_father';
-
-                    $child->setName($this->generateName($fatherPrefix));
+                    if (!$child->getName()) {
+                        $child->setName($this->generateName($fatherPrefix));
+                    }
                 }
             }
         }
@@ -105,18 +156,24 @@ trait DefaultAdmin
      */
     public function prePersist($document)
     {
+        // Set prefix Name
+        $fatherPrefix = !empty($this->classnameLabel) ? strtolower($this->classnameLabel) : 'undefined_father';
+
+        //  Create Parent Name if not defined
+        if (!$document->getName()) {
+            $document->setName($this->generateName($fatherPrefix, '_father_'));
+        }
+
         // Verify if parent exists and attribute document to
         // if not create a new one using this parent
         if (!empty($this->parentPath)) {
             $parent = $this->getModelManager()->find(null, $this->parentPath);
 
             // If Parent is null create one
-            if(!$parent && !empty($this->parentPath)) {
-
+            if (!$parent && !empty($this->parentPath)) {
                 global $kernel;
                 $dm = $kernel->getContainer()->get('seven_manager.parent_manager');
                 $dm->createRecursivePaths($this->parentPath);
-
             }
 
             // Find Parent
@@ -124,18 +181,16 @@ trait DefaultAdmin
             $document->setParentDocument($parent);
 
             // Set Father
-            if(method_exists($document, 'getChildren')) {
-
+            if (method_exists($document, 'getChildren')) {
                 // Assign new names to children
                 foreach ($document->getChildren() as $child) {
                     if (!$this->modelManager->getNormalizedIdentifier($child)) {
-                        $fatherPrefix = !empty($this->classnameLabel) ? strtolower($this->classnameLabel) : 'undefined_father';
-                        $child->setName($this->generateName($fatherPrefix));
+                        if (!$child->getName()) {
+                            $child->setName($this->generateName($fatherPrefix));
+                        }
                     }
                 }
-
             }
-
         }
 
         return $this;
@@ -172,13 +227,14 @@ trait DefaultAdmin
     }
 
     /**
-     * @param $fatherPrefix
+     * @param        $fatherPrefix
+     * @param string $context
      *
      * @return string
      */
-    private function generateName($fatherPrefix)
+    private function generateName($fatherPrefix, $context = '_child_')
     {
-        return $fatherPrefix . '_child_' . time();
+        return $fatherPrefix . $context . time();
     }
 
     /**

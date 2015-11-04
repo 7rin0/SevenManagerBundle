@@ -48,7 +48,7 @@ class ImageOneAdmin extends Admin
                     ->with('Image Restructure')
                         ->add('title', 'text', array('required' => false));
 
-        if($parentAdmin !== 'HomepageAdmin') {
+        if ($parentAdmin !== 'HomepageAdmin') {
             $formMapper
                 ->add('subtitle', 'text', array('required' => false))
                 ->add('label', 'text', array('required' => false))

@@ -28,11 +28,6 @@ class HomepageAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->tab('Configuration')
-                ->with('Configuration')
-                    ->add('name', 'text', array('required' => true))
-                ->end()
-            ->end()
             ->tab('Content')
                 ->with('Text', array(
                     'class'       => 'col-md-8',
