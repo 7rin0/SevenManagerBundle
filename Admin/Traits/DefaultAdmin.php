@@ -18,7 +18,6 @@ use Sonata\AdminBundle\Show\ShowMapper;
  */
 trait DefaultAdmin
 {
-
     public function supportsPreviewMode()
     {
         parent::supportsPreviewMode();
@@ -78,11 +77,14 @@ trait DefaultAdmin
      */
     public function preUpdate($children)
     {
-        foreach ($children->getChildren() as $child) {
-            if (!$this->modelManager->getNormalizedIdentifier($child)) {
+        if(method_exists($children, 'getChildren')) {
+            foreach ($children->getChildren() as $child) {
+                if (!$this->modelManager->getNormalizedIdentifier($child)) {
 
-                $fatherPrefix = !empty($this->classnameLabel) ? strtolower($this->classnameLabel) : 'undefined_father';
-                $child->setName($this->generateName($fatherPrefix));
+                    $fatherPrefix = !empty($this->classnameLabel) ? strtolower($this->classnameLabel) : 'undefined_father';
+
+                    $child->setName($this->generateName($fatherPrefix));
+                }
             }
         }
     }
@@ -103,7 +105,6 @@ trait DefaultAdmin
      */
     public function prePersist($document)
     {
-
         // Verify if parent exists and attribute document to
         // if not create a new one using this parent
         if (!empty($this->parentPath)) {
@@ -186,5 +187,17 @@ trait DefaultAdmin
     public function getExportFormats()
     {
         return array(/**'json', 'xml', 'csv', 'xls'**/);
+    }
+
+    /**
+     * @param $class
+     *
+     * @return array
+     */
+    public function getClassName($class)
+    {
+        $className = explode('\\', get_class($class));
+
+        return end($className);
     }
 }

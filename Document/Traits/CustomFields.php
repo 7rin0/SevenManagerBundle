@@ -86,6 +86,26 @@
          */
         protected $contentFormatter;
 
+        protected $position;
+
+        /**
+         * @return mixed
+         */
+        public function getPosition()
+        {
+            return $this->position;
+        }
+
+        /**
+         * @param $position
+         *
+         * @return mixed
+         */
+        public function setPosition($position)
+        {
+            return $this->position = $position;
+        }
+
         /**
          * @return mixed
          */
