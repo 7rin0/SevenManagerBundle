@@ -19,7 +19,10 @@ use Sonata\AdminBundle\Form\FormMapper;
  */
 class PostAdmin extends Admin
 {
-    use DefaultAdmin;
+    use DefaultAdmin {
+        configureFormFields as traitFormFields;
+    }
+
     protected $parentPath = '/seven-manager/post';
 
     /**
@@ -27,20 +30,7 @@ class PostAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        // Define Admin fields
-        $formMapper
-            ->with('seven_manager.admin.pages.post.title')
-            ->add('title', 'text')
-            ->add('subtitle', 'text', array('required' => false))
-            ->add('name', 'text', array('required' => true))
-            ->add('content', 'textarea')
-            ->setHelps(array(
-                'title'    => 'seven_manager.admin.fields.title.helper',
-                'subtitle' => 'seven_manager.admin.fields.subtitle.helper',
-                'name'     => 'seven_manager.admin.fields.name.helper',
-                'content'  => 'seven_manager.admin.fields.content.helper',
-            ))
-            ->end();
+        $this->traitFormFields($formMapper);
     }
 
     /**

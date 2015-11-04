@@ -30,20 +30,7 @@ class ArticleAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        // Define Admin fields
         $this->traitFormFields($formMapper);
-        $formMapper
-            ->with('seven_manager.admin.pages.article.title')
-                ->add('title', 'text')
-                ->add('subtitle', 'text', array('required' => false))
-                ->add('content', 'textarea')
-                ->setHelps(array(
-                    'title'    => 'seven_manager.admin.fields.title.helper',
-                    'subtitle' => 'seven_manager.admin.fields.subtitle.helper',
-                    'name'     => 'seven_manager.admin.fields.name.helper',
-                    'content'  => 'seven_manager.admin.fields.content.helper',
-                ))
-            ->end();
     }
 
     /**

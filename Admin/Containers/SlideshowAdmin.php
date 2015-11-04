@@ -19,7 +19,9 @@ use Sonata\AdminBundle\Form\FormMapper;
  */
 class SlideshowAdmin extends Admin
 {
-    use DefaultAdmin;
+    use DefaultAdmin {
+        configureFormFields as traitFormFields;
+    }
 
     protected $imageOne;
     protected $parentPath = '/seven-manager/slideshow';
@@ -49,50 +51,32 @@ class SlideshowAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        // Get base of shared FormMapper Interface
+        $this->traitFormFields($formMapper);
 
-        // Define Admin fields
+        // Add custom to FormMapper Interface
         $formMapper
-            ->tab('General')
-            ->with('Required', array(
-                'class'       => 'col-md-6',
-                'box_class'   => 'box box-solid box-danger',
-                'description' => 'Required',
-            ))
-            ->add('title', 'text')
-            ->add('name', 'text', array('required' => true))
-            ->end()
-            ->with('Optional', array(
-                'class'       => 'col-md-6',
-                'box_class'   => 'box box-solid box-danger',
-                'description' => 'Optional',
-            ))
-            ->add('subtitle', 'text', array('required' => false))
-            ->add('content', 'textarea', array('required' => false))
-            ->end()
-            ->end()
             ->tab('Images')
-            ->with('Images')
-            ->add(
-                'children',
-                'sonata_type_collection',
-                array(
-                    'required'     => true,
-                    'by_reference' => false,
-                    'type_options' => array('delete' => true)
-                    //'btn_catalogue' => true,
-                ),
-                array(
-                    'label'      => 'images',
-                    'edit'       => 'inline',
-                    'inline'     => 'table',
-                    'sortable'   => 'position',
-                    'admin_code' => $this->imageOne,
-                )
-            )
-            ->end()
-            ->end()
-            ->setHelps(array());
-
+                ->with('Images')
+                    ->add(
+                        'children',
+                        'sonata_type_collection',
+                        array(
+                            'required'     => true,
+                            'by_reference' => false,
+                            'type_options' => array('delete' => true)
+                            //'btn_catalogue' => true,
+                        ),
+                        array(
+                            'label'      => 'images',
+                            'edit'       => 'inline',
+                            'inline'     => 'table',
+                            'sortable'   => 'position',
+                            'admin_code' => $this->imageOne,
+                        )
+                    )
+                ->end()
+            ->end();
     }
 
     /**

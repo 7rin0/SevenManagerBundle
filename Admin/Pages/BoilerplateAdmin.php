@@ -11,7 +11,6 @@ use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\DoctrinePHPCRAdminBundle\Admin\Admin;
 use SevenManagerBundle\Document\Pages\Boilerplate;
 use SevenManagerBundle\Admin\Traits\DefaultAdmin;
-use Symfony\Component\Routing\RouterInterface;
 
 /**
  * Class BoilerplateAdmin
@@ -19,7 +18,10 @@ use Symfony\Component\Routing\RouterInterface;
  */
 class BoilerplateAdmin extends Admin
 {
-    use DefaultAdmin;
+    use DefaultAdmin {
+        configureFormFields as traitFormFields;
+    }
+
     protected $parentPath = '/seven-manager/boilerplate';
 
     /**
@@ -27,23 +29,20 @@ class BoilerplateAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $this->traitFormFields($formMapper);
         $formMapper
-            ->tab('General Content')
-                ->with('Required', array(
+            ->tab('Content')
+                ->with('Content', array(
                     'class'       => 'col-md-6',
                     'box_class'   => 'box box-solid box-danger',
                     'description' => 'Required Content',
                 ))
-                    ->add('title', 'text')
-                    ->add('name', 'text', array('required' => true))
-                    ->add('content', 'textarea', array('required' => true))
                 ->end()
                 ->with('Optional', array(
                     'class'       => 'col-md-6',
                     'box_class'   => 'box box-solid box-danger',
                     'description' => 'Optional Content',
                 ))
-                ->add('subtitle', 'text', array('required' => false))
                 ->add('image', 'cmf_media_image', array('required' => false))
                 ->end()
             ->end()
@@ -56,15 +55,7 @@ class BoilerplateAdmin extends Admin
             ->end()
             ->tab('Body')
                 ->with('Body')
-
-                    ->add('body', 'ckeditor', array(
-                        'config' => array(
-                            'filebrowserBrowseHandler' => function (RouterInterface $router) {
-                                return $router->generate($this->getBaseRouteName() . '_create', array('slug' => 'my-slug', true));
-                            },
-                        ),
-                    ))
-                    //->add('body', 'textarea', array('required' => false, 'attr' => array('class' => 'ckeditor')))
+                    ->add('content', 'textarea', array('required' => false, 'attr' => array('class' => 'ckeditor')))
                     ->add('richText1', 'sonata_formatter_type', array(
                         'event_dispatcher' => $formMapper->getFormBuilder()->getEventDispatcher(),
                         'format_field'   => 'contentFormatter',
@@ -111,52 +102,45 @@ class BoilerplateAdmin extends Admin
                 ->end()
             ->end()
             ->tab('Pages')
-            ->with('Relate Pages', array(
-                'class'       => 'col-md-12',
-                'box_class'   => 'box box-solid box-danger',
-                'description' => 'Relate an existing content',
-            ))
-            ->add('mapNode', 'sonata_type_model', array('label' => 'Related Node', 'required' => false, 'multiple' => false))
-            ->add('mapPage', 'sonata_type_model', array('label' => 'Related Page', 'required' => false, 'multiple' => false))
-            ->add('mapPost', 'sonata_type_model', array('label' => 'Related Post', 'required' => false, 'multiple' => false))
-            ->add('mapArticle', 'sonata_type_model', array('label' => 'Related Article', 'required' => false, 'multiple' => false))
-            ->add('mapGallery', 'sonata_type_model', array('label' => 'Related Gallery', 'required' => false, 'multiple' => false))
-            ->add('mapForm', 'sonata_type_model', array('label' => 'Related Form', 'required' => false, 'multiple' => false))
-            ->end()
+                ->with('Relate Pages', array(
+                    'class'       => 'col-md-12',
+                    'box_class'   => 'box box-solid box-danger',
+                    'description' => 'Relate an existing content',
+                ))
+                    ->add('mapNode', 'sonata_type_model', array('label' => 'Related Node', 'required' => false, 'multiple' => false))
+                    ->add('mapPage', 'sonata_type_model', array('label' => 'Related Page', 'required' => false, 'multiple' => false))
+                    ->add('mapPost', 'sonata_type_model', array('label' => 'Related Post', 'required' => false, 'multiple' => false))
+                    ->add('mapArticle', 'sonata_type_model', array('label' => 'Related Article', 'required' => false, 'multiple' => false))
+                    ->add('mapGallery', 'sonata_type_model', array('label' => 'Related Gallery', 'required' => false, 'multiple' => false))
+                    ->add('mapForm', 'sonata_type_model', array('label' => 'Related Form', 'required' => false, 'multiple' => false))
+                ->end()
             ->end()
             ->tab('Blocks')
-            ->with('Relate Blocks', array(
-                'class'       => 'col-md-12',
-                'box_class'   => 'box box-solid box-danger',
-                'description' => 'Relate an existing content',
-            ))
-            ->add('mapContainer', 'sonata_type_model', array('label' => 'Related Container Block', 'required' => false,))
-            ->add('mapReference', 'sonata_type_model', array('label' => 'Related Reference Block', 'required' => false,))
-            ->add('mapAction', 'sonata_type_model', array('label' => 'Related Action Block', 'required' => false,))
-            ->add('mapSlideshow', 'sonata_type_model', array('label' => 'Related Slideshow Block', 'required' => false,))
-            ->add('mapImage', 'sonata_type_model', array('label' => 'Related Image Block', 'required' => false,))
-            ->end()
+                ->with('Relate Blocks', array(
+                    'class'       => 'col-md-12',
+                    'box_class'   => 'box box-solid box-danger',
+                    'description' => 'Relate an existing content',
+                ))
+                    ->add('mapContainer', 'sonata_type_model', array('label' => 'Related Container Block', 'required' => false,))
+                    ->add('mapReference', 'sonata_type_model', array('label' => 'Related Reference Block', 'required' => false,))
+                    ->add('mapAction', 'sonata_type_model', array('label' => 'Related Action Block', 'required' => false,))
+                    ->add('mapSlideshow', 'sonata_type_model', array('label' => 'Related Slideshow Block', 'required' => false,))
+                    ->add('mapImage', 'sonata_type_model', array('label' => 'Related Image Block', 'required' => false,))
+                ->end()
             ->end()
             ->tab('Auto-complete')
-            ->with('Auto-complete')
-            ->add(
-                'mapSimple',
-                'sonata_type_model_autocomplete',
-                array(
-                    'property' => 'title',
-                    'model_manager' => $this->modelManager,
-                    'required' => false,
-                )
-            )
-            ->end()
-            ->end()
-            ->setHelps(array(
-                'title'    => 'seven_manager.admin.fields.title.helper',
-                'subtitle' => 'seven_manager.admin.fields.subtitle.helper',
-                'name'     => 'seven_manager.admin.fields.name.helper',
-                'content'  => 'seven_manager.admin.fields.content.helper',
-                'image'    => 'seven_manager.admin.fields.image.helper',
-            ));
+                ->with('Auto-complete')
+                    ->add(
+                        'mapSimple',
+                        'sonata_type_model_autocomplete',
+                        array(
+                            'property' => 'title',
+                            'model_manager' => $this->modelManager,
+                            'required' => false,
+                        )
+                    )
+                ->end()
+            ->end();
 
     }
 

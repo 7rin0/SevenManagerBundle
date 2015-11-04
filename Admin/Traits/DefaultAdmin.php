@@ -98,6 +98,7 @@ trait DefaultAdmin
                 ->end();
         }
 
+        // Configuration, Content and Helpers properties
         $formMapper
             ->tab('Configuration')
                 ->with('Configuration')
@@ -111,14 +112,27 @@ trait DefaultAdmin
                     ->add('subtitle', 'text', array('required' => false))
                     ->add('resume', 'text', array('required' => false))
                     ->add('body', 'ckeditor', array(
+                        'required' => false,
                         'config' => array(
                             'filebrowserBrowseHandler' => function (RouterInterface $router) {
-                                return $router->generate($this->getBaseRouteName() . '_create', array('slug' => 'my-slug', true));
+                                return $router->generate(
+                                    $this->getBaseRouteName() . '_create',
+                                    array(
+                                        'slug' => 'my-slug',
+                                        true
+                                    )
+                                );
                             },
                         ),
                     ))
                 ->end()
-            ->end();
+            ->end()
+            ->setHelps(array(
+                'title'    => 'seven_manager.admin.fields.title.helper',
+                'subtitle' => 'seven_manager.admin.fields.subtitle.helper',
+                'name'     => 'seven_manager.admin.fields.name.helper',
+                'content'  => 'seven_manager.admin.fields.content.helper',
+            ));
     }
 
     /**
