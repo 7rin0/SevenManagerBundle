@@ -78,11 +78,21 @@ trait DefaultAdmin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        // Verify if document is parent or child
-        if ($this->getParentFieldDescription() === null) {
+        // Verify if document is not child
+        $isParent = $this->getParentFieldDescription() === null;
+        $hasRouteChild = method_exists($this->getClass(), 'getRouteChild');
+
+        if ($isParent) {
             $formMapper
                 ->tab('Configuration')
-                    ->with('Configuration')
+                    ->with(
+                        'Parent/Name',
+                        array(
+                            'class'       => 'col-md-6',
+                            'box_class'   => 'box box-solid box-danger',
+                            'description' => 'Parent/Name',
+                        )
+                    )
                         ->add(
                             'parentDocument',
                             'doctrine_phpcr_odm_tree',
@@ -98,13 +108,42 @@ trait DefaultAdmin
                 ->end();
         }
 
+        // If class has method getRouteChild this means is a page type
+        // and we attach routing options
+        if ($hasRouteChild && $isParent) {
+            $formMapper
+                ->tab('Configuration')
+                    ->with(
+                        'Route/URL',
+                        array(
+                            'class'       => 'col-md-6',
+                            'box_class'   => 'box box-solid box-danger',
+                            'description' => 'Route/URL',
+                        )
+                    )
+                        ->add(
+                            'routeChild',
+                            'sonata_type_admin',
+                            array(
+                                'label'       => 'Select Route',
+                                'required'     => false,
+                                'by_reference' => true,
+                                'btn_catalogue' => false,
+                            ),
+                            array(
+                                'edit'       => 'inline',
+                                'inline'     => 'table',
+                                'multiple'   => false,
+                                'sortable'   => 'position',
+                                'admin_code' => 'cmf_routing.route_admin',
+                            )
+                        )
+                    ->end()
+                ->end();
+        }
+
         // Configuration, Content and Helpers properties
         $formMapper
-            ->tab('Configuration')
-                ->with('Configuration')
-                    // Shared Fields across all Admins in child/parent context
-                ->end()
-            ->end()
             ->tab('Content')
                 ->with('Content')
                     ->add('title', 'text', array('required' => false))

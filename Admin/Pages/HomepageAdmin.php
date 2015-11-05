@@ -19,7 +19,10 @@ use SevenManagerBundle\Admin\Traits\DefaultAdmin;
  */
 class HomepageAdmin extends Admin
 {
-    use DefaultAdmin;
+    use DefaultAdmin {
+        configureFormFields as traitFormFields;
+    }
+
     protected $parentPath = '/seven-manager/homepage';
 
     /**
@@ -27,6 +30,8 @@ class HomepageAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $this->traitFormFields($formMapper);
+
         $formMapper
             ->tab('Content')
                 ->with('Text', array(

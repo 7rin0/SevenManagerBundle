@@ -8,6 +8,7 @@
 namespace SevenManagerBundle\Document\Pages;
 
 use SevenManagerBundle\Document\Classes\StructurePages;
+use SevenManagerBundle\Document\Traits\CustomChilds;
 use SevenManagerBundle\Document\Traits\CustomCollections;
 use SevenManagerBundle\Document\Traits\CustomModels;
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
@@ -25,28 +26,5 @@ class Homepage extends StructurePages
     public function __construct()
     {
         $this->__collectionConstruct();
-    }
-
-    /**
-     * @PHPCR\Child(cascade="persist")
-     */
-    protected $blockChild;
-
-    /**
-     * @return mixed
-     */
-    public function getBlockChild()
-    {
-        return $this->blockChild;
-    }
-
-    /**.
-     * @param $blockChild
-     * @return $this
-     */
-    public function setBlockChild($blockChild)
-    {
-        $this->blockChild = $blockChild;
-        return $this;
     }
 }
