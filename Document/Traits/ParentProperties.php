@@ -20,7 +20,7 @@ trait ParentProperties
     use CustomFields;
 
     /**
-     * @PHPCR\Referrers(referringDocument="Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\Route",referencedBy="content")
+     * @PHPCR\Referrers(referringDocument="Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\Route", referencedBy="content")
      */
     protected $routes;
 

@@ -1,5 +1,5 @@
 seven_manager_pages_homepage:
-    path:     /seven-manager/content/{name}
+    path:     /seven-manager/homepage/{name}
     defaults: { _controller: SevenManagerBundle:Default:homepage }
 
 # Fixtures
