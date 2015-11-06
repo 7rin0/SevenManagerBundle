@@ -7,6 +7,7 @@
 
 namespace SevenManagerBundle\Admin\Traits;
 
+use Doctrine\ODM\PHPCR\DocumentManager as DM;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -185,7 +186,10 @@ trait DefaultAdmin
      */
     public function preUpdate($document)
     {
+        global $kernel;
         $fatherPrefix = !empty($this->classnameLabel) ? strtolower($this->classnameLabel) : 'undefined_father';
+
+        //$dm = $kernel->getContainer()->get('seven_manager.parent_manager');
 
         // Set Child Names/Parents
         if (method_exists($document, 'getChildren')) {
@@ -206,7 +210,7 @@ trait DefaultAdmin
      */
     public function postUpdate($document)
     {
-        return $this;
+        return $document;
     }
 
     /**
@@ -262,7 +266,7 @@ trait DefaultAdmin
      */
     public function postPersist($document)
     {
-        return $this;
+        return $document;
     }
 
     /**
@@ -272,7 +276,7 @@ trait DefaultAdmin
      */
     public function preRemove($document)
     {
-        return $this;
+        return $document;
     }
 
     /**
@@ -282,7 +286,7 @@ trait DefaultAdmin
      */
     public function postRemove($document)
     {
-        return $this;
+        return $document;
     }
 
     /**

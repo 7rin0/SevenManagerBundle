@@ -148,8 +148,7 @@ trait ParentProperties
      */
     public function __toString()
     {
-        $returnString = count($this->getTitle()) === 0 ?
-            $this->getTitle() : $this->getName();
+        $returnString = $this->getTitle() ? $this->getTitle() : $this->getName();
 
         return (string)$returnString;
     }
