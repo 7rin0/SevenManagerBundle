@@ -8,7 +8,7 @@
 namespace SevenManagerBundle\Document\Pages;
 
 use SevenManagerBundle\Document\Classes\StructurePages;
-use SevenManagerBundle\Document\Traits\CustomCollections;
+use SevenManagerBundle\Document\Traits\CustomChildren;
 use SevenManagerBundle\Document\Traits\CustomModels;
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
@@ -18,13 +18,13 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 class Boilerplate extends StructurePages
 {
     use CustomModels;
-    use CustomCollections {
-        CustomCollections::__construct as private __collectionConstruct;
+    use CustomChildren {
+        CustomChildren::__construct as private __childrenConstruct;
     }
 
     public function __construct()
     {
-        $this->__collectionConstruct();
+        $this->__childrenConstruct();
     }
 
     /**

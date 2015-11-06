@@ -55,12 +55,12 @@ class BoilerplateAdmin extends Admin
             ->end()
             ->tab('Body')
                 ->with('Body')
-                    ->add('content', 'textarea', array('required' => false, 'attr' => array('class' => 'ckeditor')))
+                    ->add('content', 'ckeditor', $this->getCkeditorOptions())
                     ->add('richText1', 'sonata_formatter_type', array(
                         'event_dispatcher' => $formMapper->getFormBuilder()->getEventDispatcher(),
                         'format_field'   => 'contentFormatter',
                         'source_field'   => 'rawContent',
-                        'source_field_options'      => array(
+                        'source_field_options' => array(
                             'attr' => array('class' => 'span10', 'rows' => 20)
                         ),
                         'listener'       => true,
@@ -115,7 +115,8 @@ class BoilerplateAdmin extends Admin
                             'required' => false,
                             'multiple' => true,
                             'by_reference' => false,
-                        ), array(
+                        ),
+                        array(
                             'sortable' => true,
                         )
                     )

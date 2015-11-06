@@ -7,11 +7,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\PHPCR\ChildrenCollection;
 
 /**
- * Class CustomChilds
+ * Class CustomChild
  *
  * @package SevenManagerBundle\Document\Traits
  */
-trait CustomChilds
+trait CustomChild
 {
     /**
      * @PHPCR\Child(cascade="persist")

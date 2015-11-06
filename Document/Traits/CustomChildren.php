@@ -5,6 +5,7 @@ namespace SevenManagerBundle\Document\Traits;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\PHPCR\ChildrenCollection;
+use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
 /**
  * Class CustomChildren
@@ -61,9 +62,7 @@ trait CustomChildren
     public function addChild(BlockInterface $child, $key = null)
     {
         if ($key != null) {
-
             $this->children->set($key, $child);
-
             return true;
         }
 
@@ -102,13 +101,5 @@ trait CustomChildren
     public function hasChildren()
     {
         return count($this->children) > 0;
-    }
-
-    /**
-     * @return string
-     */
-    public function getType()
-    {
-        return 'seven_manager.page.homepage';
     }
 }

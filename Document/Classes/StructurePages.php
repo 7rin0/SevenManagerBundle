@@ -8,7 +8,6 @@
 
 namespace SevenManagerBundle\Document\Classes;
 
-use SevenManagerBundle\Document\Traits\CustomChilds;
 use SevenManagerBundle\Document\Traits\Seo;
 use Symfony\Cmf\Bundle\SeoBundle\SeoAwareInterface;
 

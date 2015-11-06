@@ -41,7 +41,7 @@ class HomepageAdmin extends Admin
                 ))
                     ->add('title', 'text')
                     ->add('subtitle', 'text', array('required' => false))
-                    ->add('content', 'textarea', array('required' => false, 'attr' => array('class' => 'ckeditor')))
+                    ->add('content', 'ckeditor', $this->getCkeditorOptions())
                 ->end()
                 ->with('Image', array(
                     'class'       => 'col-md-4',

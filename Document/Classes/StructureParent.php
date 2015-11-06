@@ -8,7 +8,7 @@
 
 namespace SevenManagerBundle\Document\Classes;
 
-use SevenManagerBundle\Document\Traits\CustomChilds;
+use SevenManagerBundle\Document\Traits\CustomChild;
 use SevenManagerBundle\Document\Traits\ParentProperties;
 use Symfony\Cmf\Component\Routing\RouteReferrersReadInterface;
 use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
@@ -22,5 +22,5 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 class StructureParent implements RouteReferrersReadInterface, TranslatableInterface
 {
     use ParentProperties;
-    use CustomChilds;
+    use CustomChild;
 }
