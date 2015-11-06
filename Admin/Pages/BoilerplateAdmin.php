@@ -107,7 +107,18 @@ class BoilerplateAdmin extends Admin
                     'box_class'   => 'box box-solid box-danger',
                     'description' => 'Relate an existing content',
                 ))
-                    ->add('mapNode', 'sonata_type_model', array('label' => 'Related Node', 'required' => false, 'multiple' => true))
+                    ->add(
+                        'mapNode',
+                        'sonata_type_model',
+                        array(
+                            'label' => 'Related Node',
+                            'required' => false,
+                            'multiple' => true,
+                            'by_reference' => false,
+                        ), array(
+                            'sortable' => true,
+                        )
+                    )
                     ->add('mapPage', 'sonata_type_model', array('label' => 'Related Page', 'required' => false, 'multiple' => false))
                     ->add('mapPost', 'sonata_type_model', array('label' => 'Related Post', 'required' => false, 'multiple' => false))
                     ->add('mapArticle', 'sonata_type_model', array('label' => 'Related Article', 'required' => false, 'multiple' => false))
