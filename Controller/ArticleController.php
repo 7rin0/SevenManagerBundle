@@ -27,7 +27,8 @@ class ArticleController extends Controller implements ContainerAwareInterface
         return $this->render(
             $contentTemplate,
             array(
-                'document' => $contentDocument
+                'document' => $contentDocument,
+                'cmfMainContent' => $contentDocument
             )
         );
     }

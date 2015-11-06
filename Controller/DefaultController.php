@@ -35,6 +35,7 @@ class DefaultController extends Controller implements ContainerAwareInterface
             $contentTemplate,
             array(
                 'document' => $contentDocument,
+                'cmfMainContent' => $contentDocument,
             )
         );
     }
