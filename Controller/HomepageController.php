@@ -18,23 +18,38 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  *
  * @package SevenManagerBundle\Controller
  */
-class DefaultController extends Controller implements ContainerAwareInterface
+class HomepageController extends Controller implements ContainerAwareInterface
 {
     protected $container;
 
     /**
+     * @Route("{lang}/seven-manager", name="seven_manager_homepage")
+     * @Route("{lang}/seven-manager/")
+     *
      * @param Request $request
      * @param null    $contentDocument
-     * @param null    $contentTemplate
+     * @param string  $contentTemplate
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Request $request, $contentDocument = null, $contentTemplate = null)
+    public function indexAction(Request $request, $contentDocument = null, $contentTemplate = "SevenManagerBundle:Default:index.html.twig")
     {
+        // Get Station manager
+        $stationManager = $this->get('seven_manager.station_manager');
+
+        // Get Homepage
+        if (!$contentDocument) {
+            $contentDocument = $stationManager->getHomepage();
+        }
+
+        // Get associated slideshow and them childrens
+        $slideshow = $stationManager->getSlideshowByEntity($contentDocument);
+
         return $this->render(
             $contentTemplate,
             array(
                 'document' => $contentDocument,
+                'slideshow' => $slideshow,
             )
         );
     }
