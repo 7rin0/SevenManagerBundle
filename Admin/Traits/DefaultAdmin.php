@@ -7,14 +7,12 @@
 
 namespace SevenManagerBundle\Admin\Traits;
 
-use Doctrine\ODM\PHPCR\DocumentManager as DM;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Class DefaultAdmin
@@ -23,15 +21,13 @@ use Symfony\Component\Routing\RouterInterface;
  */
 trait DefaultAdmin
 {
+    use CkeditorOptions;
+
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'Acme\TaskBundle\Entity\Task',
-            'cascade_validation' => true,
-        ));
     }
 
     /**
@@ -169,20 +165,7 @@ trait DefaultAdmin
                     ->add('title', 'text', array('required' => true))
                     ->add('subtitle', 'text', array('required' => false))
                     ->add('resume', 'text', array('required' => false))
-                    ->add('body', 'ckeditor', array(
-                        'required' => false,
-                        'config' => array(
-                            'filebrowserBrowseHandler' => function (RouterInterface $router) {
-                                return $router->generate(
-                                    $this->getBaseRouteName() . '_create',
-                                    array(
-                                        'slug' => 'my-slug',
-                                        true
-                                    )
-                                );
-                            },
-                        ),
-                    ))
+                    ->add('body', 'ckeditor', $this->getCkeditorOptions())
                 ->end()
             ->end()
             ->setHelps(array(
