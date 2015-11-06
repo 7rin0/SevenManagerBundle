@@ -40,7 +40,7 @@ class HomepageAdmin extends Admin
                     'description' => 'Text fields',
                 ))
                     ->add('title', 'text')
-                    ->add('subtitle', 'text')
+                    ->add('subtitle', 'text', array('required' => false))
                     ->add('content', 'textarea', array('required' => false, 'attr' => array('class' => 'ckeditor')))
                 ->end()
                 ->with('Image', array(

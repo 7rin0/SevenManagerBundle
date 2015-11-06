@@ -47,3 +47,9 @@ SevenManagerBundle\Document\Pages\Form:
     token_providers:
         title: [content_method, { method: getTitle }]
         locale: [content_method, { method: getLocale }]
+
+SevenManagerBundle\Document\Containers\Slideshow:
+    uri_schema: /{locale}/seven-manager/slideshow/{title}
+    token_providers:
+        title: [content_method, { method: getTitle }]
+        locale: [content_method, { method: getLocale }]
