@@ -10,6 +10,7 @@ namespace SevenManagerBundle\Admin\Traits;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Routing\RouterInterface;
 
@@ -20,6 +21,13 @@ use Symfony\Component\Routing\RouterInterface;
  */
 trait DefaultAdmin
 {
+    /**
+     * @param RouteCollection $collection
+     */
+    protected function configureRoutes(RouteCollection $collection)
+    {
+    }
+
     /**
      * @return bool
      */
@@ -50,8 +58,7 @@ trait DefaultAdmin
     {
         $listMapper
             ->addIdentifier('title', 'text')
-            ->addIdentifier('name', 'text')
-            ->addIdentifier('id', 'text')
+            ->add('name', 'text')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show'   => array(),
@@ -146,7 +153,7 @@ trait DefaultAdmin
         $formMapper
             ->tab('Content')
                 ->with('Content')
-                    ->add('title', 'text', array('required' => false))
+                    ->add('title', 'text', array('required' => true))
                     ->add('subtitle', 'text', array('required' => false))
                     ->add('resume', 'text', array('required' => false))
                     ->add('body', 'ckeditor', array(
