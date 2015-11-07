@@ -7,6 +7,7 @@
  */
 
 namespace SevenManagerBundle\Composer;
+
 use Sensio\Bundle\DistributionBundle\Composer\ScriptHandler;
 use Composer\Script\CommandEvent;
 
@@ -28,11 +29,12 @@ class ComposerSevenManager extends ScriptHandler
         if (null === $consoleDir) {
             return;
         }
-
-        static::executeCommand($event, $consoleDir, 'doctrine:database:create', $options['process-timeout']);
-        static::executeCommand($event, $consoleDir, 'doctrine:phpcr:init:dbal', $options['process-timeout']);
-        static::executeCommand($event, $consoleDir, 'doctrine:phpcr:repository:init', $options['process-timeout']);
-        static::executeCommand($event, $consoleDir, 'doctrine:phpcr:fixtures:load', $options['process-timeout']);
+        
+        static::executeCommand($event, $consoleDir, 'doctrine:database:create -q -n &', $options['process-timeout']);
+        static::executeCommand($event, $consoleDir, 'doctrine:phpcr:init:dbal --force -q -n &', $options['process-timeout']);
+        static::executeCommand($event, $consoleDir, 'doctrine:phpcr:repository:init -n', $options['process-timeout']);
+        static::executeCommand($event, $consoleDir, 'doctrine:phpcr:fixtures:load -n', $options['process-timeout']);
+        static::executeCommand($event, $consoleDir, 'assets:install', $options['process-timeout']);
         static::executeCommand($event, $consoleDir, 'assetic:dump', $options['process-timeout']);
 
     }
