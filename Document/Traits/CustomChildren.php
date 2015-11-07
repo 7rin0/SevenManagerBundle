@@ -9,7 +9,8 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
 /**
  * Class CustomChildren
- * @package AppBundle\Document\Traits
+ *
+ * @package SevenManagerBundle\Document\Traits
  */
 trait CustomChildren
 {
