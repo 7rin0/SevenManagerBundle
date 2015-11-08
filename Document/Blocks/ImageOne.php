@@ -15,14 +15,18 @@ use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
 
 /**
  * Class ImageOne
- * @PHPCR\Document(referenceable=true, translator="child")
+ * @PHPCR\Document(referenceable=true, translator="attribute")
  *
  * @package SevenManagerBundle\Document\Blocks
  */
 class ImageOne extends AbstractBlock implements TranslatableInterface
 {
     use CustomFields;
-    use ChildProperties;
+
+    /**
+     * @PHPCR\Locale()
+     */
+    protected $locale;
 
     /**
      * @return string

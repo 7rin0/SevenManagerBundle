@@ -113,7 +113,7 @@ class BoilerplateAdmin extends Admin
                         array(
                             'label' => 'Related Node',
                             'required' => false,
-                            'multiple' => true,
+                            'multiple' => false,
                             'by_reference' => false,
                         ),
                         array(
