@@ -296,11 +296,32 @@ trait DefaultAdmin
     }
 
     /**
-     * @return array
+     * {@inheritdoc}
      */
     public function getExportFormats()
     {
-        return array(/**'json', 'xml', 'csv', 'xls'**/);
+        return array(
+            'json', 'xml', 'csv', 'xls',
+        );
+    }
+
+    /**
+     * @return array
+     */
+    public function getExportFields()
+    {
+        return $this->getModelManager()->getExportFields($this->getClass());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDataSourceIterator()
+    {
+        $datagrid = $this->getDatagrid();
+        $datagrid->buildPager();
+
+        return $this->getModelManager()->getDataSourceIterator($datagrid, $this->getExportFields());
     }
 
     /**
