@@ -30,6 +30,26 @@ class Boilerplate extends StructurePages
     protected $publicationDateStart;
     protected $publicationDateEnd;
     protected $range;
+    protected $color;
+
+    /**
+     * @return mixed
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * @param $color
+     *
+     * @return $this
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+        return $this;
+    }
 
     /**
      * @return mixed
@@ -40,11 +60,14 @@ class Boilerplate extends StructurePages
     }
 
     /**
-     * @param mixed $range
+     * @param $range
+     *
+     * @return $this
      */
     public function setRange($range)
     {
         $this->range = $range;
+        return $this;
     }
 
     /**
@@ -56,11 +79,14 @@ class Boilerplate extends StructurePages
     }
 
     /**
-     * @param mixed $publicationDateEnd
+     * @param $publicationDateEnd
+     *
+     * @return $this
      */
     public function setPublicationDateEnd($publicationDateEnd)
     {
         $this->publicationDateEnd = $publicationDateEnd;
+        return $this;
     }
 
     /**
@@ -72,11 +98,14 @@ class Boilerplate extends StructurePages
     }
 
     /**
-     * @param mixed $publicationDateStart
+     * @param $publicationDateStart
+     *
+     * @return $this
      */
     public function setPublicationDateStart($publicationDateStart)
     {
         $this->publicationDateStart = $publicationDateStart;
+        return $this;
     }
 
     /**

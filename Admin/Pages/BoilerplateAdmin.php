@@ -59,16 +59,23 @@ class BoilerplateAdmin extends Admin
                         'dp_side_by_side'       => true,
                         'dp_use_current'        => false,
                         'dp_use_seconds'        => false,
+                        'required' => false
                     ))
                     ->add('publicationDateEnd', 'sonata_type_date_picker', array(
                         'dp_use_current'        => false,
                         'datepicker_use_button' => false,
+                        'required' => false
                     ))
                 ->end()
             ->end()
             ->tab('Range')
                 ->with('Range')
-                    ->add('range', 'sonata_type_date_range_picker')
+                    ->add('range', 'sonata_type_date_range_picker', array('required' => false))
+                ->end()
+            ->end()
+            ->tab('Color')
+                ->with('Color')
+                    ->add('color', 'sonata_type_color_selector', array('required' => false))
                 ->end()
             ->end()
             ->tab('Body')
