@@ -68,14 +68,21 @@ class BoilerplateAdmin extends Admin
                     ))
                 ->end()
             ->end()
-            ->tab('Range')
+            ->tab('Range, Color and Immutable array')
                 ->with('Range')
-                    ->add('range', 'sonata_type_date_range_picker', array('required' => false))
+                    ->add('range', 'seven_manager_seven_type', array('required' => false))
                 ->end()
-            ->end()
-            ->tab('Color')
                 ->with('Color')
                     ->add('color', 'sonata_type_color_selector', array('required' => false))
+                ->end()
+                ->with('Immutable array')
+                    ->add('immutable', 'sonata_type_immutable_array', array(
+                        'keys' => array(
+                            array('ttl', 'text', array('required' => false)),
+                            array('redirect', 'url', array('required' => true)),
+                        ),
+                        'required' => false
+                    ))
                 ->end()
             ->end()
             ->tab('Body')
@@ -100,7 +107,7 @@ class BoilerplateAdmin extends Admin
                         'blockChild',
                         'sonata_type_admin',
                         array(
-                            'required'     => true,
+                            'required'     => false,
                             'by_reference' => true,
                             'btn_catalogue' => true,
                         ),

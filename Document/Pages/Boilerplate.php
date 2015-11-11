@@ -27,10 +27,52 @@ class Boilerplate extends StructurePages
         $this->__childrenConstruct();
     }
 
+    /**
+     * @PHPCR\Date(nullable=true)
+     */
     protected $publicationDateStart;
+
+    /**
+     * @PHPCR\Date(nullable=true)
+     */
     protected $publicationDateEnd;
+
+    /**
+     * @PHPCR\String(nullable=true)
+     */
     protected $range;
+
+    /**
+     * @PHPCR\String(nullable=true)
+     */
     protected $color;
+
+    /**
+     * @PHPCR\String(nullable=true)
+     */
+    protected $immutable = array(
+        'ttl'       => 1,
+        'redirect'  => ''
+    );
+
+    /**
+     * @return array
+     */
+    public function getImmutable()
+    {
+        return $this->immutable;
+    }
+
+    /**
+     * @param $immutable
+     *
+     * @return $this
+     */
+    public function setImmutable($immutable)
+    {
+        $this->immutable = $immutable;
+        return $this;
+    }
 
     /**
      * @return mixed

@@ -1,4 +1,9 @@
 seven_manager:
+    form:
+        type:
+            seven:
+                equal: Is equal
+                notequal: Is not equal
     shared:
         labels:
             homepage: Page d'Accueil
