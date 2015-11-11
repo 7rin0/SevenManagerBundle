@@ -55,8 +55,20 @@ class BoilerplateAdmin extends Admin
             ->end()
             ->tab('Datepicker')
                 ->with('Datepicker')
-                    ->add('publicationDateStart', 'sonata_type_datetime_picker')
-                    ->add('publicationDateEnd', 'sonata_type_date_picker')
+                    ->add('publicationDateStart', 'sonata_type_datetime_picker', array(
+                        'dp_side_by_side'       => true,
+                        'dp_use_current'        => false,
+                        'dp_use_seconds'        => false,
+                    ))
+                    ->add('publicationDateEnd', 'sonata_type_date_picker', array(
+                        'dp_use_current'        => false,
+                        'datepicker_use_button' => false,
+                    ))
+                ->end()
+            ->end()
+            ->tab('Range')
+                ->with('Range')
+                    ->add('range', 'sonata_type_date_range_picker')
                 ->end()
             ->end()
             ->tab('Body')

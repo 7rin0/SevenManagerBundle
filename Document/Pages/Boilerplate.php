@@ -29,6 +29,23 @@ class Boilerplate extends StructurePages
 
     protected $publicationDateStart;
     protected $publicationDateEnd;
+    protected $range;
+
+    /**
+     * @return mixed
+     */
+    public function getRange()
+    {
+        return $this->range;
+    }
+
+    /**
+     * @param mixed $range
+     */
+    public function setRange($range)
+    {
+        $this->range = $range;
+    }
 
     /**
      * @return mixed
