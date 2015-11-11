@@ -1,14 +1,4 @@
 services:
-
-    # Seven Manager - Initializer
-    seven_manager.pages.phpcr.initializer:
-        class: Doctrine\Bundle\PHPCRBundle\Initializer\GenericInitializer
-        arguments:
-            - Seven Manager - Initializer
-            - ["/seven-manager", "/seven-manager/boilerplate", "/seven-manager/homepage", "/seven-manager/page", "/seven-manager/article", "/seven-manager/node", "/seven-manager/post", "/seven-manager/form", "/seven-manager/gallery", "/seven-manager/slideshow", "/seven-manager/images", ]
-        tags:
-            - { name: doctrine_phpcr.initializer }
-
     seven_manager.form.type.seven:
         class: SevenManagerBundle\Form\Type\SevenType
         tags: [{ name: "form.type", alias: "seven_manager_seven_type" }]
