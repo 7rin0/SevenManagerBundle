@@ -1,0 +1,25 @@
+<div class="carousel-inner">
+
+    {% for images in slideshow %}
+
+        <div class="item {{ loop.index == 1 ? 'active' : '' }}" style="background-image: url({{ cmf_media_display_url(images.image) }})">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="carousel-content centered">
+                            <h2 class="animation animated-item-1">
+                                {{ images.title }}
+                            </h2>
+
+                            <p class="animation animated-item-2">
+                                {{ images.subtitle }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {%  endfor %}
+
+</div>

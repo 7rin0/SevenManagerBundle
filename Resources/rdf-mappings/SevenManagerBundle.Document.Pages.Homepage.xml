@@ -4,6 +4,11 @@
         >
     <children>
         <property property="schema:headline" identifier="title" tag-name="h1"/>
-        <property property="schema:text" identifier="content"/>
+        <property property="schema:text/subtitle" identifier="subtitle"/>
+        <property property="schema:text/body" identifier="body"/>
+        <property property="schema:text/content" identifier="content"/>
+        <property property="schema:text/labelOne" identifier="labelOne"/>
+        <property property="schema:text/labelTwo" identifier="labelTwo"/>
+        <property property="schema:text/labelThree" identifier="labelThree"/>
     </children>
 </type>

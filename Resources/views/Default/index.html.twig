@@ -31,16 +31,22 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
     <script src="//use.edgefonts.net/bebas-neue.js"></script>
 
+    {% if is_granted("IS_AUTHENTICATED_ANONYMOUSLY") %}
+        {% include "CmfCreateBundle::includecssfiles.html.twig" %}
+    {% endif %}
 
 </head>
 
 <body>
+
+{% createphp cmfMainContent as="rdf" noautotag %}
+<div  {{ createphp_attributes(rdf) }}>
+
 <!--[if lt IE 7]>
 <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to
     improve your experience.</p>
 <![endif]-->
-
 
 <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
     <div class="container">
@@ -92,33 +98,7 @@
         </ol>
 
         {% if slideshow is defined and slideshow is not empty %}
-
-            <div class="carousel-inner">
-
-                {% for images in slideshow %}
-
-                    <div class="item {{ loop.index == 1 ? 'active' : '' }}" style="background-image: url({{ cmf_media_display_url(images.image) }})">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="carousel-content centered">
-                                        <h2 class="animation animated-item-1">
-                                            {{ images.title }}
-                                        </h2>
-
-                                        <p class="animation animated-item-2">
-                                            {{ images.subtitle }}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                {%  endfor %}
-
-            </div>
-
+            {% include('@SevenManagerBundle:Containers:slideshow.html.twig') %}
         {% endif %}
 
     </div>
@@ -139,10 +119,13 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="calltoaction-wrapper">
-                    <h3>
-                        {{ document.subtitle }}
-                    </h3> <a
-                            href="http://www.vactualart.com/portfolio-item/Seven Manager-a-free-html5-template/"
+
+
+                        <span>
+                            <h3 {{ createphp_attributes( rdf.subtitle ) }}>{{ createphp_content( rdf.subtitle ) }}</h3>
+                        </span>
+
+                    <a href="http://www.vactualart.com/portfolio-item/Seven Manager-a-free-html5-template/"
                             class="btn btn-orange">Download here!</a>
                 </div>
             </div>
@@ -150,12 +133,9 @@
     </div>
 </div>
 <!-- End Call to Action Bar -->
-
-
-<!-- Services -->
-<div class="section section-white">
-    <div class="container">
-        {{ document.body|raw }}
+<div class="section section-white" >
+    <div class="container" {{ createphp_attributes( rdf.body ) }}>
+        {{ createphp_content( rdf.body ) }}
     </div>
 </div>
 
@@ -200,7 +180,6 @@
 </div>
 <!-- End Services -->
 
-
 <hr>
 
 <!-- Our Portfolio -->
@@ -209,10 +188,9 @@
     <div class="container">
         <div class="row">
 
-            <div class="section-title">
-                <h1>{{ document.labelTwo|raw }}</h1>
+            <div class="section-title" {{ createphp_attributes( rdf.labelTwo ) }}>
+                <h1>{{ createphp_content( rdf.labelTwo ) }}</h1>
             </div>
-
 
             <ul class="grid cs-style-3">
                 <div class="col-md-4 col-sm-6">
@@ -299,8 +277,8 @@
 <div class="section">
     <div class="container">
 
-        <div class="section-title">
-            <h1>{{ document.labelThree|raw }}</h1>
+        <div class="section-title" {{ createphp_attributes( rdf.labelThree ) }}>
+            <h1>{{ createphp_content( rdf.labelThree ) }}</h1>
         </div>
 
         <div class="clients-logo-wrapper text-center row">
@@ -381,12 +359,15 @@
     </div>
 </div>
 
+
+</div>
+{% endcreatephp %}
 <!-- Javascripts -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
 {% javascripts '@SevenManagerBundle/Resources/public/js/footer/*' %}
 <script src="{{ asset_url }}"></script>
 {% endjavascripts %}
+{% render(controller("cmf_create.jsloader.controller:includeJSFilesAction")) %}
 
 </body>
 </html>

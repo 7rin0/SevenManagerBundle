@@ -34,7 +34,7 @@ class HomepageAdmin extends Admin
 
         $formMapper
             ->tab('Content')
-                ->with('Text', array(
+                ->with('Content', array(
                     'class'       => 'col-md-8',
                     'box_class'   => 'box box-solid box-danger',
                     'description' => 'Text fields',
