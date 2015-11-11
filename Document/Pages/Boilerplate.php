@@ -27,6 +27,41 @@ class Boilerplate extends StructurePages
         $this->__childrenConstruct();
     }
 
+    protected $publicationDateStart;
+    protected $publicationDateEnd;
+
+    /**
+     * @return mixed
+     */
+    public function getPublicationDateEnd()
+    {
+        return $this->publicationDateEnd;
+    }
+
+    /**
+     * @param mixed $publicationDateEnd
+     */
+    public function setPublicationDateEnd($publicationDateEnd)
+    {
+        $this->publicationDateEnd = $publicationDateEnd;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPublicationDateStart()
+    {
+        return $this->publicationDateStart;
+    }
+
+    /**
+     * @param mixed $publicationDateStart
+     */
+    public function setPublicationDateStart($publicationDateStart)
+    {
+        $this->publicationDateStart = $publicationDateStart;
+    }
+
     /**
      * @PHPCR\Child(cascade="persist")
      */
