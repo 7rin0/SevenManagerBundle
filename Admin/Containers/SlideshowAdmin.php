@@ -41,18 +41,12 @@ class SlideshowAdmin extends Admin
                     ->add(
                         'children',
                         'sonata_type_collection',
+                        array(),
                         array(
-                            'required'     => true,
-                            'by_reference' => false,
-                            'type_options' => array('delete' => true)
-                            //'btn_catalogue' => true,
-                        ),
-                        array(
-                            'label'      => 'images',
-                            'edit'       => 'inline',
-                            'inline'     => 'table',
-                            'sortable'   => 'position',
+                            'edit' => 'inline',
+                            'inline' => 'table',
                             'admin_code' => $this->imageOne,
+                            'sortable'  => 'position',
                         )
                     )
                 ->end()
