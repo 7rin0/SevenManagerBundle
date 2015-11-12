@@ -13,7 +13,7 @@ use SevenManagerBundle\Document\Traits\CustomModels;
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
 /**
- * @PHPCR\Document(referenceable=true, translator="attribute")
+ * @PHPCR\Document(versionable="full", referenceable=true, translator="attribute")
  */
 class Homepage extends StructurePages
 {

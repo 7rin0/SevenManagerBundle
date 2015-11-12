@@ -60,14 +60,6 @@ class SlideshowAdmin extends Admin
     }
 
     /**
-     * @return mixed
-     */
-    public function getImageOne()
-    {
-        return $this->imageOne;
-    }
-
-    /**
      * @param $imageOne
      *
      * @return $this
@@ -75,7 +67,6 @@ class SlideshowAdmin extends Admin
     public function setImageOne($imageOne)
     {
         $this->imageOne = $imageOne;
-
         return $this;
     }
 

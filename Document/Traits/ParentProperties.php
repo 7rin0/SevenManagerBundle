@@ -7,7 +7,6 @@
 
 namespace SevenManagerBundle\Document\Traits;
 
-use SevenManagerBundle\Document\Traits\CustomFields;
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
 /**
@@ -18,6 +17,8 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 trait ParentProperties
 {
     use CustomFields;
+    use CustomImage;
+    use CustomLocale;
 
     /**
      * @PHPCR\Referrers(referringDocument="Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\Route", referencedBy="content")
@@ -38,30 +39,6 @@ trait ParentProperties
      * @PHPCR\Nodename()
      */
     protected $name;
-
-    /**
-     * @var string
-     * @PHPCR\Locale()
-     */
-    protected $locale;
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getLocale()
-    {
-        return $this->locale;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setLocale($locale)
-    {
-        $this->locale = $locale;
-
-        return $this;
-    }
 
     /**
      * @return mixed

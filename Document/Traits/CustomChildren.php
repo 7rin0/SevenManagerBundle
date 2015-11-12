@@ -92,12 +92,11 @@ trait CustomChildren
     public function removeChild($child)
     {
         $this->children->removeElement($child);
-
         return $this;
     }
 
     /**
-     * {@inheritdoc}
+     * @return bool
      */
     public function hasChildren()
     {

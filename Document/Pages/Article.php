@@ -11,7 +11,8 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 use SevenManagerBundle\Document\Classes\StructurePages;
 
 /**
- * @PHPCR\Document(referenceable=true, translator="attribute")
+ * @PHPCR\Document(versionable="full", referenceable=true, translator="attribute")
  */
-class Article extends StructurePages {
+class Article extends StructurePages
+{
 }

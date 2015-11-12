@@ -9,6 +9,7 @@ namespace SevenManagerBundle\Document\Blocks;
 
 use SevenManagerBundle\Document\Traits\ChildProperties;
 use SevenManagerBundle\Document\Traits\CustomFields;
+use SevenManagerBundle\Document\Traits\CustomLocale;
 use Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\AbstractBlock;
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
@@ -22,11 +23,6 @@ use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
 class ImageOne extends AbstractBlock implements TranslatableInterface
 {
     use CustomFields;
-
-    /**
-     * @PHPCR\Locale()
-     */
-    protected $locale;
 
     /**
      * @return string

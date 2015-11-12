@@ -12,10 +12,7 @@ use SevenManagerBundle\Document\Traits\CustomChildren;
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
 /**
- * Class Slideshow
- * @PHPCR\Document(referenceable=true, translator="attribute")
- *
- * @package SevenManagerBundle\Document\Containers
+ * @PHPCR\Document(versionable="full", referenceable=true, translator="attribute")
  */
 class Slideshow extends StructureParent
 {
