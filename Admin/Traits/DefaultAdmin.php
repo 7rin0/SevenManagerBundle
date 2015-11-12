@@ -23,6 +23,32 @@ trait DefaultAdmin
 {
     use CkeditorOptions;
 
+    // TODO: Receive this data by parameters
+    protected $documentRootPath = '/';
+    protected $routesRootPath = '/cms/routes';
+
+    /**
+     * @param $documentRootPath
+     *
+     * @return $this
+     */
+    public function setDocumentRootPath($documentRootPath)
+    {
+        $this->documentRootPath = $documentRootPath;
+        return $this;
+    }
+
+    /**
+     * @param $routesRootPath
+     *
+     * @return $this
+     */
+    public function setRoutesRootPath($routesRootPath)
+    {
+        $this->routesRootPath = $routesRootPath;
+        return $this;
+    }
+
     /**
      * @param OptionsResolver $resolver
      */
@@ -113,7 +139,7 @@ trait DefaultAdmin
                             'parentDocument',
                             'doctrine_phpcr_odm_tree',
                             array(
-                                'root_node' => $this->getRootPath(),
+                                'root_node' => $this->documentRootPath,
                                 'choice_list' => array(),
                                 'select_root_node' => true,
                                 'required' => false
@@ -141,7 +167,7 @@ trait DefaultAdmin
                             'routeChild',
                             'doctrine_phpcr_odm_tree',
                             array(
-                                'root_node' => $this->getRootPath(),
+                                'root_node' => $this->routesRootPath,
                                 'choice_list' => array(),
                                 'select_root_node' => true,
                                 'label'  => 'Select Route',
@@ -175,10 +201,16 @@ trait DefaultAdmin
      */
     public function preUpdate($document)
     {
-        global $kernel;
+        // Vars
+        $routeChildId = $document->getRouteChild()->getId();
+
+        // Set prefix Name
         $fatherPrefix = !empty($this->classnameLabel) ? strtolower($this->classnameLabel) : 'undefined_father';
 
-        //$dm = $kernel->getContainer()->get('seven_manager.parent_manager');
+        // If routeChild empty or not valid skip validation
+        if ($routeChildId === $this->routesRootPath || empty($routeChildId)) {
+            $document->setRouteChild(null);
+        }
 
         // Set Child Names/Parents
         if (method_exists($document, 'getChildren')) {
@@ -208,8 +240,16 @@ trait DefaultAdmin
      */
     public function prePersist($document)
     {
+        // Vars
+        $routeChildId = $document->getRouteChild()->getId();
+
         // Set prefix Name
         $fatherPrefix = !empty($this->classnameLabel) ? strtolower($this->classnameLabel) : 'undefined_father';
+
+        // If routeChild empty or not valid skip validation
+        if ($routeChildId === $this->routesRootPath || empty($routeChildId)) {
+            $document->setRouteChild(null);
+        }
 
         //  Create Parent Name if not defined
         if (!$document->getName()) {

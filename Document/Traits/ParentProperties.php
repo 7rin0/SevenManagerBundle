@@ -35,9 +35,8 @@ trait ParentProperties
      */
     protected $parentDocument;
 
-
     /**
-     * @PHPCR\ReferenceOne(property="routeContent")
+     * @PHPCR\ReferenceOne(cascade={"persist"})
      */
     protected $routeChild;
 
