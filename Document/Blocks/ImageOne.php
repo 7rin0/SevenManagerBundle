@@ -34,6 +34,6 @@ class ImageOne extends AbstractBlock implements TranslatableInterface
      */
     public function getType()
     {
-        return 'restructure.block.image.one';
+        return 'seven_manager.admin.blocks.slideone';
     }
 }
