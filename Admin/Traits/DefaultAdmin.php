@@ -139,19 +139,13 @@ trait DefaultAdmin
                     )
                         ->add(
                             'routeChild',
-                            'sonata_type_admin',
+                            'doctrine_phpcr_odm_tree',
                             array(
-                                'label'       => 'Select Route',
-                                'required'     => false,
-                                'by_reference' => true,
-                                'btn_catalogue' => false,
-                            ),
-                            array(
-                                'edit'       => 'inline',
-                                'inline'     => 'table',
-                                'multiple'   => false,
-                                'sortable'   => 'position',
-                                'admin_code' => 'cmf_routing.route_admin',
+                                'root_node' => $this->getRootPath(),
+                                'choice_list' => array(),
+                                'select_root_node' => true,
+                                'label'  => 'Select Route',
+                                'required' => false
                             )
                         )
                     ->end()

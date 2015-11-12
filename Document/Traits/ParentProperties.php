@@ -35,10 +35,35 @@ trait ParentProperties
      */
     protected $parentDocument;
 
+
+    /**
+     * @PHPCR\ReferenceOne(property="routeContent")
+     */
+    protected $routeChild;
+
     /**
      * @PHPCR\Nodename()
      */
     protected $name;
+
+    /**
+     * @return mixed
+     */
+    public function getRouteChild()
+    {
+        return $this->routeChild;
+    }
+
+    /**
+     * @param $routeChild
+     *
+     * @return $this
+     */
+    public function setRouteChild($routeChild)
+    {
+        $this->routeChild = $routeChild;
+        return $this;
+    }
 
     /**
      * @return mixed
