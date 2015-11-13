@@ -1,0 +1,8 @@
+services:
+
+    # Seven Manager - Managers
+    seven_manager.station_manager:
+        class:  SevenManagerBundle\Manager\StationManager
+
+    seven_manager.parent_manager:
+        class:  SevenManagerBundle\Manager\ParentManager
