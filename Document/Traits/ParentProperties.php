@@ -8,6 +8,7 @@
 namespace SevenManagerBundle\Document\Traits;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
+use Doctrine\ORM\Mapping\GeneratedValue;
 
 /**
  * Class ParentProperties
@@ -36,7 +37,8 @@ trait ParentProperties
     protected $routes;
 
     /**
-     * @PHPCR\Id(strategy="PARENT")
+     * @PHPCR\Id()
+     * @GeneratedValue()
      */
     protected $id;
 
