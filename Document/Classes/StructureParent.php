@@ -23,14 +23,4 @@ class StructureParent implements RouteReferrersReadInterface, TranslatableInterf
 {
     use ParentProperties;
     use CustomChild;
-
-    /**
-     * @PHPCR\VersionName()
-     */
-    private $versionName;
-
-    /**
-     * @PHPCR\VersionCreated()
-     */
-    private $versionCreated;
 }

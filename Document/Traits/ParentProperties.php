@@ -21,6 +21,16 @@ trait ParentProperties
     use CustomLocale;
 
     /**
+     * @PHPCR\VersionName()
+     */
+    private $versionName;
+
+    /**
+     * @PHPCR\VersionCreated()
+     */
+    private $versionCreated;
+
+    /**
      * @PHPCR\Referrers(referringDocument="Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\Route", referencedBy="content")
      */
     protected $routes;

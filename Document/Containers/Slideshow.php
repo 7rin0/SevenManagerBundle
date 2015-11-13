@@ -20,4 +20,12 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 class Slideshow extends StructureParent
 {
     use CustomChildren;
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return 'seven_manager.admin.containers.slideshow';
+    }
 }
