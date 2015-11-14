@@ -15,7 +15,7 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 trait CustomChildren
 {
     /**
-     * @PHPCR\Children(cascade="all")
+     * @PHPCR\Children(fetchDepth=5, ignoreUntranslated=false, cascade={all})
      */
     protected $children;
 

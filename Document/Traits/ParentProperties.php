@@ -22,6 +22,11 @@ trait ParentProperties
     use CustomLocale;
 
     /**
+     * @PHPCR\Uuid
+     **/
+    private $uuid;
+
+    /**
      * @PHPCR\VersionName()
      */
     private $versionName;
