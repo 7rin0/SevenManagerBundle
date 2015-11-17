@@ -28,6 +28,11 @@ class Boilerplate extends StructurePages
     }
 
     /**
+     * @PHPCR\ReferenceMany(targetDocument="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\SimpleBlock", strategy="hard")
+     */
+    protected $mapMany;
+
+    /**
      * @PHPCR\Date(nullable=true)
      */
     protected $publicationDateStart;
@@ -170,6 +175,25 @@ class Boilerplate extends StructurePages
     public function setBlockChild($blockChild)
     {
         $this->blockChild = $blockChild;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMapMany()
+    {
+        return $this->mapMany;
+    }
+
+    /**
+     * @param $mapMany
+     *
+     * @return $this
+     */
+    public function setMapMany($mapMany)
+    {
+        $this->mapMany = $mapMany;
         return $this;
     }
 }

@@ -173,7 +173,7 @@ class BoilerplateAdmin extends Admin
                 ->end()
             ->end()
             ->tab('Auto-complete')
-                ->with('Auto-complete')
+                ->with('Auto-complete One')
                     ->add(
                         'mapSimple',
                         'sonata_type_model_autocomplete',
@@ -181,6 +181,18 @@ class BoilerplateAdmin extends Admin
                             'property' => 'title',
                             'model_manager' => $this->modelManager,
                             'required' => false,
+                        )
+                    )
+                ->end()
+                ->with('Auto-complete Many')
+                    ->add(
+                        'mapMany',
+                        'sonata_type_model_autocomplete',
+                        array(
+                            'property' => 'title',
+                            'model_manager' => $this->modelManager,
+                            'required' => false,
+                            'multiple' => true,
                         )
                     )
                 ->end()
