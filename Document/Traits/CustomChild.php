@@ -2,9 +2,7 @@
 
 namespace SevenManagerBundle\Document\Traits;
 
-use Sonata\BlockBundle\Model\BlockInterface;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ODM\PHPCR\ChildrenCollection;
+use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
 /**
  * Class CustomChild
