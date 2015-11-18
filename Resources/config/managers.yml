@@ -1,6 +1,5 @@
+# Seven Manager - Managers
 services:
-
-    # Seven Manager - Managers
     seven_manager.station_manager:
         class:  SevenManagerBundle\Manager\StationManager
 

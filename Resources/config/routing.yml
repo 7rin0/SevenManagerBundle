@@ -1,3 +1,4 @@
+# Homepage
 seven_manager_pages_homepage:
     path:     /seven-manager/homepage/{name}
     defaults: { _controller: SevenManagerBundle:Homepage:index }

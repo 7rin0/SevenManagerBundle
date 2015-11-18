@@ -1,6 +1,5 @@
+# Seven Manager - Initializer
 services:
-
-    # Seven Manager - Initializer
     seven_manager.pages.phpcr.initializer:
         class: Doctrine\Bundle\PHPCRBundle\Initializer\GenericInitializer
         arguments:

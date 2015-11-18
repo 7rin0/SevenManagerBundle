@@ -1,28 +1,5 @@
+# Services
 services:
-
-    # Seven Manager - Initializer
-    seven_manager.pages.phpcr.initializer:
-        class: Doctrine\Bundle\PHPCRBundle\Initializer\GenericInitializer
-        arguments:
-            - Seven Manager - Initializer
-            - ["/seven-manager", "/seven-manager/boilerplate", "/seven-manager/homepage", "/seven-manager/page", "/seven-manager/article", "/seven-manager/node", "/seven-manager/post", "/seven-manager/form", "/seven-manager/gallery", "/seven-manager/slideshow", "/seven-manager/images", ]
-        tags:
-            - { name: doctrine_phpcr.initializer }
-
-    seven_manager.fixtures.phpcr.initializer:
-        class: Doctrine\Bundle\PHPCRBundle\Initializer\GenericInitializer
-        arguments:
-            - Seven Manager - Fixtures Initializer
-            - ["/seven-manager/fixtures/pages", "/seven-manager/fixtures/posts", "/seven-manager/fixtures/content", "/seven-manager/fixtures/routes", "/seven-manager/fixtures/type-a", "/seven-manager/fixtures/type-b", "/seven-manager/fixtures/type-c"]
-        tags:
-            - { name: doctrine_phpcr.initializer }
-
-    # Seven Manager - Managers
-    seven_manager.station_manager:
-        class:  SevenManagerBundle\Manager\StationManager
-
-    seven_manager.parent_manager:
-        class:  SevenManagerBundle\Manager\ParentManager
             
     # Seven Manager - Call Content Bundle
     seven_manager.admin.pages.boilerplate:
