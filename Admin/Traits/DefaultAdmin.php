@@ -326,7 +326,7 @@ trait DefaultAdmin
      */
     private function generateName($fatherPrefix, $context = '_child_')
     {
-        return $fatherPrefix . $context . time();
+        return $fatherPrefix . $context . uniqid();
     }
 
     /**
