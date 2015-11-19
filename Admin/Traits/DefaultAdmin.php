@@ -54,6 +54,9 @@ trait DefaultAdmin
      */
     public function configureOptions(OptionsResolver $resolver)
     {
+        $resolver->setDefaults(array(
+            'csrf_protection' => false,
+        ));
     }
 
     /**
