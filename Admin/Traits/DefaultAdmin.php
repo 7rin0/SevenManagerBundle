@@ -262,7 +262,7 @@ trait DefaultAdmin
         // Verify if parent exists and attribute document to
         // if not create a new one using this parent
         if (!empty($this->parentPath)) {
-            $parent = $this->getModelManager()->find(null, $this->parentPath);
+            $parent = $this->modelManager->find(null, $this->parentPath);
 
             // If Parent is null create one
             if (!$parent && !empty($this->parentPath)) {
@@ -272,7 +272,7 @@ trait DefaultAdmin
             }
 
             // Find Parent
-            $parent = $this->getModelManager()->find(null, $this->parentPath);
+            $parent = $this->modelManager->find(null, $this->parentPath);
             $document->setParentDocument($parent);
 
             // Set Father
@@ -347,7 +347,7 @@ trait DefaultAdmin
      */
     public function getExportFields()
     {
-        return $this->getModelManager()->getExportFields($this->getClass());
+        return $this->modelManager->getExportFields($this->getClass());
     }
 
     /**
@@ -358,7 +358,7 @@ trait DefaultAdmin
         $datagrid = $this->getDatagrid();
         $datagrid->buildPager();
 
-        return $this->getModelManager()->getDataSourceIterator($datagrid, $this->getExportFields());
+        return $this->modelManager->getDataSourceIterator($datagrid, $this->getExportFields());
     }
 
     /**
