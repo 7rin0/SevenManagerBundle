@@ -98,7 +98,7 @@
         </ol>
 
         {% if slideshow is defined and slideshow is not empty %}
-            {% include('@SevenManagerBundle:Containers:slideshow.html.twig') %}
+            {% include('SevenManagerBundle:Containers:slideshow.html.twig') %}
         {% endif %}
 
     </div>
@@ -181,7 +181,8 @@
 <!-- End Services -->
 
 <hr>
-
+    {% include 'SonataCommentBundle:Thread:async.html.twig' with {'id': 'my-custom-thread-identifier'} %}
+<hr>
 <!-- Our Portfolio -->
 
 <div class="section section-white">

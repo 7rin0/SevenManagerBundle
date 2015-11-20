@@ -23,6 +23,7 @@ class TextOne extends AbstractBlock implements TranslatableInterface
 {
     use CustomFields;
 
+    protected $parentAssociationMapping = 'post';
     /**
      * @PHPCR\Locale()
      */
@@ -34,5 +35,9 @@ class TextOne extends AbstractBlock implements TranslatableInterface
     public function getType()
     {
         return 'restructure.block.text.one';
+    }
+    public function getParentAssociationMapping()
+    {
+        return 'post';
     }
 }
