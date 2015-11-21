@@ -137,6 +137,7 @@ trait DefaultAdmin
                     ->with(
                         'Parent/Name',
                         array(
+                            'collapsed' => true,
                             'class'       => 'col-md-6',
                             'box_class'   => 'box box-solid box-danger',
                             'description' => 'Parent/Name',
@@ -165,6 +166,7 @@ trait DefaultAdmin
                     ->with(
                         'Route/URL',
                         array(
+                            'collapsed' => true,
                             'class'       => 'col-md-6',
                             'box_class'   => 'box box-solid box-danger',
                             'description' => 'Route/URL',
