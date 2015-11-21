@@ -96,7 +96,11 @@ trait DefaultAdmin
     {
         $listMapper
             ->addIdentifier('title', 'text')
-            ->add('name', 'text')
+            ->add('name', 'text', array(
+                'header_style' => 'width: 10%; text-align: center',
+                'header_class' => 'center',
+                'row_align' => 'center'
+            ))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show'   => array(),
