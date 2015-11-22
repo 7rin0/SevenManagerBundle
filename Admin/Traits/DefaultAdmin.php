@@ -132,9 +132,41 @@ trait DefaultAdmin
         $isParent = $this->getParentFieldDescription() === null;
         $hasRouteChild = method_exists($this->getClass(), 'getRouteChild');
 
-        if ($isParent) {
+        if ($isParent && $hasRouteChild) {
             $formMapper
                 ->tab('Configuration')
+                    ->with(
+                        'Add to Menu',
+                        array(
+                            'collapsed' => true,
+                            'class'       => 'col-md-4',
+                            'box_class'   => 'box box-solid box-danger',
+                            'description' => 'Add to Menu',
+                        )
+                    )
+                    // Add fields
+                    ->end()
+                    ->with(
+                        'Document Father',
+                        array(
+                            'collapsed' => true,
+                            'class'       => 'col-md-4',
+                            'box_class'   => 'box box-solid box-danger',
+                            'description' => 'Parent/Name',
+                        )
+                    )
+                        ->add(
+                            'parentDocument',
+                            'doctrine_phpcr_odm_tree',
+                            array(
+                                'root_node' => $this->documentRootPath,
+                                'choice_list' => array(),
+                                'select_root_node' => true,
+                                'required' => false
+                            )
+                        )
+                        ->add('name', 'text', array('required' => false))
+                    ->end()
                     ->with(
                         'Route Father',
                         array(
@@ -156,17 +188,10 @@ trait DefaultAdmin
                         )
                     )
                     ->end()
-                    ->with(
-                        'Add to Menu',
-                        array(
-                            'collapsed' => true,
-                            'class'       => 'col-md-4',
-                            'box_class'   => 'box box-solid box-danger',
-                            'description' => 'Add to Menu',
-                        )
-                    )
-                    // Add fields
-                    ->end()
+                ->end();
+        } else {
+            $formMapper
+                ->tab('Configuration')
                     ->with(
                         'Document Father',
                         array(
