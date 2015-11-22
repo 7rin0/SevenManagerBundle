@@ -134,29 +134,58 @@ class BoilerplateAdmin extends Admin
                 ->end()
             ->end()
             ->tab('Pages')
-                ->with('Relate Pages', array(
+                ->with('Reference content', array(
                     'class'       => 'col-md-12',
                     'box_class'   => 'box box-solid box-danger',
                     'description' => 'Relate an existing content',
                 ))
-                    ->add(
-                        'mapNode',
-                        'sonata_type_model',
-                        array(
-                            'label' => 'Related Node',
-                            'required' => false,
-                            'multiple' => false,
-                            'by_reference' => false,
+                    ->add('choiceType', 'choice_field_mask', array(
+                        'choices' => array(
+                            'choiceOne' => 'choiceOne',
+                            'choiceTwo' => 'choiceTwo',
                         ),
-                        array(
-                            'sortable' => true,
-                        )
-                    )
+                        'map' => array(
+                            'choiceOne' => array(
+                                'mapNode',
+                                'mapPage',
+                                'mapPost',
+                                'mapArticle',
+                                'mapGallery',
+                                'mapForm',
+                            ),
+                            'choiceTwo' => array(
+                                'mapSimple',
+                                'mapMany'
+                            ),
+                        ),
+                        'empty_value' => 'Choose an option',
+                        'required' => false
+                    ))
+                    ->add('mapNode', 'sonata_type_model', array('label' => 'Related Node', 'required' => false, 'multiple' => false, 'by_reference' => false), array('sortable' => true))
                     ->add('mapPage', 'sonata_type_model', array('label' => 'Related Page', 'required' => false, 'multiple' => false))
                     ->add('mapPost', 'sonata_type_model', array('label' => 'Related Post', 'required' => false, 'multiple' => false))
                     ->add('mapArticle', 'sonata_type_model', array('label' => 'Related Article', 'required' => false, 'multiple' => false))
                     ->add('mapGallery', 'sonata_type_model', array('label' => 'Related Gallery', 'required' => false, 'multiple' => false))
                     ->add('mapForm', 'sonata_type_model', array('label' => 'Related Form', 'required' => false, 'multiple' => false))
+                    ->add(
+                        'mapSimple',
+                        'sonata_type_model_autocomplete',
+                        array(
+                            'property' => 'title',
+                            'model_manager' => $this->modelManager,
+                            'required' => false,
+                        )
+                    )
+                    ->add(
+                        'mapMany',
+                        'sonata_type_model_autocomplete',
+                        array(
+                            'property' => 'title',
+                            'model_manager' => $this->modelManager,
+                            'required' => false,
+                            'multiple' => true,
+                        )
+                    )
                 ->end()
             ->end()
             ->tab('Blocks')
@@ -171,33 +200,7 @@ class BoilerplateAdmin extends Admin
                     ->add('mapSlideshow', 'sonata_type_model', array('label' => 'Related Slideshow Block', 'required' => false,))
                     ->add('mapImage', 'sonata_type_model', array('label' => 'Related Image Block', 'required' => false,))
                 ->end()
-            ->end()
-            ->tab('Auto-complete')
-                ->with('Auto-complete One')
-                    ->add(
-                        'mapSimple',
-                        'sonata_type_model_autocomplete',
-                        array(
-                            'property' => 'title',
-                            'model_manager' => $this->modelManager,
-                            'required' => false,
-                        )
-                    )
-                ->end()
-                ->with('Auto-complete Many')
-                    ->add(
-                        'mapMany',
-                        'sonata_type_model_autocomplete',
-                        array(
-                            'property' => 'title',
-                            'model_manager' => $this->modelManager,
-                            'required' => false,
-                            'multiple' => true,
-                        )
-                    )
-                ->end()
             ->end();
-
     }
 
     /**

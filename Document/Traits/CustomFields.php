@@ -92,6 +92,11 @@ trait CustomFields
     protected $targetContent;
 
     /**
+     * @var
+     */
+    protected $choiceType;
+
+    /**
      * @return mixed
      */
     public function getPosition()
@@ -404,6 +409,25 @@ trait CustomFields
     public function setTargetContent($targetContent)
     {
         return $this->targetContent = $targetContent;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getChoiceType()
+    {
+        return $this->choiceType;
+    }
+
+    /**
+     * @param $choiceType
+     *
+     * @return $this
+     */
+    public function setChoiceType($choiceType)
+    {
+        $this->choiceType = $choiceType;
+        return $this;
     }
 
     /**
