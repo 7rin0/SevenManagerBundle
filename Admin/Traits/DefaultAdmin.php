@@ -211,14 +211,16 @@ trait DefaultAdmin
     public function preUpdate($document)
     {
         // Vars
-        $routeChildId = $document->getRouteChild()->getId();
+        if (method_exists($document, 'getRouteChild')) {
+            $routeChildId = $document->getRouteChild()->getId();
 
-        // Set prefix Name
-        $fatherPrefix = !empty($this->classnameLabel) ? strtolower($this->classnameLabel) : 'undefined_father';
+            // Set prefix Name
+            $fatherPrefix = !empty($this->classnameLabel) ? strtolower($this->classnameLabel) : 'undefined_father';
 
-        // If routeChild empty or not valid skip validation
-        if ($routeChildId === $this->routesRootPath || empty($routeChildId)) {
-            $document->setRouteChild(null);
+            // If routeChild empty or not valid skip validation
+            if ($routeChildId === $this->routesRootPath || empty($routeChildId)) {
+                $document->setRouteChild(null);
+            }
         }
 
         // Set Child Names/Parents
@@ -250,14 +252,16 @@ trait DefaultAdmin
     public function prePersist($document)
     {
         // Vars
-        $routeChildId = $document->getRouteChild()->getId();
+        if (method_exists($document, 'getRouteChild')) {
+            $routeChildId = $document->getRouteChild()->getId();
 
-        // Set prefix Name
-        $fatherPrefix = !empty($this->classnameLabel) ? strtolower($this->classnameLabel) : 'undefined_father';
+            // Set prefix Name
+            $fatherPrefix = !empty($this->classnameLabel) ? strtolower($this->classnameLabel) : 'undefined_father';
 
-        // If routeChild empty or not valid skip validation
-        if ($routeChildId === $this->routesRootPath || empty($routeChildId)) {
-            $document->setRouteChild(null);
+            // If routeChild empty or not valid skip validation
+            if ($routeChildId === $this->routesRootPath || empty($routeChildId)) {
+                $document->setRouteChild(null);
+            }
         }
 
         //  Create Parent Name if not defined

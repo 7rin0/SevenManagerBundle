@@ -13,12 +13,12 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 trait Publishable
 {
     /**
-     * @PHPCR\Date()
+     * @PHPCR\Date(nullable=true)
      */
     protected $publishStartDate;
 
     /**
-     * @PHPCR\Date()
+     * @PHPCR\Date(nullable=true)
      */
     protected $publishEndDate;
 
