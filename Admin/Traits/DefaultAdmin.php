@@ -85,7 +85,7 @@ trait DefaultAdmin
             ->add('name')
             ->add('subtitle')
             ->add('content')
-            ->add('True or False', 'boolean');
+            ->add('isPublishable', 'boolean', array('label' => 'Published'));
 
     }
 
@@ -107,7 +107,8 @@ trait DefaultAdmin
                     'edit'   => array(),
                     'delete' => array(),
                 )
-            ));
+            ))
+            ->add('isPublishable', 'boolean', array('label' => 'Published'));
     }
 
     /**
@@ -135,10 +136,42 @@ trait DefaultAdmin
             $formMapper
                 ->tab('Configuration')
                     ->with(
-                        'Parent/Name',
+                        'Route Father',
                         array(
                             'collapsed' => true,
-                            'class'       => 'col-md-6',
+                            'class'       => 'col-md-4',
+                            'box_class'   => 'box box-solid box-danger',
+                            'description' => 'Route/URL',
+                        )
+                    )
+                    ->add(
+                        'routeChild',
+                        'doctrine_phpcr_odm_tree',
+                        array(
+                            'root_node' => $this->routesRootPath,
+                            'choice_list' => array(),
+                            'select_root_node' => true,
+                            'label'  => 'Select Route',
+                            'required' => false
+                        )
+                    )
+                    ->end()
+                    ->with(
+                        'Add to Menu',
+                        array(
+                            'collapsed' => true,
+                            'class'       => 'col-md-4',
+                            'box_class'   => 'box box-solid box-danger',
+                            'description' => 'Add to Menu',
+                        )
+                    )
+                    // Add fields
+                    ->end()
+                    ->with(
+                        'Document Father',
+                        array(
+                            'collapsed' => true,
+                            'class'       => 'col-md-4',
                             'box_class'   => 'box box-solid box-danger',
                             'description' => 'Parent/Name',
                         )
@@ -154,35 +187,6 @@ trait DefaultAdmin
                             )
                         )
                         ->add('name', 'text', array('required' => false))
-                    ->end()
-                ->end();
-        }
-
-        // If class has method getRouteChild this means is a page type
-        // and we attach routing options
-        if ($hasRouteChild && $isParent) {
-            $formMapper
-                ->tab('Configuration')
-                    ->with(
-                        'Route/URL',
-                        array(
-                            'collapsed' => true,
-                            'class'       => 'col-md-6',
-                            'box_class'   => 'box box-solid box-danger',
-                            'description' => 'Route/URL',
-                        )
-                    )
-                        ->add(
-                            'routeChild',
-                            'doctrine_phpcr_odm_tree',
-                            array(
-                                'root_node' => $this->routesRootPath,
-                                'choice_list' => array(),
-                                'select_root_node' => true,
-                                'label'  => 'Select Route',
-                                'required' => false
-                            )
-                        )
                     ->end()
                 ->end();
         }
