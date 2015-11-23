@@ -85,6 +85,7 @@ trait DefaultAdmin
             ->add('name')
             ->add('subtitle')
             ->add('content')
+            ->add('parentDocument')
             ->add('isPublishable', 'boolean', array('label' => 'Published'));
 
     }
@@ -96,6 +97,14 @@ trait DefaultAdmin
     {
         $listMapper
             ->addIdentifier('title', 'text')
+            ->add(
+                'parentDocument.parentDocument',
+                null,
+                array(
+                    'label' => 'Parent',
+                    'sortable' => false,
+                )
+            )
             ->add('name', 'text', array(
                 'header_style' => 'width: 10%; text-align: center',
                 'header_class' => 'center',
