@@ -1,12 +1,12 @@
 # Services
 services:
             
-    # Seven Manager - Call Content Bundle
+    # S7M - Call Content Bundle
     seven_manager.admin.pages.boilerplate:
         class: SevenManagerBundle\Admin\Pages\BoilerplateAdmin
         arguments: ['', SevenManagerBundle\Document\Pages\Boilerplate, 'SonataAdminBundle:CRUD']
         tags:
-            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'Seven Manager - Boilerplate', label: Boilerplate }
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Boilerplate', label: Boilerplate }
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
 
@@ -14,7 +14,7 @@ services:
         class: SevenManagerBundle\Admin\Pages\HomepageAdmin
         arguments: ['', SevenManagerBundle\Document\Pages\Homepage, 'SonataAdminBundle:CRUD']
         tags:
-            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'Seven Manager - Pages', label: seven_manager.shared.labels.homepage }
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Pages', label: seven_manager.shared.labels.homepage }
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
 
@@ -22,7 +22,7 @@ services:
         class: SevenManagerBundle\Admin\Pages\NodeAdmin
         arguments: ['', SevenManagerBundle\Document\Pages\Node, 'SonataAdminBundle:CRUD']
         tags:
-            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'Seven Manager - Pages', label: seven_manager.shared.labels.node }
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Pages', label: seven_manager.shared.labels.node }
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
 
@@ -30,7 +30,7 @@ services:
         class: SevenManagerBundle\Admin\Pages\PageAdmin
         arguments: ['', SevenManagerBundle\Document\Pages\Page, 'SonataAdminBundle:CRUD']
         tags:
-            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'Seven Manager - Pages', label: seven_manager.shared.labels.page }
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Pages', label: seven_manager.shared.labels.page }
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
 
@@ -38,7 +38,7 @@ services:
         class: SevenManagerBundle\Admin\Pages\PostAdmin
         arguments: ['', SevenManagerBundle\Document\Pages\Post, 'SonataAdminBundle:CRUD']
         tags:
-            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'Seven Manager - Pages', label: seven_manager.shared.labels.post }
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Pages', label: seven_manager.shared.labels.post }
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
 
@@ -46,7 +46,7 @@ services:
         class: SevenManagerBundle\Admin\Pages\ArticleAdmin
         arguments: ['', SevenManagerBundle\Document\Pages\Article, 'SonataAdminBundle:CRUD']
         tags:
-            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'Seven Manager - Pages', label: seven_manager.shared.labels.article }
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Pages', label: seven_manager.shared.labels.article }
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
 
@@ -54,7 +54,7 @@ services:
         class: SevenManagerBundle\Admin\Pages\GalleryAdmin
         arguments: ['', SevenManagerBundle\Document\Pages\Gallery, 'SonataAdminBundle:CRUD']
         tags:
-            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'Seven Manager - Pages', label: seven_manager.shared.labels.gallery }
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Pages', label: seven_manager.shared.labels.gallery }
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
 
@@ -62,7 +62,7 @@ services:
         class: SevenManagerBundle\Admin\Pages\FormAdmin
         arguments: ['', SevenManagerBundle\Document\Pages\Form, 'SonataAdminBundle:CRUD']
         tags:
-            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'Seven Manager - Pages', label: seven_manager.shared.labels.form }
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Pages', label: seven_manager.shared.labels.form }
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
 
@@ -70,7 +70,7 @@ services:
         class: SevenManagerBundle\Admin\Containers\SlideshowAdmin
         arguments: ['', SevenManagerBundle\Document\Containers\Slideshow, 'SonataAdminBundle:CRUD']
         tags:
-            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'Seven manager - Containers', label: Slideshow }
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Containers', label: Slideshow }
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
             - [setImageOne, [seven_manager.admin.blocks.slideone]]
@@ -79,7 +79,7 @@ services:
         class: SevenManagerBundle\Admin\Blocks\ImageOneAdmin
         arguments: ['', SevenManagerBundle\Document\Blocks\ImageOne, 'SonataAdminBundle:CRUD']
         tags:
-            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'Seven manager - Blocks', label: Image One }
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Blocks', label: Image One }
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
 
@@ -87,6 +87,6 @@ services:
         class: SevenManagerBundle\Admin\Blocks\TextOneAdmin
         arguments: ['', SevenManagerBundle\Document\Blocks\TextOne, 'SonataAdminBundle:CRUD']
         tags:
-            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'Seven manager - Blocks', label: Text One }
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Blocks', label: Text One }
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
