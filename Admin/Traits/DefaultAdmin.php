@@ -311,7 +311,7 @@ trait DefaultAdmin
             }
 
             // Find Parent
-            $parent = $this->modelManager->find(null, $this->parentPath);
+            $parent = $this->modelManager->find(null, $this->baseRoutePattern);
             $document->setParentDocument($parent);
 
             // Set Father
