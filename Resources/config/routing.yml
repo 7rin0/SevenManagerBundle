@@ -1,9 +1,17 @@
 # Redirect to default language
-root:
+base.url.fo:
     path: /
     defaults:
         _controller: FrameworkBundle:Redirect:urlRedirect
         path: /%locale%
+        permanent: true
+
+# Redirect to default language
+base.url.bo:
+    path: /admin
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /%locale%/admin/dashboard
         permanent: true
 
 # Homepage
