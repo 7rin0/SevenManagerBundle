@@ -24,7 +24,7 @@ class SlideshowAdmin extends Admin
     }
 
     protected $imageOne;
-    protected $parentPath = '/seven-manager/slideshow';
+    protected $baseRoutePattern = '/seven-manager/slideshow';
 
     /**
      * @param FormMapper $formMapper

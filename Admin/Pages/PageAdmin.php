@@ -23,7 +23,7 @@ class PageAdmin extends Admin
         configureFormFields as traitFormFields;
     }
 
-    protected $parentPath = '/seven-manager/page';
+    protected $baseRoutePattern = '/seven-manager/page';
 
     /**
      * @param FormMapper $formMapper

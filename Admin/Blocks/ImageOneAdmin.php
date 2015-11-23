@@ -22,7 +22,7 @@ class ImageOneAdmin extends Admin
         configureFormFields as traitFormFields;
     }
 
-    protected $parentPath = '/seven-manager/images';
+    protected $baseRoutePattern = '/seven-manager/images';
 
     /**
      * @param FormMapper $formMapper

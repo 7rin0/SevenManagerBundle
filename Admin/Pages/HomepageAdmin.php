@@ -23,7 +23,7 @@ class HomepageAdmin extends Admin
         configureFormFields as traitFormFields;
     }
 
-    protected $parentPath = '/seven-manager/homepage';
+    protected $baseRoutePattern = '/seven-manager/homepage';
 
     /**
      * @param FormMapper $formMapper

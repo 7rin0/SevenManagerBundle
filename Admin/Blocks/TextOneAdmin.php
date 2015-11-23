@@ -23,7 +23,7 @@ class TextOneAdmin extends Admin
         configureFormFields as traitFormFields;
     }
 
-    protected $parentPath = '/seven-manager/text';
+    protected $baseRoutePattern = '/seven-manager/text';
 
     /**
      * @param FormMapper $formMapper

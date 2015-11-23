@@ -23,7 +23,7 @@ class GalleryAdmin extends Admin
         configureFormFields as traitFormFields;
     }
 
-    protected $parentPath = '/seven-manager/gallery';
+    protected $baseRoutePattern = '/seven-manager/gallery';
 
     /**
      * @param FormMapper $formMapper

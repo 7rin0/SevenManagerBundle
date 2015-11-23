@@ -22,7 +22,7 @@ class BoilerplateAdmin extends Admin
         configureFormFields as traitFormFields;
     }
 
-    protected $parentPath = '/seven-manager/boilerplate';
+    protected $baseRoutePattern = '/seven-manager/boilerplate';
 
     /**
      * @param FormMapper $formMapper

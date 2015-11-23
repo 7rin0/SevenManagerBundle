@@ -300,18 +300,18 @@ trait DefaultAdmin
 
         // Verify if parent exists and attribute document to
         // if not create a new one using this parent
-        if (!empty($this->parentPath)) {
-            $parent = $this->modelManager->find(null, $this->parentPath);
+        if (!empty($this->baseRoutePattern)) {
+            $parent = $this->modelManager->find(null, $this->baseRoutePattern);
 
             // If Parent is null create one
-            if (!$parent && !empty($this->parentPath)) {
+            if (!$parent && !empty($this->baseRoutePattern)) {
                 global $kernel;
                 $dm = $kernel->getContainer()->get('seven_manager.parent_manager');
-                $dm->createRecursivePaths($this->parentPath);
+                $dm->createRecursivePaths($this->baseRoutePattern);
             }
 
             // Find Parent
-            $parent = $this->modelManager->find(null, $this->parentPath);
+            $parent = $this->modelManager->find(null, $this->baseRoutePattern);
             $document->setParentDocument($parent);
 
             // Set Father

@@ -23,7 +23,7 @@ class NodeAdmin extends Admin
         configureFormFields as traitFormFields;
     }
 
-    protected $parentPath = '/seven-manager/node';
+    protected $baseRoutePattern = '/seven-manager/node';
 
     /**
      * @param FormMapper $formMapper

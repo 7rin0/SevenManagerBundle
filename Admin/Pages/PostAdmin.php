@@ -23,7 +23,7 @@ class PostAdmin extends Admin
         configureFormFields as traitFormFields;
     }
 
-    protected $parentPath = '/seven-manager/post';
+    protected $baseRoutePattern = '/seven-manager/post';
 
     /**
      * @param FormMapper $formMapper

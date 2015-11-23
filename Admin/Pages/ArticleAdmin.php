@@ -23,7 +23,7 @@ class ArticleAdmin extends Admin
         configureFormFields as traitFormFields;
     }
 
-    protected $parentPath = '/seven-manager/article';
+    protected $baseRoutePattern = '/seven-manager/article';
 
     /**
      * @param FormMapper $formMapper
