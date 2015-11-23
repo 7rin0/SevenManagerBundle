@@ -1,6 +1,6 @@
 # Homepage
 seven_manager_pages_homepage:
-    path:     /seven-manager/homepage/{name}
+    path:     /{locale}
     defaults: { _controller: SevenManagerBundle:Homepage:index }
 
 # Fixtures
