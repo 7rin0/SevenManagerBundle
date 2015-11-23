@@ -23,9 +23,6 @@ class HomepageController extends Controller implements ContainerAwareInterface
     protected $container;
 
     /**
-     * @Route("{lang}/seven-manager", name="seven_manager_homepage")
-     * @Route("{lang}/seven-manager/")
-     *
      * @param Request $request
      * @param null    $contentDocument
      * @param string  $contentTemplate

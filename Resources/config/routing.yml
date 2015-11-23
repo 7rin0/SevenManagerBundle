@@ -1,7 +1,16 @@
+# Redirect to default language
+root:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /%locale%
+        permanent: true
+
 # Homepage
 seven_manager_pages_homepage:
     path:     /{locale}
-    defaults: { _controller: SevenManagerBundle:Homepage:index }
+    defaults: { _controller: SevenManagerBundle:Homepage:index, locale: "%locale%" }
+    requirements: { locale: en|fr|de }
 
 # Fixtures
 seven_manager_fixtures_homepage:
