@@ -1,1 +1,16 @@
 {% extends "CmfSimpleCmsBundle:Page:index.html.twig" %}
+
+{% block bottom_scripts %}
+    {{ parent() }}
+
+    {% if editAdminUrl is defined %}
+        <div class="create-ui-toolbar-statustoolarea">
+            <ul class="create-ui-statustools">
+                <li id="midgardcreate-save" style="display: none;">
+                    <a href="{{ editAdminUrl }}" class="create-ui-btn">Edit Admin</a>
+                </li>
+                <li id="midgardcreate-edit"><a class="create-ui-btn">Edit <i class="icon-edit"></i></a></li>
+            </ul>
+        </div>
+    {% endif %}
+{% endblock %}
