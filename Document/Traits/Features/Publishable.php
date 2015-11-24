@@ -6,10 +6,15 @@
  * Time: 19:19
  */
 
-namespace SevenManagerBundle\Document\Traits;
+namespace SevenManagerBundle\Document\Traits\Features;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
+/**
+ * Class Publishable
+ *
+ * @package SevenManagerBundle\Document\Traits\Features
+ */
 trait Publishable
 {
     /**

@@ -1,15 +1,15 @@
 <?php
 
-namespace SevenManagerBundle\Document\Traits;
+namespace SevenManagerBundle\Document\Traits\Fields\HTML;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
 /**
- * Class CustomFields
+ * Class Texts
  *
- * @package SevenManagerBundle\Document\Traits
+ * @package SevenManagerBundle\Document\Traits\Fields\HTML
  */
-trait CustomFields
+trait Texts
 {
     /**
      * @PHPCR\String(nullable=true, translated=true)
@@ -24,27 +24,7 @@ trait CustomFields
     /**
      * @PHPCR\String(nullable=true, translated=true)
      */
-    protected $content;
-
-    /**
-     * @PHPCR\String(nullable=true, translated=true)
-     */
-    protected $resume;
-
-    /**
-     * @PHPCR\String(nullable=true, translated=true)
-     */
-    protected $body;
-
-    /**
-     * @PHPCR\String(nullable=true, translated=true)
-     */
     protected $label;
-
-    /**
-     * @PHPCR\String(nullable=true, translated=true)
-     */
-    protected $labelOne;
 
     /**
      * @PHPCR\String(nullable=true, translated=true)
@@ -69,6 +49,21 @@ trait CustomFields
     /**
      * @PHPCR\String(nullable=true, translated=true)
      */
+    protected $resume;
+
+    /**
+     * @PHPCR\String(nullable=true, translated=true)
+     */
+    protected $body;
+
+    /**
+     * @PHPCR\String(nullable=true, translated=true)
+     */
+    protected $content;
+
+    /**
+     * @PHPCR\String(nullable=true, translated=true)
+     */
     protected $rawContent;
 
     /**
@@ -80,39 +75,6 @@ trait CustomFields
      * @PHPCR\String(nullable=true, translated=true)
      */
     protected $contentFormatter;
-
-    /**
-     * @PHPCR\String(nullable=true, translated=true)
-     */
-    protected $position;
-
-    /**
-     * @var
-     */
-    protected $targetContent;
-
-    /**
-     * @var
-     */
-    protected $choiceType;
-
-    /**
-     * @return mixed
-     */
-    public function getPosition()
-    {
-        return $this->position;
-    }
-
-    /**
-     * @param $position
-     *
-     * @return mixed
-     */
-    public function setPosition($position)
-    {
-        return $this->position = $position;
-    }
 
     /**
      * @return mixed
@@ -276,26 +238,6 @@ trait CustomFields
     /**
      * @return mixed
      */
-    public function getLabelOne()
-    {
-        return $this->labelOne;
-    }
-
-    /**
-     * @param $labelOne
-     *
-     * @return $this
-     */
-    public function setLabelOne($labelOne)
-    {
-        $this->labelOne = $labelOne;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getLabelThree()
     {
         return $this->labelThree;
@@ -391,53 +333,5 @@ trait CustomFields
         $this->richText1 = $richText1;
 
         return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTargetContent()
-    {
-        return $this->targetContent;
-    }
-
-    /**
-     * @param $targetContent
-     *
-     * @return mixed
-     */
-    public function setTargetContent($targetContent)
-    {
-        return $this->targetContent = $targetContent;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getChoiceType()
-    {
-        return $this->choiceType;
-    }
-
-    /**
-     * @param $choiceType
-     *
-     * @return $this
-     */
-    public function setChoiceType($choiceType)
-    {
-        $this->choiceType = $choiceType;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function __toString()
-    {
-        $returnString = count($this->getTitle()) === 0 ?
-            $this->getTitle() : $this->getName();
-
-        return (string)$returnString;
     }
 }

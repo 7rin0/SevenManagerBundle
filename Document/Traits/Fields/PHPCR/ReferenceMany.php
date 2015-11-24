@@ -5,69 +5,74 @@
  * Time: 22:16
  */
 
-namespace SevenManagerBundle\Document\Traits;
+namespace SevenManagerBundle\Document\Traits\PHPCR;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
-trait CustomModels
+/**
+ * Class ReferenceMany
+ *
+ * @package SevenManagerBundle\Document\Traits\PHPCR
+ */
+trait ReferenceMany
 {
     /**
-     * @PHPCR\ReferenceOne(targetDocument="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\SimpleBlock", strategy="hard")
+     * @PHPCR\ReferenceMany(targetDocument="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\SimpleBlock", strategy="hard")
      */
     protected $mapSimple;
 
     /**
-     * @PHPCR\ReferenceOne(targetDocument="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock", strategy="hard")
+     * @PHPCR\ReferenceMany(targetDocument="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock", strategy="hard")
      */
     protected $mapContainer;
 
     /**
-     * @PHPCR\ReferenceOne(targetDocument="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ReferenceBlock", strategy="hard")
+     * @PHPCR\ReferenceMany(targetDocument="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ReferenceBlock", strategy="hard")
      */
     protected $mapReference;
 
     /**
-     * @PHPCR\ReferenceOne(targetDocument="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ActionBlock", strategy="hard")
+     * @PHPCR\ReferenceMany(targetDocument="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ActionBlock", strategy="hard")
      */
     protected $mapAction;
 
     /**
-     * @PHPCR\ReferenceOne(targetDocument="SevenManagerBundle\Document\Containers\Slideshow", strategy="hard")
+     * @PHPCR\ReferenceMany(targetDocument="SevenManagerBundle\Document\Containers\Slideshow", strategy="hard")
      */
     protected $mapSlideshow;
 
     /**
-     * @PHPCR\ReferenceOne(targetDocument="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ImagineBlock", strategy="hard")
+     * @PHPCR\ReferenceMany(targetDocument="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ImagineBlock", strategy="hard")
      */
     protected $mapImage;
 
     /**
-     * @PHPCR\ReferenceOne(targetDocument="SevenManagerBundle\Document\Pages\Node", strategy="hard")
+     * @PHPCR\ReferenceMany(targetDocument="SevenManagerBundle\Document\Pages\Node", strategy="hard")
      */
     protected $mapNode;
 
     /**
-     * @PHPCR\ReferenceOne(targetDocument="SevenManagerBundle\Document\Pages\Page", strategy="hard")
+     * @PHPCR\ReferenceMany(targetDocument="SevenManagerBundle\Document\Pages\Page", strategy="hard")
      */
     protected $mapPage;
 
     /**
-     * @PHPCR\ReferenceOne(targetDocument="SevenManagerBundle\Document\Pages\Post", strategy="hard")
+     * @PHPCR\ReferenceMany(targetDocument="SevenManagerBundle\Document\Pages\Post", strategy="hard")
      */
     protected $mapPost;
 
     /**
-     * @PHPCR\ReferenceOne(targetDocument="SevenManagerBundle\Document\Pages\Article", strategy="hard")
+     * @PHPCR\ReferenceMany(targetDocument="SevenManagerBundle\Document\Pages\Article", strategy="hard")
      */
     protected $mapArticle;
 
     /**
-     * @PHPCR\ReferenceOne(targetDocument="SevenManagerBundle\Document\Pages\Gallery", strategy="hard")
+     * @PHPCR\ReferenceMany(targetDocument="SevenManagerBundle\Document\Pages\Gallery", strategy="hard")
      */
     protected $mapGallery;
 
     /**
-     * @PHPCR\ReferenceOne(targetDocument="SevenManagerBundle\Document\Pages\Form", strategy="hard")
+     * @PHPCR\ReferenceMany(targetDocument="SevenManagerBundle\Document\Pages\Form", strategy="hard")
      */
     protected $mapForm;
 
@@ -87,7 +92,6 @@ trait CustomModels
     public function setMapNode($mapNode)
     {
         $this->mapNode = $mapNode;
-
         return $this;
     }
 
@@ -107,7 +111,6 @@ trait CustomModels
     public function setMapPage($mapPage)
     {
         $this->mapPage = $mapPage;
-
         return $this;
     }
 
@@ -127,7 +130,6 @@ trait CustomModels
     public function setMapPost($mapPost)
     {
         $this->mapPost = $mapPost;
-
         return $this;
     }
 
@@ -147,7 +149,6 @@ trait CustomModels
     public function setMapArticle($mapArticle)
     {
         $this->mapArticle = $mapArticle;
-
         return $this;
     }
 
@@ -167,7 +168,6 @@ trait CustomModels
     public function setMapGallery($mapGallery)
     {
         $this->mapGallery = $mapGallery;
-
         return $this;
     }
 
@@ -187,7 +187,6 @@ trait CustomModels
     public function setMapForm($mapForm)
     {
         $this->mapForm = $mapForm;
-
         return $this;
     }
 
@@ -207,7 +206,6 @@ trait CustomModels
     public function setMapImage($mapImage)
     {
         $this->mapImage = $mapImage;
-
         return $this;
     }
 
@@ -227,7 +225,6 @@ trait CustomModels
     public function setMapSimple($mapSimple)
     {
         $this->mapSimple = $mapSimple;
-
         return $this;
     }
 
@@ -247,7 +244,6 @@ trait CustomModels
     public function setMapContainer($mapContainer)
     {
         $this->mapContainer = $mapContainer;
-
         return $this;
     }
 
@@ -267,7 +263,6 @@ trait CustomModels
     public function setMapReference($mapReference)
     {
         $this->mapReference = $mapReference;
-
         return $this;
     }
 
@@ -287,7 +282,6 @@ trait CustomModels
     public function setMapAction($mapAction)
     {
         $this->mapAction = $mapAction;
-
         return $this;
     }
 
@@ -307,7 +301,6 @@ trait CustomModels
     public function setMapSlideshow($mapSlideshow)
     {
         $this->mapSlideshow = $mapSlideshow;
-
         return $this;
     }
 }

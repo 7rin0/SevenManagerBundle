@@ -1,6 +1,6 @@
 <?php
 
-namespace SevenManagerBundle\Document\Traits;
+namespace SevenManagerBundle\Document\Traits\Features;
 
 use Symfony\Cmf\Bundle\SeoBundle\Doctrine\Phpcr\SeoMetadata;
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
@@ -8,7 +8,7 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 /**
  * Class Seo
  *
- * @package SevenManagerBundle\Document\Traits
+ * @package SevenManagerBundle\Document\Traits\Features
  */
 trait Seo
 {

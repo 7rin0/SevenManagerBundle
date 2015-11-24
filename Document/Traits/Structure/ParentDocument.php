@@ -5,21 +5,23 @@
  * Time: 10:33
  */
 
-namespace SevenManagerBundle\Document\Traits;
+namespace SevenManagerBundle\Document\Traits\Structure;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
-use Doctrine\ORM\Mapping\GeneratedValue;
+use SevenManagerBundle\Document\Traits\Fields\HTML\Choices;
+use SevenManagerBundle\Document\Traits\Fields\HTML\Images;
+use SevenManagerBundle\Document\Traits\Fields\HTML\Links;
+use SevenManagerBundle\Document\Traits\Fields\HTML\Texts;
+use SevenManagerBundle\Document\Traits\PHPCR\Locale;
 
 /**
- * Class ParentProperties
+ * Class ParentDocument
  *
- * @package SevenManagerBundle\Document\Traits
+ * @package SevenManagerBundle\Document\Traits\Structure
  */
-trait ParentProperties
+trait ParentDocument
 {
-    use CustomFields;
-    use CustomImage;
-    use CustomLocale;
+    use Texts, Choices, Images, Links, Locale;
 
     /**
      * @PHPCR\Uuid
@@ -43,7 +45,6 @@ trait ParentProperties
 
     /**
      * @PHPCR\Id()
-     * @GeneratedValue()
      */
     protected $id;
 
@@ -53,7 +54,7 @@ trait ParentProperties
     protected $parentDocument;
 
     /**
-     * @PHPCR\ReferenceOne()
+     * @PHPCR\ReferenceMany()
      */
     protected $routeChild;
 
@@ -166,8 +167,6 @@ trait ParentProperties
      */
     public function __toString()
     {
-        $returnString = $this->getTitle() ? $this->getTitle() : $this->getName();
-
-        return (string)$returnString;
+        return (string)$this->getTitle() ? (string)$this->getTitle() : (string)$this->getName();
     }
 }

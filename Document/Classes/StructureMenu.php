@@ -8,8 +8,8 @@
 
 namespace SevenManagerBundle\Document\Classes;
 
-use SevenManagerBundle\Document\Traits\Publishable;
-use SevenManagerBundle\Document\Traits\Seo;
+use SevenManagerBundle\Document\Traits\Features\Publishable;
+use SevenManagerBundle\Document\Traits\Features\Seo;
 use Symfony\Cmf\Bundle\SeoBundle\SeoAwareInterface;
 use Symfony\Cmf\Bundle\CoreBundle\PublishWorkflow\PublishableInterface;
 use Symfony\Cmf\Bundle\CoreBundle\PublishWorkflow\PublishTimePeriodInterface;

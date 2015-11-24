@@ -6,20 +6,24 @@
  * Time: 02:22
  */
 
-namespace SevenManagerBundle\Document\Traits;
+namespace SevenManagerBundle\Document\Traits\PHPCR;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
-trait CustomLocale
+/**
+ * Class Locale
+ *
+ * @package SevenManagerBundle\Document\Traits\PHPCR
+ */
+trait Locale
 {
     /**
-     * @var string
      * @PHPCR\Locale()
      */
     protected $locale;
 
     /**
-     * {@inheritDoc}
+     * @return string
      */
     public function getLocale()
     {
@@ -27,7 +31,9 @@ trait CustomLocale
     }
 
     /**
-     * {@inheritDoc}
+     * @param $locale
+     *
+     * @return $this
      */
     public function setLocale($locale)
     {

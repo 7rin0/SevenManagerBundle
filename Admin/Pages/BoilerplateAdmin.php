@@ -154,9 +154,9 @@ class BoilerplateAdmin extends Admin
                                 'mapMany'
                             ),
                         ),
-                        'data' => 'choiceOne',
-                        'empty_value' => 'Choose an option',
-                        'required' => false
+                        //'data' => 'choiceOne',
+                        //'empty_value' => 'Choose an option',
+                        'required' => true
                     ))
                 ->end()
                 ->with('Reference content', array(
@@ -165,8 +165,26 @@ class BoilerplateAdmin extends Admin
                     'description' => 'Relate an existing content',
                 ))
                     ->add('mapNode', 'sonata_type_model', array('label' => 'Related Node', 'required' => false, 'multiple' => false, 'by_reference' => false), array('sortable' => true))
-                    ->add('mapPage', 'sonata_type_model', array('label' => 'Related Page', 'required' => false, 'multiple' => false))
-                    ->add('mapPost', 'sonata_type_model', array('label' => 'Related Post', 'required' => false, 'multiple' => false))
+                    ->add(
+                        'mapPage',
+                        'sonata_type_model',
+                        array(
+                            'label' => 'Related Page',
+                            'model_manager' => $this->modelManager,
+                            'required' => false,
+                            'multiple' => false
+                        )
+                    )
+                    ->add(
+                        'mapPost',
+                        'sonata_type_model',
+                        array(
+                            'label' => 'Related Post',
+                            'model_manager' => $this->modelManager,
+                            'required' => false,
+                            'multiple' => true
+                        )
+                    )
                     ->add('mapArticle', 'sonata_type_model', array('label' => 'Related Article', 'required' => false, 'multiple' => false))
                     ->add('mapGallery', 'sonata_type_model', array('label' => 'Related Gallery', 'required' => false, 'multiple' => false))
                     ->add('mapForm', 'sonata_type_model', array('label' => 'Related Form', 'required' => false, 'multiple' => false))

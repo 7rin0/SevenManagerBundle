@@ -8,11 +8,11 @@ use Doctrine\ODM\PHPCR\ChildrenCollection;
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
 /**
- * Class CustomChildren
+ * Class Children
  *
  * @package SevenManagerBundle\Document\Traits
  */
-trait CustomChildren
+trait Children
 {
     /**
      * @PHPCR\Children(cascade="all")
