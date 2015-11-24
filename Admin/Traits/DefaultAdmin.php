@@ -250,7 +250,7 @@ trait DefaultAdmin
      */
     public function preUpdate($document)
     {
-        // Vars
+        // Set route
         if (method_exists($document, 'getRouteChild')) {
             $routeChildId = $document->getRouteChild()->getId();
 
@@ -263,7 +263,7 @@ trait DefaultAdmin
             }
         }
 
-        // Set Child Names/Parents
+        // Prepare Children
         if (method_exists($document, 'getChildren')) {
             foreach ($document->getChildren() as $child) {
                 if (!$this->modelManager->getNormalizedIdentifier($child)) {
@@ -291,12 +291,22 @@ trait DefaultAdmin
      */
     public function prePersist($document)
     {
+        // Set prefix Name
+        $fatherPrefix = !empty($this->classnameLabel) ? strtolower($this->classnameLabel) : 'undefined_father';
+
+        // Default Parent path/tree
+        $parentPath = method_exists($document->getParentDocument(), 'getId') ?
+            $document->getParentDocument()->getId() : $this->baseRoutePattern;
+        $parentPath = empty($parentPath) || $parentPath == '/' ? $this->baseRoutePattern : $parentPath;
+
+        //  Create document Name if not defined
+        if (!$document->getName()) {
+            $document->setName($this->generateName($fatherPrefix, '_father_'));
+        }
+
         // Vars
         if (method_exists($document, 'getRouteChild')) {
             $routeChildId = $document->getRouteChild()->getId();
-
-            // Set prefix Name
-            $fatherPrefix = !empty($this->classnameLabel) ? strtolower($this->classnameLabel) : 'undefined_father';
 
             // If routeChild empty or not valid skip validation
             if ($routeChildId === $this->routesRootPath || empty($routeChildId)) {
@@ -304,25 +314,18 @@ trait DefaultAdmin
             }
         }
 
-        //  Create Parent Name if not defined
-        if (!$document->getName()) {
-            $document->setName($this->generateName($fatherPrefix, '_father_'));
-        }
-
-        // Verify if parent exists and attribute document to
-        // if not create a new one using this parent
-        if (!empty($this->baseRoutePattern)) {
-            $parent = $this->modelManager->find(null, $this->baseRoutePattern);
+        // Find parent and create new one if null
+        if (!empty($parentPath)) {
 
             // If Parent is null create one
-            if (!$parent && !empty($this->baseRoutePattern)) {
+            if (!$this->modelManager->find(null, $parentPath)) {
                 global $kernel;
                 $dm = $kernel->getContainer()->get('seven_manager.parent_manager');
-                $dm->createRecursivePaths($this->baseRoutePattern);
+                $dm->createRecursivePaths($parentPath);
             }
 
-            // Find Parent
-            $parent = $this->modelManager->find(null, $this->baseRoutePattern);
+            // Find parentPath and set parentDocument Parent
+            $parent = $this->modelManager->find(null, $parentPath);
             $document->setParentDocument($parent);
 
             // Set Father
