@@ -7,8 +7,6 @@
 
 namespace SevenManagerBundle\Admin\Traits;
 
-use SevenManagerBundle\Admin\Menu\MenuAdmin;
-use SevenManagerBundle\Document\Menu\Menu;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -101,7 +99,7 @@ trait DefaultAdmin
             ->addIdentifier('title', 'text')
             ->add(
                 'parentDocument.parentDocument',
-                'text',
+                null,
                 array(
                     'label' => 'Parent',
                     'sortable' => false,
