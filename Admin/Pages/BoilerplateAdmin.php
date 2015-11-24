@@ -158,6 +158,7 @@ class BoilerplateAdmin extends Admin
                                 'mapMany'
                             ),
                         ),
+                        'data' => 'choiceOne',
                         'empty_value' => 'Choose an option',
                         'required' => false
                     ))
