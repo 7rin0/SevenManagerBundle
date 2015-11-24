@@ -133,12 +133,8 @@ class BoilerplateAdmin extends Admin
                     )
                 ->end()
             ->end()
-            ->tab('Pages')
-                ->with('Reference content', array(
-                    'class'       => 'col-md-12',
-                    'box_class'   => 'box box-solid box-danger',
-                    'description' => 'Relate an existing content',
-                ))
+            ->tab('References')
+                ->with('Reference Type')
                     ->add('choiceType', 'choice_field_mask', array(
                         'choices' => array(
                             'choiceOne' => 'choiceOne',
@@ -158,9 +154,16 @@ class BoilerplateAdmin extends Admin
                                 'mapMany'
                             ),
                         ),
+                        'data' => 'choiceOne',
                         'empty_value' => 'Choose an option',
                         'required' => false
                     ))
+                ->end()
+                ->with('Reference content', array(
+                    'class'       => 'col-md-12',
+                    'box_class'   => 'box box-solid box-danger',
+                    'description' => 'Relate an existing content',
+                ))
                     ->add('mapNode', 'sonata_type_model', array('label' => 'Related Node', 'required' => false, 'multiple' => false, 'by_reference' => false), array('sortable' => true))
                     ->add('mapPage', 'sonata_type_model', array('label' => 'Related Page', 'required' => false, 'multiple' => false))
                     ->add('mapPost', 'sonata_type_model', array('label' => 'Related Post', 'required' => false, 'multiple' => false))
