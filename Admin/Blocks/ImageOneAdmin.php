@@ -31,10 +31,6 @@ class ImageOneAdmin extends Admin
     {
         $this->traitFormFields($formMapper);
 
-        if ($parentAdmin = $this->getParentFieldDescription() != null) {
-            $parentAdmin = $this->getClassName($this->getParentFieldDescription()->getAdmin());
-        }
-
         $formMapper
             ->tab('Content')
                 ->with('Content')
@@ -44,12 +40,6 @@ class ImageOneAdmin extends Admin
                     ->remove('body')
                 ->end()
             ->end();
-
-        if ($parentAdmin === 'HomepageAdmin') {
-            $formMapper
-                ->remove('subtitle')
-                ->remove('label');
-        }
 
     }
 

@@ -24,8 +24,6 @@ class LinkOne extends AbstractBlock
 {
     use CustomFields;
     use CustomChildren;
-    protected $isPublishable = false;
-    protected $publishable = false;
 
     /**
      * @PHPCR\Locale()

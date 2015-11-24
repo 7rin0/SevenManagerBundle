@@ -84,11 +84,7 @@ trait DefaultMenuAdmin
         $showMapper
             ->add('id')
             ->add('title')
-            ->add('name')
-            ->add('subtitle')
-            ->add('content')
-            ->add('parentDocument')
-            ->add('isPublishable', 'boolean', array('label' => 'Published'));
+            ->add('name');
 
     }
 
@@ -99,14 +95,6 @@ trait DefaultMenuAdmin
     {
         $listMapper
             ->addIdentifier('title', 'text')
-            ->add(
-                'parentDocument.parentDocument',
-                'text',
-                array(
-                    'label' => 'Parent',
-                    'sortable' => false,
-                )
-            )
             ->add('name', 'text', array(
                 'header_style' => 'width: 10%; text-align: center',
                 'header_class' => 'center',
@@ -118,8 +106,7 @@ trait DefaultMenuAdmin
                     'edit'   => array(),
                     'delete' => array(),
                 )
-            ))
-            ->add('isPublishable', 'boolean', array('label' => 'Published'));
+            ));
     }
 
     /**
@@ -138,12 +125,6 @@ trait DefaultMenuAdmin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        // Verify if document is not child
-        $isParent = $this->getParentFieldDescription() === null;
-        $hasRouteChild = method_exists($this->getClass(), 'getRouteChild');
-        $adminClassname = $this->getClassName();
-        $notMenuAdmin = $adminClassname != 'MenuAdmin';
-
         // Configuration, Content and Helpers properties
         $formMapper
             ->tab('Content')
@@ -313,7 +294,7 @@ trait DefaultMenuAdmin
     public function getExportFormats()
     {
         return array(
-            'json', 'xml', 'csv', 'xls',
+            //'json', 'xml', 'csv', 'xls',
         );
     }
 

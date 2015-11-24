@@ -29,7 +29,6 @@ class ImageOne extends AbstractBlock implements TranslatableInterface
      */
     protected $locale;
 
-
     /**
      * @PHPCR\Children(cascade="all")
      */
