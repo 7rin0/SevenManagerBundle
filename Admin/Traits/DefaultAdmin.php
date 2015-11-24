@@ -25,7 +25,7 @@ trait DefaultAdmin
 
     // TODO: Receive this data by parameters
     protected $documentRootPath = '/';
-    protected $routesRootPath = '/cms/routes';
+    protected $routesRootPath = '/';
 
     /**
      * @param $documentRootPath
