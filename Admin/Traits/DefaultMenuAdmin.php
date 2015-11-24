@@ -17,11 +17,11 @@ use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class DefaultAdmin
+ * Class DefaultMenuAdmin
  *
  * @package SevenManagerBundle\Admin\Traits
  */
-trait DefaultAdmin
+trait DefaultMenuAdmin
 {
     use CkeditorOptions;
 
@@ -130,7 +130,6 @@ trait DefaultAdmin
         $datagridMapper
             ->add('title', 'doctrine_phpcr_string')
             ->add('subtitle', 'doctrine_phpcr_string')
-            ->add('content', 'doctrine_phpcr_string')
             ->add('name', 'doctrine_phpcr_nodename');
     }
 
@@ -145,106 +144,28 @@ trait DefaultAdmin
         $adminClassname = $this->getClassName();
         $notMenuAdmin = $adminClassname != 'MenuAdmin';
 
-        if ($isParent && $hasRouteChild && $notMenuAdmin) {
-            $formMapper
-                ->tab('Configuration')
-                    ->with(
-                        'Add to Menu',
-                        array(
-                            'collapsed' => true,
-                            'class'       => 'col-md-4',
-                            'box_class'   => 'box box-solid box-danger',
-                            'description' => 'Add to Menu',
-                        )
-                    )
-                    // Add fields
-                    ->end()
-                    ->with(
-                        'Document Father',
-                        array(
-                            'collapsed' => true,
-                            'class'       => 'col-md-4',
-                            'box_class'   => 'box box-solid box-danger',
-                            'description' => 'Parent/Name',
-                        )
-                    )
-                        ->add(
-                            'parentDocument',
-                            'doctrine_phpcr_odm_tree',
-                            array(
-                                'root_node' => $this->documentRootPath,
-                                'choice_list' => array(),
-                                'select_root_node' => true,
-                                'required' => false
-                            )
-                        )
-                        ->add('name', 'text', array('required' => false))
-                    ->end()
-                    ->with(
-                        'Route Father',
-                        array(
-                            'collapsed' => true,
-                            'class'       => 'col-md-4',
-                            'box_class'   => 'box box-solid box-danger',
-                            'description' => 'Route/URL',
-                        )
-                    )
-                    ->add(
-                        'routeChild',
-                        'doctrine_phpcr_odm_tree',
-                        array(
-                            'root_node' => $this->routesRootPath,
-                            'choice_list' => array(),
-                            'select_root_node' => true,
-                            'label'  => 'Select Route',
-                            'required' => false
-                        )
-                    )
-                    ->end()
-                ->end();
-        } elseif ($isParent && $notMenuAdmin) {
-            $formMapper
-                ->tab('Configuration')
-                    ->with(
-                        'Document Father',
-                        array(
-                            'collapsed' => true,
-                            'class'       => 'col-md-4',
-                            'box_class'   => 'box box-solid box-danger',
-                            'description' => 'Parent/Name',
-                        )
-                    )
-                        ->add(
-                            'parentDocument',
-                            'doctrine_phpcr_odm_tree',
-                            array(
-                                'root_node' => $this->documentRootPath,
-                                'choice_list' => array(),
-                                'select_root_node' => true,
-                                'required' => false
-                            )
-                        )
-                        ->add('name', 'text', array('required' => false))
-                    ->end()
-                ->end();
-        }
-
         // Configuration, Content and Helpers properties
         $formMapper
             ->tab('Content')
                 ->with('Content')
                     ->add('title', 'text', array('required' => true))
                     ->add('subtitle', 'text', array('required' => false))
-                    ->add('resume', 'text', array('required' => false))
-                    ->add('body', 'ckeditor', $this->getCkeditorOptions())
                 ->end()
-            ->end()
-            ->setHelps(array(
-                'title'    => 'seven_manager.admin.fields.title.helper',
-                'subtitle' => 'seven_manager.admin.fields.subtitle.helper',
-                'name'     => 'seven_manager.admin.fields.name.helper',
-                'content'  => 'seven_manager.admin.fields.content.helper',
-            ));
+                ->with('Tree')
+                    ->add(
+                        'children',
+                        'sonata_type_collection',
+                        array(),
+                        array(
+                            'label' => 'Menu Items',
+                            'edit' => 'inline',
+                            'inline' => 'table',
+                            'admin_code' => 'seven_manager.admin.blocks.linkone',
+                            'sortable'  => 'position',
+                        )
+                    )
+                ->end()
+            ->end();
     }
 
     /**
@@ -254,7 +175,8 @@ trait DefaultAdmin
     {
         // Vars
         if (method_exists($document, 'getRouteChild')) {
-            $routeChildId = $document->getRouteChild()->getId();
+            $routeChildId = method_exists($document->getRouteChild(), 'getId');
+            $routeChildId = $routeChildId ? $document->getRouteChild()->getId() : null;
 
             // Set prefix Name
             $fatherPrefix = !empty($this->classnameLabel) ? strtolower($this->classnameLabel) : 'undefined_father';
@@ -295,7 +217,8 @@ trait DefaultAdmin
     {
         // Vars
         if (method_exists($document, 'getRouteChild')) {
-            $routeChildId = $document->getRouteChild()->getId();
+            $routeChildId = method_exists($document->getRouteChild(), 'getId');
+            $routeChildId = $routeChildId ? $document->getRouteChild()->getId() : null;
 
             // Set prefix Name
             $fatherPrefix = !empty($this->classnameLabel) ? strtolower($this->classnameLabel) : 'undefined_father';
