@@ -9,7 +9,6 @@ namespace SevenManagerBundle\Document\Traits;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 use Doctrine\ORM\Mapping\GeneratedValue;
-use Gedmo\Mapping\Annotation\SortablePosition;
 
 /**
  * Class ParentProperties
@@ -50,7 +49,6 @@ trait ParentProperties
 
     /**
      * @PHPCR\ParentDocument()
-     * @SortablePosition()
      */
     protected $parentDocument;
 
