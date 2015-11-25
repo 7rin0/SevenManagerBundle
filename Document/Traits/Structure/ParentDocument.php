@@ -54,7 +54,7 @@ trait ParentDocument
     protected $parentDocument;
 
     /**
-     * @PHPCR\ReferenceMany()
+     * @PHPCR\ReferenceOne()
      */
     protected $routeChild;
 

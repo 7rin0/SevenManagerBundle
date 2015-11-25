@@ -43,12 +43,16 @@ class BoilerplateAdmin extends Admin
                     'box_class'   => 'box box-solid box-danger',
                     'description' => 'Optional Content',
                 ))
-                ->add('image', 'cmf_media_image', array('required' => false))
+                ->add(
+                    'image',
+                    'cmf_media_image',
+                    array('required' => false)
+                )
                 ->end()
             ->end()
             ->tab('Principal labels')
                 ->with('Optional', array())
-                 ->add('labelOne', 'text', array('required' => false))
+                 ->add('label', 'text', array('required' => false))
                  ->add('labelTwo', 'text', array('required' => false))
                  ->add('labelThree', 'text', array('required' => false))
                 ->end()
@@ -135,7 +139,7 @@ class BoilerplateAdmin extends Admin
             ->end()
             ->tab('References')
                 ->with('Reference Type')
-                    ->add('choiceType', 'choice_field_mask', array(
+                    ->add('choice', 'choice_field_mask', array(
                         'choices' => array(
                             'choiceOne' => 'choiceOne',
                             'choiceTwo' => 'choiceTwo',

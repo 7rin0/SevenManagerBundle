@@ -15,7 +15,7 @@ trait Seo
     /**
      * @var SeoMetadata
      *
-     * @PHPCR\ReferenceMany()
+     * @PHPCR\Child()
      */
     protected $seoMetadata;
 

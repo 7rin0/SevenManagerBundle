@@ -69,7 +69,7 @@ class HomepageAdmin extends Admin
             ->end()
             ->tab('Labels')
                 ->with('Optional', array())
-                 ->add('labelOne', 'text', array('required' => false))
+                 ->add('label', 'text', array('required' => false))
                  ->add('labelTwo', 'text', array('required' => false))
                  ->add('labelThree', 'text', array('required' => false))
                 ->end()

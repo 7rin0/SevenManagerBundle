@@ -195,7 +195,8 @@ trait DefaultAdmin
                             'choice_list' => array(),
                             'select_root_node' => true,
                             'label'  => 'Select Route',
-                            'required' => false
+                            'required' => false,
+                            'model_manager' => $this->modelManager
                         )
                     )
                     ->end()
@@ -316,7 +317,6 @@ trait DefaultAdmin
 
         // Find parent and create new one if null
         if (!empty($parentPath)) {
-
             // If Parent is null create one
             if (!$this->modelManager->find(null, $parentPath)) {
                 global $kernel;

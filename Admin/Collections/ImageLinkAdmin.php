@@ -49,7 +49,7 @@ class ImageLinkAdmin extends Admin
                             'required' => false
                         )
                     )
-                    ->add('choiceType', 'choice_field_mask', array(
+                    ->add('choice', 'choice_field_mask', array(
                             'choices' => array(
                                 'external' => 'External',
                                 'internal' => 'Internal'
