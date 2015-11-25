@@ -12,7 +12,7 @@ use SevenManagerBundle\Document\Traits\Fields\HTML\Choices;
 use SevenManagerBundle\Document\Traits\Fields\HTML\Images;
 use SevenManagerBundle\Document\Traits\Fields\HTML\Links;
 use SevenManagerBundle\Document\Traits\Fields\HTML\Texts;
-use SevenManagerBundle\Document\Traits\PHPCR\Locale;
+use SevenManagerBundle\Document\Traits\Fields\PHPCR\Locale;
 
 /**
  * Class ParentDocument
