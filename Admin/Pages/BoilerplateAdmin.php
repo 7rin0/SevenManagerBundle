@@ -108,7 +108,7 @@ class BoilerplateAdmin extends Admin
             ->tab('Child')
                 ->with('Child')
                     ->add(
-                        'blockChild',
+                        'child',
                         'sonata_type_admin',
                         array(
                             'required'     => false,
@@ -176,7 +176,7 @@ class BoilerplateAdmin extends Admin
                             'label' => 'Related Page',
                             'model_manager' => $this->modelManager,
                             'required' => false,
-                            'multiple' => false
+                            'multiple' => true
                         )
                     )
                     ->add(

@@ -17,37 +17,37 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 trait ReferenceMany
 {
     /**
-     * @PHPCR\ReferenceMany(targetDocument="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\SimpleBlock", strategy="hard")
+     * @PHPCR\ReferenceOne(targetDocument="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\SimpleBlock", strategy="hard")
      */
     protected $mapSimple;
 
     /**
-     * @PHPCR\ReferenceMany(targetDocument="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock", strategy="hard")
+     * @PHPCR\ReferenceOne(targetDocument="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock", strategy="hard")
      */
     protected $mapContainer;
 
     /**
-     * @PHPCR\ReferenceMany(targetDocument="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ReferenceBlock", strategy="hard")
+     * @PHPCR\ReferenceOne(targetDocument="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ReferenceBlock", strategy="hard")
      */
     protected $mapReference;
 
     /**
-     * @PHPCR\ReferenceMany(targetDocument="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ActionBlock", strategy="hard")
+     * @PHPCR\ReferenceOne(targetDocument="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ActionBlock", strategy="hard")
      */
     protected $mapAction;
 
     /**
-     * @PHPCR\ReferenceMany(targetDocument="SevenManagerBundle\Document\Containers\Slideshow", strategy="hard")
+     * @PHPCR\ReferenceOne(targetDocument="SevenManagerBundle\Document\Containers\Slideshow", strategy="hard")
      */
     protected $mapSlideshow;
 
     /**
-     * @PHPCR\ReferenceMany(targetDocument="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ImagineBlock", strategy="hard")
+     * @PHPCR\ReferenceOne(targetDocument="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ImagineBlock", strategy="hard")
      */
     protected $mapImage;
 
     /**
-     * @PHPCR\ReferenceMany(targetDocument="SevenManagerBundle\Document\Pages\Node", strategy="hard")
+     * @PHPCR\ReferenceOne(targetDocument="SevenManagerBundle\Document\Pages\Node", strategy="hard")
      */
     protected $mapNode;
 
@@ -62,17 +62,17 @@ trait ReferenceMany
     protected $mapPost;
 
     /**
-     * @PHPCR\ReferenceMany(targetDocument="SevenManagerBundle\Document\Pages\Article", strategy="hard")
+     * @PHPCR\ReferenceOne(targetDocument="SevenManagerBundle\Document\Pages\Article", strategy="hard")
      */
     protected $mapArticle;
 
     /**
-     * @PHPCR\ReferenceMany(targetDocument="SevenManagerBundle\Document\Pages\Gallery", strategy="hard")
+     * @PHPCR\ReferenceOne(targetDocument="SevenManagerBundle\Document\Pages\Gallery", strategy="hard")
      */
     protected $mapGallery;
 
     /**
-     * @PHPCR\ReferenceMany(targetDocument="SevenManagerBundle\Document\Pages\Form", strategy="hard")
+     * @PHPCR\ReferenceOne(targetDocument="SevenManagerBundle\Document\Pages\Form", strategy="hard")
      */
     protected $mapForm;
 
