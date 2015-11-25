@@ -81,7 +81,9 @@ class HomepageAdmin extends Admin
                         'sonata_type_model',
                         array(
                             'label' => 'Use/Create a slideshow',
+                            'model_manager' => $this->modelManager,
                             'required' => false,
+                            'multiple' => false,
                         )
                     )
                 ->end()

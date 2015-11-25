@@ -8,7 +8,6 @@
 namespace SevenManagerBundle\Document\Pages;
 
 use SevenManagerBundle\Document\Classes\StructurePages;
-use SevenManagerBundle\Document\Traits\Fields\PHPCR\Children;
 use SevenManagerBundle\Document\Traits\Fields\PHPCR\ReferenceMany;
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
@@ -17,5 +16,5 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
  */
 class Homepage extends StructurePages
 {
-    use ReferenceMany, Children;
+    use ReferenceMany;
 }

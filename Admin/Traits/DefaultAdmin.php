@@ -196,7 +196,6 @@ trait DefaultAdmin
                             'select_root_node' => true,
                             'label'  => 'Select Route',
                             'required' => false,
-                            'model_manager' => $this->modelManager
                         )
                     )
                     ->end()
