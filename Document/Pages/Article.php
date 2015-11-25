@@ -7,8 +7,8 @@
 
 namespace SevenManagerBundle\Document\Pages;
 
-use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 use SevenManagerBundle\Document\Classes\StructurePages;
+use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
 /**
  * @PHPCR\Document(versionable="full", referenceable=true, translator="attribute")

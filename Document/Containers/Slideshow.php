@@ -8,7 +8,7 @@
 namespace SevenManagerBundle\Document\Containers;
 
 use SevenManagerBundle\Document\Classes\StructureParent;
-use SevenManagerBundle\Document\Traits\CustomChildren;
+use SevenManagerBundle\Document\Traits\Fields\PHPCR\Children;
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
 /**
@@ -19,7 +19,7 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
  */
 class Slideshow extends StructureParent
 {
-    use CustomChildren;
+    use Children;
 
     /**
      * @return string

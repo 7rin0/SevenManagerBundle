@@ -11,7 +11,6 @@ namespace SevenManagerBundle\Document\Classes;
 use SevenManagerBundle\Document\Traits\Fields\PHPCR\Child;
 use SevenManagerBundle\Document\Traits\Structure\ParentDocument;
 use Symfony\Cmf\Component\Routing\RouteReferrersReadInterface;
-use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
 /**

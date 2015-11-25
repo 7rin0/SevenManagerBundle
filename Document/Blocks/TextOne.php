@@ -1,17 +1,16 @@
 <?php
 /**
- * Created by PhpStorm.
  * User: lseverino
- * Date: 01/11/15
- * Time: 23:07
+ * Date: 20/10/15
+ * Time: 14:02
  */
 
 namespace SevenManagerBundle\Document\Blocks;
 
-use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
-use SevenManagerBundle\Document\Traits\CustomFields;
+use SevenManagerBundle\Document\Traits\Fields\HTML\Texts;
 use Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\AbstractBlock;
 use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
+use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
 /**
  * Class TextOne
@@ -21,9 +20,8 @@ use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
  */
 class TextOne extends AbstractBlock implements TranslatableInterface
 {
-    use CustomFields;
+    use Texts;
 
-    protected $parentAssociationMapping = 'post';
     /**
      * @PHPCR\Locale()
      */
@@ -35,9 +33,5 @@ class TextOne extends AbstractBlock implements TranslatableInterface
     public function getType()
     {
         return 'restructure.block.text.one';
-    }
-    public function getParentAssociationMapping()
-    {
-        return 'post';
     }
 }

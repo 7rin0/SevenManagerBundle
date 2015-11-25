@@ -7,12 +7,12 @@
 
 namespace SevenManagerBundle\Document\Blocks;
 
-use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
-use SevenManagerBundle\Document\Traits\CustomChildren;
-use SevenManagerBundle\Document\Traits\CustomFields;
-use SevenManagerBundle\Document\Traits\CustomImage;
+use SevenManagerBundle\Document\Traits\Fields\HTML\Images;
+use SevenManagerBundle\Document\Traits\Fields\HTML\Texts;
+use SevenManagerBundle\Document\Traits\Fields\PHPCR\Children;
 use Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\AbstractBlock;
 use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
+use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
 /**
  * Class LinkOne
@@ -20,10 +20,9 @@ use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
  *
  * @package SevenManagerBundle\Document\Blocks
  */
-class LinkOne extends AbstractBlock
+class LinkOne extends AbstractBlock implements TranslatableInterface
 {
-    use CustomFields;
-    use CustomChildren;
+    use Texts, Images, Children;
 
     /**
      * @PHPCR\Locale()

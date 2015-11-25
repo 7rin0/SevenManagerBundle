@@ -7,14 +7,14 @@
 
 namespace SevenManagerBundle\Document\Menu;
 
-use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 use SevenManagerBundle\Document\Classes\StructureMenu;
-use SevenManagerBundle\Document\Traits\CustomChildren;
+use SevenManagerBundle\Document\Traits\Fields\PHPCR\Children;
+use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
 /**
  * @PHPCR\Document(versionable="full", referenceable=true, translator="attribute")
  */
 class Menu extends StructureMenu
 {
-    use CustomChildren;
+    use Children;
 }
