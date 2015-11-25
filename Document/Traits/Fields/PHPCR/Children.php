@@ -1,6 +1,6 @@
 <?php
 
-namespace SevenManagerBundle\Document\Traits;
+namespace SevenManagerBundle\Document\Traits\Fields\PHPCR;
 
 use Sonata\BlockBundle\Model\BlockInterface;
 use Doctrine\Common\Collections\ArrayCollection;

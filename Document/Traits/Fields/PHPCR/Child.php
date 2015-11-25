@@ -1,6 +1,6 @@
 <?php
 
-namespace SevenManagerBundle\Document\Traits;
+namespace SevenManagerBundle\Document\Traits\Fields\PHPCR;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 

@@ -6,7 +6,7 @@
  * Time: 02:22
  */
 
-namespace SevenManagerBundle\Document\Traits\PHPCR;
+namespace SevenManagerBundle\Document\Traits\Fields\PHPCR;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 

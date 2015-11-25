@@ -12,17 +12,17 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
  */
 trait Seo
 {
+    /**
+     * @var SeoMetadata
+     *
+     * @PHPCR\ReferenceMany()
+     */
+    protected $seoMetadata;
+
     public function __construct()
     {
         $this->__constructSeoMetaData();
     }
-
-    /**
-     * @var SeoMetadata
-     *
-     * @PHPCR\Child
-     */
-    protected $seoMetadata;
 
     public function __constructSeoMetaData()
     {
