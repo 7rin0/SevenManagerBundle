@@ -36,7 +36,7 @@ class TextOneAdmin extends Admin
             ->tab('Content')
                 ->with('Content')
                     ->add(
-                        'targetContent',
+                        'internalLink',
                         'doctrine_phpcr_odm_tree',
                         array(
                             'root_node' => $this->getRootPath(),

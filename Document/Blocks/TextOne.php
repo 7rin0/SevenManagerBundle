@@ -7,6 +7,7 @@
 
 namespace SevenManagerBundle\Document\Blocks;
 
+use SevenManagerBundle\Document\Traits\Fields\HTML\Links;
 use SevenManagerBundle\Document\Traits\Fields\HTML\Texts;
 use Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\AbstractBlock;
 use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
@@ -21,6 +22,7 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 class TextOne extends AbstractBlock implements TranslatableInterface
 {
     use Texts;
+    use Links;
 
     /**
      * @PHPCR\Locale()

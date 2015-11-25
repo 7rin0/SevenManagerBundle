@@ -23,8 +23,6 @@ class LinkOneAdmin extends Admin
     }
 
     protected $baseRoutePattern = '/seven-manager/links';
-    protected $isPublishable = false;
-    protected $publishable = false;
 
     /**
      * @param FormMapper $formMapper
@@ -41,7 +39,6 @@ class LinkOneAdmin extends Admin
             ->tab('Content')
                 ->with('Content')
                     ->add('label', 'text', array('required' => false))
-                    ->remove('children')
                 ->end()
             ->end();
     }
