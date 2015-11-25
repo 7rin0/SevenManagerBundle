@@ -21,13 +21,13 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 trait Images
 {
     /**
-     * @PHPCR\ReferenceMany(cascade="persist")
+     * @PHPCR\Child(cascade="persist")
      * @var Image
      */
     protected $image;
 
     /**
-     * @PHPCR\ReferenceMany(cascade="persist")
+     * @PHPCR\Child(cascade="persist")
      * @var Image
      */
     protected $imageTwo;

@@ -49,7 +49,7 @@ class HomepageAdmin extends Admin
                     'description' => 'Media fields',
                 ))
                     ->add(
-                        'blockChild',
+                        'child',
                         'sonata_type_admin',
                         array(
                             'label'       => 'Image One',
