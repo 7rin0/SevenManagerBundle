@@ -7,7 +7,7 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
 /**
  * Class ImageLink
- * @PHPCR\Document(referenceable=true)
+ * @PHPCR\Document(referenceable=true, translator="attribute")
  * @package AppBundle\Document\Blocks
  */
 class ImageLink extends StructureCollections
