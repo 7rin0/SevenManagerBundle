@@ -15,11 +15,11 @@ use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
 /**
- * Class StructureParent
+ * Class StructureCollections
  *
  * @package SevenManagerBundle\Document\Classes
  */
-class StructureParent implements RouteReferrersReadInterface, TranslatableInterface
+class StructureCollections implements RouteReferrersReadInterface
 {
     use ParentDocument, Child;
 }

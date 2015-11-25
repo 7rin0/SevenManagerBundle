@@ -8,8 +8,8 @@
 namespace SevenManagerBundle\Document\Pages;
 
 use SevenManagerBundle\Document\Classes\StructurePages;
-use SevenManagerBundle\Document\Traits\CustomChildren;
-use SevenManagerBundle\Document\Traits\CustomModels;
+use SevenManagerBundle\Document\Traits\Fields\PHPCR\Children;
+use SevenManagerBundle\Document\Traits\Fields\PHPCR\ReferenceMany;
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
 /**
@@ -17,13 +17,5 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
  */
 class Homepage extends StructurePages
 {
-    use CustomModels;
-    use CustomChildren {
-        CustomChildren::__construct as private __childrenConstruct;
-    }
-
-    public function __construct()
-    {
-        $this->__childrenConstruct();
-    }
+    use ReferenceMany, Children;
 }
