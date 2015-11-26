@@ -272,6 +272,13 @@ trait DefaultAdmin
                     }
                 }
             }
+        } elseif (method_exists($document, 'getChild')) {
+            /**
+                if (!$this->modelManager->getNormalizedIdentifier($document->getChild())) {
+                    if (!$document->getChild()->getName()) {
+                        $document->getChild()->setName($this->generateName($fatherPrefix));
+                }
+            }**/
         }
     }
 
@@ -337,6 +344,13 @@ trait DefaultAdmin
                         }
                     }
                 }
+            } elseif (method_exists($document, 'getChild')) {
+                /**
+                    if (!$this->modelManager->getNormalizedIdentifier($document->getChild())) {
+                        if (!$document->getChild()->getName()) {
+                            $document->getChild()->setName($this->generateName($fatherPrefix));
+                    }
+                }**/
             }
         }
 
