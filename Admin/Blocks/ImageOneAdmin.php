@@ -34,6 +34,80 @@ class ImageOneAdmin extends Admin
     {
         $this->traitFormFields($formMapper);
 
+        // "Globalize" this
+        $smEventListener =
+            function (FormEvent $event, $isParent) use ($formMapper) {
+
+                $isParent = $this->getParentFieldDescription() === null;
+
+                // Get form
+                $formData = $event->getForm();
+                $classImplements = class_implements($this->getClass()); // To be use to check blockInterface, or not
+
+                // Verify if is a Block or a Parent Document
+                if (!$isParent) {
+                    // Load groups and tabs
+                    $formTabs = $this->getFormTabs();
+                    if (!empty($formTabs['default']['groups'])) {
+                        // Find tabs and groups
+                        $hasPublishable = array_search('form.group_publish_workflow', $formTabs['default']['groups']);
+                        $hasLocale      = array_search('form.group_general', $formTabs['default']['groups']);
+
+                        // TODO: Create handler remove by form tab or form field all components !!! DRY
+                        if (true) {
+                            if ($hasPublishable !== false) {
+                                $formGroup = $this->getFormGroups();
+                                $formTabs  = $this->getFormTabs();
+                                unset($formGroup['form.group_publish_workflow']);
+                                unset($formTabs['default']['groups'][$hasPublishable]);
+                                $this->setFormGroups($formGroup);
+                                $this->setFormTabs($formTabs);
+                            }
+
+                            if ($hasLocale !== false) {
+                                $formGroup = $this->getFormGroups();
+                                $formTabs  = $this->getFormTabs();
+                                unset($formGroup['form.group_general']);
+                                unset($formTabs['default']['groups'][$hasLocale]);
+                                $this->setFormGroups($formGroup);
+                                $this->setFormTabs($formTabs);
+                            }
+
+                            // Remove locale only if this admin is child
+                            if ($formData->has('locale')) {
+                                $formData->remove('locale');
+                                $formMapper->remove('locale');
+                            }
+
+                            // Remove undesired fields
+                            if ($formData->has('publish_start_date')) {
+                                $formData
+                                    ->remove('publish_start_date')
+                                    ->remove('publish_end_date')
+                                    ->remove('publishable');
+
+                                $formMapper
+                                    ->remove('publish_start_date')
+                                    ->remove('publish_end_date')
+                                    ->remove('publishable');
+                            }
+
+                            // If used as child remove locale, locale is set by default
+                            // no need extra field in this case
+                        }
+                    } else {
+                        // At the end of the future handler remove empty groups to avoid empty tabs
+                        // Using get array_values and verify each group
+                        $formTabs = $this->getFormTabs();
+                        if (empty($formTabs['default']['groups'])) {
+                            unset($formTabs['default']);
+                            $this->setFormTabs($formTabs);
+                        }
+                    }
+
+                }
+            };
+
         $formMapper
             ->tab('Content')
                 ->with('Content')
@@ -49,44 +123,8 @@ class ImageOneAdmin extends Admin
             ->getFormBuilder()
             ->addEventListener(
                 FormEvents::PRE_SET_DATA,
-                function (FormEvent $event) use ($formMapper) {
-
-                    // Get form
-                    $form = $event->getForm();
-                    $classImplements = class_implements($this->getClass());
-
-                    // Unset groups and forms
-                    $formGroup = $this->getFormGroups();
-                    $formTabs = $this->getFormTabs();
-
-                    // Verify if is a Block or a Parent Document
-                    if ($classImplements['Sonata\BlockBundle\Model\BlockInterface']) {
-                        $hasPublishable = array_search('form.group_publish_workflow', $formTabs['default']['groups']);
-
-                        // TODO: Create handler remove by form tab or form field all components
-                        if ($hasPublishable !== false) {
-                            unset($formGroup['form.group_publish_workflow']);
-                            unset($formTabs['default']['groups'][$hasPublishable]);
-                            $this->setFormGroups($formGroup);
-                            $this->setFormTabs($formTabs);
-                        }
-
-                        // Remove undesired fields
-                        if ($form->has('publish_start_date')) {
-                            $form
-                                ->remove('publish_start_date')
-                                ->remove('publish_end_date')
-                                ->remove('publishable');
-
-                            $formMapper
-                                ->remove('publish_start_date')
-                                ->remove('publish_end_date')
-                                ->remove('publishable');
-                        }
-                    }
-                }
+                $smEventListener
             );
-
     }
 
     /**
