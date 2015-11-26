@@ -41,8 +41,7 @@ class FormAdmin extends Admin
      */
     public function toString($object)
     {
-        return $object instanceof Form && $object->getTitle()
-            ? $object->getTitle()
-            : $this->trans('link_add', array(), 'SonataAdminBundle');
+        return $object instanceof Form && $object->getTitle() ?
+            $object->getTitle() : $this->trans('link_add', array(), 'SonataAdminBundle');
     }
 }

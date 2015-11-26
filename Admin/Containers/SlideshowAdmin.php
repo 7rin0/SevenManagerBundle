@@ -27,6 +27,17 @@ class SlideshowAdmin extends Admin
     protected $baseRoutePattern = '/seven-manager/slideshow';
 
     /**
+     * @param $imageOne
+     *
+     * @return $this
+     */
+    public function setImageOne($imageOne)
+    {
+        $this->imageOne = $imageOne;
+        return $this;
+    }
+
+    /**
      * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper)
@@ -51,17 +62,6 @@ class SlideshowAdmin extends Admin
                     )
                 ->end()
             ->end();
-    }
-
-    /**
-     * @param $imageOne
-     *
-     * @return $this
-     */
-    public function setImageOne($imageOne)
-    {
-        $this->imageOne = $imageOne;
-        return $this;
     }
 
     /**

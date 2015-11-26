@@ -41,8 +41,7 @@ class PostAdmin extends Admin
      */
     public function toString($object)
     {
-        return $object instanceof Post && $object->getTitle()
-            ? $object->getTitle()
-            : $this->trans('link_add', array(), 'SonataAdminBundle');
+        return $object instanceof Post && $object->getTitle() ?
+            $object->getTitle() : $this->trans('link_add', array(), 'SonataAdminBundle');
     }
 }

@@ -30,6 +30,7 @@ class BoilerplateAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $this->traitFormFields($formMapper);
+
         $formMapper
             ->tab('Content')
                 ->with('Content', array(

@@ -87,15 +87,7 @@ class HomepageAdmin extends Admin
                         )
                     )
                 ->end()
-            ->end()
-            ->setHelps(array(
-                'title'    => 'seven_manager.admin.fields.title.helper',
-                'subtitle' => 'seven_manager.admin.fields.subtitle.helper',
-                'name'     => 'seven_manager.admin.fields.name.helper',
-                'content'  => 'seven_manager.admin.fields.content.helper',
-                'image'    => 'seven_manager.admin.fields.image.helper',
-            ));
-
+            ->end();
     }
 
     /**

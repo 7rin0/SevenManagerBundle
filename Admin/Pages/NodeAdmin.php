@@ -41,8 +41,7 @@ class NodeAdmin extends Admin
      */
     public function toString($object)
     {
-        return $object instanceof Node && $object->getTitle()
-            ? $object->getTitle()
-            : $this->trans('link_add', array(), 'SonataAdminBundle');
+        return $object instanceof Node && $object->getTitle() ?
+            $object->getTitle() : $this->trans('link_add', array(), 'SonataAdminBundle');
     }
 }
