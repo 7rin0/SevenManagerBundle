@@ -29,12 +29,10 @@ class LinkOneAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        // Add fields from trait
         $this->traitFormFields($formMapper);
 
-        if ($parentAdmin = $this->getParentFieldDescription() != null) {
-            $parentAdmin = $this->getClassName($this->getParentFieldDescription()->getAdmin());
-        }
-
+        // Set custom to this admin
         $formMapper
             ->tab('Content')
                 ->with('Content')

@@ -30,8 +30,10 @@ class TextOneAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        // Add fields from trait
         $this->traitFormFields($formMapper);
 
+        // Set custom to this admin
         $formMapper
             ->tab('Content')
                 ->with('Content')
