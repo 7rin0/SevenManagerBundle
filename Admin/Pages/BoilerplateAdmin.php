@@ -126,6 +126,23 @@ class BoilerplateAdmin extends Admin
                     )
                 ->end()
             ->end()
+            ->tab('Many Children')
+                ->with('Many Children')
+                    ->add(
+                        'childrenMany',
+                        'sonata_type_collection',
+                        array(
+                            'label'       => 'Slideshow',
+                            'by_reference' => false,
+                        ),
+                        array(
+                            'edit'       => 'inline',
+                            'inline'     => 'table',
+                            'admin_code' => 'seven_manager.admin.blocks.slideone',
+                        )
+                    )
+                ->end()
+            ->end()
             ->tab('Slideshow')
                 ->with('Slideshow')
                     ->add(

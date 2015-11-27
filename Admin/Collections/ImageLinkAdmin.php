@@ -20,7 +20,9 @@ use Sonata\AdminBundle\Form\FormMapper;
  */
 class ImageLinkAdmin extends Admin
 {
-    use DefaultAdmin;
+    use DefaultAdmin {
+        configureFormFields as traitFormFields;
+    }
 
     protected $videoSlide;
     protected $findParent = '/seven-manager/images-link';
@@ -30,6 +32,9 @@ class ImageLinkAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        // Add fields from trait
+        $this->traitFormFields($formMapper);
+
         $formMapper
             ->tab('Image + Target')
                 ->with(
@@ -102,7 +107,7 @@ class ImageLinkAdmin extends Admin
      */
     public function toString($object)
     {
-        return $object instanceof ImageLink && $object->getLabel()
-            ? $object->getLabel() : parent::toString($object);
+        return $object instanceof ImageLink && $object->getLabel() ?
+            $object->getLabel() : parent::toString($object);
     }
 }

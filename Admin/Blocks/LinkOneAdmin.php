@@ -48,8 +48,7 @@ class LinkOneAdmin extends Admin
      */
     public function toString($object)
     {
-        return $object instanceof LinkOne && $object->getLabel()
-            ? $object->getLabel()
-            : parent::toString($object);
+        return $object instanceof LinkOne && $object->getLabel() ?
+            $object->getLabel() : parent::toString($object);
     }
 }

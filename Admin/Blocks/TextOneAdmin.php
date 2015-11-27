@@ -60,8 +60,7 @@ class TextOneAdmin extends Admin
      */
     public function toString($object)
     {
-        return $object instanceof TextOne && $object->getLabel()
-            ? $object->getLabel()
-            : parent::toString($object);
+        return $object instanceof TextOne && $object->getLabel() ?
+            $object->getLabel() : parent::toString($object);
     }
 }

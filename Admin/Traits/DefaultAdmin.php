@@ -524,4 +524,14 @@ trait DefaultAdmin
 
         return end($className);
     }
+
+    /**
+     * @param $document
+     *
+     * @return mixed
+     */
+    public function getDocumentChildren($document)
+    {
+        return $document->getChildrenMany();
+    }
 }

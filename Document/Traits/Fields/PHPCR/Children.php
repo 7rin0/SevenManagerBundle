@@ -29,6 +29,46 @@ trait Children
     }
 
     /**
+     * @return mixed
+     */
+    public function getChildrenMany()
+    {
+        return $this->childrenMany;
+    }
+
+    /**
+     * @param $childrenMany
+     * @return $this
+     */
+    public function setChildrenMany($childrenMany)
+    {
+        $this->childrenMany = $childrenMany;
+        return $this;
+    }
+
+    /**
+     * @param $childrenMany
+     *
+     * @return $this
+     */
+    public function addChildrenMany($childrenMany)
+    {
+        $this->childrenMany->add($childrenMany);
+        return $this;
+    }
+
+    /**
+     * @param $childrenMany
+     *
+     * @return $this
+     */
+    public function removeChildrenMany($childrenMany)
+    {
+        $this->childrenMany->add($childrenMany);
+        return $this;
+    }
+
+    /**
      * Get children
      *
      * @return ArrayCollection|ChildrenCollection

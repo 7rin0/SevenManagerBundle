@@ -7,6 +7,8 @@
 
 namespace SevenManagerBundle\Document\Pages;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ODM\PHPCR\ChildrenCollection;
 use SevenManagerBundle\Document\Classes\StructurePages;
 use SevenManagerBundle\Document\Traits\Fields\PHPCR\Children;
 use SevenManagerBundle\Document\Traits\Fields\PHPCR\ReferenceMany;
@@ -17,7 +19,17 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
  */
 class Boilerplate extends StructurePages
 {
-    use ReferenceMany, Children;
+    use ReferenceMany;
+    use Children {
+        __construct as __constructChildren;
+    }
+
+    /**
+     * @PHPCR\ReferenceMany(targetDocument="SevenManagerBundle\Document\Blocks\ImageOne", strategy="hard", cascade={"persist"})
+     *
+     * @var ArrayCollection|ChildrenCollection
+     */
+    protected $childrenMany;
 
     /**
      * @PHPCR\ReferenceMany(targetDocument="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\SimpleBlock", strategy="hard")
@@ -51,6 +63,15 @@ class Boilerplate extends StructurePages
         'ttl'       => 1,
         'redirect'  => ''
     );
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->__constructChildren();
+        $this->childrenMany = new ArrayCollection();
+    }
 
     /**
      * @return array
