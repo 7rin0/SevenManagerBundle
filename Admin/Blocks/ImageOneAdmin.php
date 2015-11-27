@@ -9,11 +9,8 @@ namespace SevenManagerBundle\Admin\Blocks;
 
 use SevenManagerBundle\Admin\Traits\DefaultAdmin;
 use SevenManagerBundle\Document\Blocks\ImageOne;
-use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\DoctrinePHPCRAdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
-use Symfony\Component\Form\FormEvent;
-use Symfony\Component\Form\FormEvents;
 
 /**
  * Class ImageOneAdmin

@@ -132,7 +132,7 @@ class BoilerplateAdmin extends Admin
                         'childrenMany',
                         'sonata_type_collection',
                         array(
-                            'label'       => 'Slideshow',
+                            'label'       => 'Children',
                             'by_reference' => false,
                         ),
                         array(
@@ -244,6 +244,16 @@ class BoilerplateAdmin extends Admin
                     ->add('mapImage', 'sonata_type_model', array('label' => 'Related Image Block', 'required' => false,))
                 ->end()
             ->end();
+    }
+
+    /**
+     * @param $document
+     *
+     * @return mixed
+     */
+    public function getDocumentChildren($document)
+    {
+        return $document->getChildrenMany();
     }
 
     /**

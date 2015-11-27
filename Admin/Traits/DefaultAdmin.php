@@ -15,7 +15,6 @@ use Sonata\AdminBundle\Show\ShowMapper;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Sonata\DoctrinePHPCRAdminBundle\Admin\Admin;
 
 /**
  * Class DefaultAdmin
@@ -357,13 +356,20 @@ trait DefaultAdmin
                     }
                 }
             }
-        } elseif (method_exists($document, 'getChild')) {
-            /**
-                if (!$this->modelManager->getNormalizedIdentifier($document->getChild())) {
-                    if (!$document->getChild()->getName()) {
-                        $document->getChild()->setName($this->generateName($fatherPrefix));
+        }
+
+        if (method_exists($document, 'getChildrenMany')) {
+            // Assign new names to children
+            foreach ($document->getChildrenMany($document) as $child) {
+                if (!$this->modelManager->getNormalizedIdentifier($child)) {
+                    if (!$child->getName()) {
+                        $child->setName($this->generateName($fatherPrefix));
+                    }
+                    if (!$child->getParentDocument()) {
+                        $child->setParentDocument($document);
+                    }
                 }
-            }**/
+            }
         }
     }
 
@@ -429,13 +435,20 @@ trait DefaultAdmin
                         }
                     }
                 }
-            } elseif (method_exists($document, 'getChild')) {
-                /**
-                    if (!$this->modelManager->getNormalizedIdentifier($document->getChild())) {
-                        if (!$document->getChild()->getName()) {
-                            $document->getChild()->setName($this->generateName($fatherPrefix));
+            }
+
+            if (method_exists($document, 'getChildrenMany')) {
+                // Assign new names to children
+                foreach ($document->getChildrenMany($document) as $child) {
+                    if (!$this->modelManager->getNormalizedIdentifier($child)) {
+                        if (!$child->getName()) {
+                            $child->setName($this->generateName($fatherPrefix));
+                        }
+                        if (!$child->getParentDocument()) {
+                            $child->setParentDocument($document);
+                        }
                     }
-                }**/
+                }
             }
         }
 
@@ -528,10 +541,16 @@ trait DefaultAdmin
     /**
      * @param $document
      *
-     * @return mixed
+     * @return array
      */
     public function getDocumentChildren($document)
     {
-        return $document->getChildrenMany();
+        if (method_exists($document, 'getChildren')) {
+            return $document->getChildren();
+        } elseif (method_exists($document, 'getChildrenMany')) {
+            return $document->getChildrenMany();
+        }
+
+        return array();
     }
 }
