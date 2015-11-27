@@ -35,8 +35,6 @@ class ImageOneAdmin extends Admin
         // Add fields from trait
         $this->traitFormFields($formMapper);
 
-        dump($this->getClass());
-
         // Set custom to this admin
         $formMapper
             ->tab('Content')
@@ -56,7 +54,6 @@ class ImageOneAdmin extends Admin
      */
     public function toString($object)
     {
-        $thisDocument = $this->getClass();
         return $object instanceof ImageOne && $object->getLabel() ?
             $object->getLabel() : parent::toString($object);
     }
