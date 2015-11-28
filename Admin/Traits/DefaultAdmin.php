@@ -62,13 +62,6 @@ trait DefaultAdmin
     }
 
     /**
-     * @param RouteCollection $collection
-     */
-    protected function configureRoutes(RouteCollection $collection)
-    {
-    }
-
-    /**
      * @return bool
      */
     public function supportsPreviewMode()
@@ -329,6 +322,48 @@ trait DefaultAdmin
             );
     }
 
+
+
+    /**
+     * @param $document
+     *
+     * @return array
+     */
+    public function persistAllChildren($document)
+    {
+        $storeChildren = array();
+
+        // Set prefix Name
+        $fatherPrefix = !empty($this->classnameLabel) ? strtolower($this->classnameLabel) : 'undefined_father';
+
+        // Possible Children Methods
+        $getAllChildren = array(
+            'getChildren',
+            'getRouteChild',
+            'getChildrenMany',
+            'getChildrenManyTwo',
+        );
+
+        // Evaluate and store children if true
+        foreach ($getAllChildren as $childrenMethod) {
+            if (method_exists($document, $childrenMethod)) {
+                $storeChildren[$childrenMethod] = $document->$childrenMethod();
+
+                foreach ($document->$childrenMethod() as $child) {
+                    if (!$this->modelManager->getNormalizedIdentifier($child)) {
+                        if (!$child->getName()) {
+                            $child->setName($this->generateName($fatherPrefix));
+                        }
+                        if (!$child->getParentDocument()) {
+                            $child->setParentDocument($document);
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
     /**
      * @param $document
      */
@@ -347,30 +382,8 @@ trait DefaultAdmin
             }
         }
 
-        // Prepare Children
-        if (method_exists($document, 'getChildren')) {
-            foreach ($document->getChildren() as $child) {
-                if (!$this->modelManager->getNormalizedIdentifier($child)) {
-                    if (!$child->getName()) {
-                        $child->setName($this->generateName($fatherPrefix));
-                    }
-                }
-            }
-        }
-
-        if (method_exists($document, 'getChildrenMany')) {
-            // Assign new names to children
-            foreach ($document->getChildrenMany($document) as $child) {
-                if (!$this->modelManager->getNormalizedIdentifier($child)) {
-                    if (!$child->getName()) {
-                        $child->setName($this->generateName($fatherPrefix));
-                    }
-                    if (!$child->getParentDocument()) {
-                        $child->setParentDocument($document);
-                    }
-                }
-            }
-        }
+        // Get all children and persist
+        $this->persistAllChildren($document);
     }
 
     /**
@@ -425,31 +438,8 @@ trait DefaultAdmin
             $parent = $this->modelManager->find(null, $parentPath);
             $document->setParentDocument($parent);
 
-            // Set Father
-            if (method_exists($document, 'getChildren')) {
-                // Assign new names to children
-                foreach ($document->getChildren() as $child) {
-                    if (!$this->modelManager->getNormalizedIdentifier($child)) {
-                        if (!$child->getName()) {
-                            $child->setName($this->generateName($fatherPrefix));
-                        }
-                    }
-                }
-            }
-
-            if (method_exists($document, 'getChildrenMany')) {
-                // Assign new names to children
-                foreach ($document->getChildrenMany($document) as $child) {
-                    if (!$this->modelManager->getNormalizedIdentifier($child)) {
-                        if (!$child->getName()) {
-                            $child->setName($this->generateName($fatherPrefix));
-                        }
-                        if (!$child->getParentDocument()) {
-                            $child->setParentDocument($document);
-                        }
-                    }
-                }
-            }
+            // Get all children and persist
+            $this->persistAllChildren($document);
         }
 
         return $this;
@@ -536,21 +526,5 @@ trait DefaultAdmin
         $className = explode('\\', get_class($class));
 
         return end($className);
-    }
-
-    /**
-     * @param $document
-     *
-     * @return array
-     */
-    public function getDocumentChildren($document)
-    {
-        if (method_exists($document, 'getChildren')) {
-            return $document->getChildren();
-        } elseif (method_exists($document, 'getChildrenMany')) {
-            return $document->getChildrenMany();
-        }
-
-        return array();
     }
 }

@@ -247,16 +247,6 @@ class BoilerplateAdmin extends Admin
     }
 
     /**
-     * @param $document
-     *
-     * @return mixed
-     */
-    public function getDocumentChildren($document)
-    {
-        return $document->getChildrenMany();
-    }
-
-    /**
      * @param mixed $object
      * Add Title Label to breadcrumb
      *
