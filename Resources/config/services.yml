@@ -1,2 +1,8 @@
 # Services
 services:
+
+    seven_manager.sm_path_checker:
+        class: SevenManagerBundle\Twig\PathCheckerExtension
+        public: false
+        tags:
+            - { name: twig.extension }
