@@ -20,7 +20,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 class MenuAdmin extends Admin
 {
     use DefaultAdmin {
-        configureFormFields as traitFormFields;
+        configureFormFields as getFormFields;
     }
 
     protected $baseRoutePattern = '/seven-manager/menu';
@@ -31,7 +31,7 @@ class MenuAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $this->traitFormFields($formMapper);
+        $this->getFormFields($formMapper);
     }
 
     /**

@@ -20,7 +20,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 class TextOneAdmin extends Admin
 {
     use DefaultAdmin {
-        configureFormFields as traitFormFields;
+        configureFormFields as getFormFields;
     }
 
     protected $baseRoutePattern = '/seven-manager/text';
@@ -31,7 +31,7 @@ class TextOneAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         // Add fields from trait
-        $this->traitFormFields($formMapper);
+        $this->getFormFields($formMapper);
 
         // Set custom to this admin
         $formMapper

@@ -21,7 +21,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 class ImageLinkAdmin extends Admin
 {
     use DefaultAdmin {
-        configureFormFields as traitFormFields;
+        configureFormFields as getFormFields;
     }
 
     protected $findParent = '/seven-manager/images-link';
@@ -32,7 +32,7 @@ class ImageLinkAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         // Add fields from trait
-        $this->traitFormFields($formMapper);
+        $this->getFormFields($formMapper);
 
         $formMapper
             ->tab('Image + Target')

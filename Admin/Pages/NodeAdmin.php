@@ -20,7 +20,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 class NodeAdmin extends Admin
 {
     use DefaultAdmin {
-        configureFormFields as traitFormFields;
+        configureFormFields as getFormFields;
     }
 
     protected $baseRoutePattern = '/seven-manager/node';
@@ -30,7 +30,7 @@ class NodeAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $this->traitFormFields($formMapper);
+        $this->getFormFields($formMapper);
     }
 
     /**

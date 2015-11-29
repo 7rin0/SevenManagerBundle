@@ -20,7 +20,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 class GalleryAdmin extends Admin
 {
     use DefaultAdmin {
-        configureFormFields as traitFormFields;
+        configureFormFields as getFormFields;
     }
 
     protected $baseRoutePattern = '/seven-manager/gallery';
@@ -30,7 +30,7 @@ class GalleryAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $this->traitFormFields($formMapper);
+        $this->getFormFields($formMapper);
     }
 
     /**

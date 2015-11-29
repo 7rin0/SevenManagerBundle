@@ -19,7 +19,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 class ImageOneAdmin extends Admin
 {
     use DefaultAdmin {
-        configureFormFields as traitFormFields;
+        configureFormFields as getFormFields;
     }
 
     protected $baseRoutePattern = '/seven-manager/images';
@@ -30,7 +30,7 @@ class ImageOneAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         // Add fields from trait
-        $this->traitFormFields($formMapper);
+        $this->getFormFields($formMapper);
 
         // Set custom to this admin
         $formMapper

@@ -19,7 +19,7 @@ use SevenManagerBundle\Admin\Traits\DefaultAdmin;
 class BoilerplateAdmin extends Admin
 {
     use DefaultAdmin {
-        configureFormFields as traitFormFields;
+        configureFormFields as getFormFields;
     }
 
     protected $baseRoutePattern = '/seven-manager/boilerplate';
@@ -29,7 +29,7 @@ class BoilerplateAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $this->traitFormFields($formMapper);
+        $this->getFormFields($formMapper);
 
         $formMapper
             ->tab('Content')

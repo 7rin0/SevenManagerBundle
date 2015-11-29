@@ -20,7 +20,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 class ArticleAdmin extends Admin
 {
     use DefaultAdmin {
-        configureFormFields as traitFormFields;
+        configureFormFields as getFormFields;
     }
 
     protected $baseRoutePattern = '/seven-manager/article';
@@ -30,7 +30,7 @@ class ArticleAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $this->traitFormFields($formMapper);
+        $this->getFormFields($formMapper);
     }
 
     /**

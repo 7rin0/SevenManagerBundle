@@ -20,7 +20,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 class SlideshowAdmin extends Admin
 {
     use DefaultAdmin {
-        configureFormFields as traitFormFields;
+        configureFormFields as getFormFields;
     }
 
     protected $baseRoutePattern = '/seven-manager/slideshow';
@@ -31,7 +31,7 @@ class SlideshowAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         // Get base of shared FormMapper Interface
-        $this->traitFormFields($formMapper);
+        $this->getFormFields($formMapper);
 
         // Add custom to FormMapper Interface
         $formMapper
