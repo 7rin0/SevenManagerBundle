@@ -71,6 +71,8 @@ class Boilerplate extends StructurePages
     {
         $this->__constructChildren();
         $this->childrenMany = new ArrayCollection();
+        $this->mapPage = new ArrayCollection();
+        $this->mapPost = new ArrayCollection();
     }
 
     /**

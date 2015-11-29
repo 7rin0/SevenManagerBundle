@@ -199,12 +199,16 @@ class BoilerplateAdmin extends Admin
                     )
                     ->add(
                         'mapPage',
-                        'sonata_type_model',
+                        'sonata_type_collection',
                         array(
                             'label' => 'Related Page',
-                            'model_manager' => $this->modelManager,
                             'required' => false,
-                            'multiple' => true
+                            'by_reference' => false,
+                            'type_options' => array('delete' => true),
+                        ),
+                        array(
+                            'edit' => 'inline',
+                            'inline' => 'table'
                         )
                     )
                     ->add(
@@ -214,7 +218,12 @@ class BoilerplateAdmin extends Admin
                             'label' => 'Related Post',
                             'model_manager' => $this->modelManager,
                             'required' => false,
-                            'multiple' => true
+                            'multiple' => true,
+                            'expanded' => false,
+                        ),
+                        array(
+                            'edit' => 'inline',
+                            'inline' => 'table'
                         )
                     )
                     ->add(

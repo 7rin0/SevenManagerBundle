@@ -337,6 +337,8 @@ trait DefaultAdmin
 
         // Possible Children Methods
         $getAllChildren = array(
+            'getMapPage',
+            'getMapPost',
             'getChildren',
             'getRouteChild',
             'getChildrenMany',

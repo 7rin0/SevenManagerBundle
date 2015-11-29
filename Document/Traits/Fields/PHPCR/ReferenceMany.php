@@ -8,6 +8,7 @@
 namespace SevenManagerBundle\Document\Traits\Fields\PHPCR;
 
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
+use SevenManagerBundle\Document\Pages\Page;
 
 /**
  * Class ReferenceMany
@@ -52,12 +53,12 @@ trait ReferenceMany
     protected $mapNode;
 
     /**
-     * @PHPCR\ReferenceMany(targetDocument="SevenManagerBundle\Document\Pages\Page", strategy="hard")
+     * @PHPCR\ReferenceMany(targetDocument="SevenManagerBundle\Document\Pages\Page", strategy="hard", cascade={"all"})
      */
     protected $mapPage;
 
     /**
-     * @PHPCR\ReferenceMany(targetDocument="SevenManagerBundle\Document\Pages\Post", strategy="hard")
+     * @PHPCR\ReferenceMany(targetDocument="SevenManagerBundle\Document\Pages\Post", strategy="hard", cascade={"all"})
      */
     protected $mapPost;
 
@@ -112,6 +113,17 @@ trait ReferenceMany
     {
         $this->mapPage = $mapPage;
         return $this;
+    }
+
+    /**
+     * @param $mapPage
+     *
+     * @return $this
+     */
+    public function addMapPage(Page $page)
+    {
+        $this->mapPage[] = $page;
+        return $page;
     }
 
     /**
