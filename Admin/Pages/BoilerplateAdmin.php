@@ -176,8 +176,6 @@ class BoilerplateAdmin extends Admin
                                 'mapMany'
                             ),
                         ),
-                        //'data' => 'choiceOne',
-                        //'empty_value' => 'Choose an option',
                         'required' => true
                     ))
                 ->end()
@@ -186,7 +184,19 @@ class BoilerplateAdmin extends Admin
                     'box_class'   => 'box box-solid box-danger',
                     'description' => 'Relate an existing content',
                 ))
-                    ->add('mapNode', 'sonata_type_model', array('label' => 'Related Node', 'required' => false, 'multiple' => false, 'by_reference' => false), array('sortable' => true))
+                    ->add(
+                        'mapNode',
+                        'sonata_type_model',
+                        array(
+                            'label' => 'Related Node',
+                            'required' => false,
+                            'multiple' => false,
+                            'by_reference' => false
+                        ),
+                        array(
+                            'sortable' => true
+                        )
+                    )
                     ->add(
                         'mapPage',
                         'sonata_type_model',
@@ -207,9 +217,33 @@ class BoilerplateAdmin extends Admin
                             'multiple' => true
                         )
                     )
-                    ->add('mapArticle', 'sonata_type_model', array('label' => 'Related Article', 'required' => false, 'multiple' => false))
-                    ->add('mapGallery', 'sonata_type_model', array('label' => 'Related Gallery', 'required' => false, 'multiple' => false))
-                    ->add('mapForm', 'sonata_type_model', array('label' => 'Related Form', 'required' => false, 'multiple' => false))
+                    ->add(
+                        'mapArticle',
+                        'sonata_type_model',
+                        array(
+                            'label' => 'Related Article',
+                            'required' => false,
+                            'multiple' => false
+                        )
+                    )
+                    ->add(
+                        'mapGallery',
+                        'sonata_type_model',
+                        array(
+                            'label' => 'Related Gallery',
+                            'required' => false,
+                            'multiple' => false
+                        )
+                    )
+                    ->add(
+                        'mapForm',
+                        'sonata_type_model',
+                        array(
+                            'label' => 'Related Form',
+                            'required' => false,
+                            'multiple' => false
+                        )
+                    )
                     ->add(
                         'mapSimple',
                         'sonata_type_model_autocomplete',
@@ -237,11 +271,46 @@ class BoilerplateAdmin extends Admin
                     'box_class'   => 'box box-solid box-danger',
                     'description' => 'Relate an existing content',
                 ))
-                    ->add('mapContainer', 'sonata_type_model', array('label' => 'Related Container Block', 'required' => false,))
-                    ->add('mapReference', 'sonata_type_model', array('label' => 'Related Reference Block', 'required' => false,))
-                    ->add('mapAction', 'sonata_type_model', array('label' => 'Related Action Block', 'required' => false,))
-                    ->add('mapSlideshow', 'sonata_type_model', array('label' => 'Related Slideshow Block', 'required' => false,))
-                    ->add('mapImage', 'sonata_type_model', array('label' => 'Related Image Block', 'required' => false,))
+                    ->add(
+                        'mapContainer',
+                        'sonata_type_model',
+                        array(
+                            'label' => 'Related Container Block',
+                            'required' => false
+                        )
+                    )
+                    ->add(
+                        'mapReference',
+                        'sonata_type_model',
+                        array(
+                            'label' => 'Related Reference Block',
+                            'required' => false
+                        )
+                    )
+                    ->add(
+                        'mapAction',
+                        'sonata_type_model',
+                        array(
+                            'label' => 'Related Action Block',
+                            'required' => false
+                        )
+                    )
+                    ->add(
+                        'mapSlideshow',
+                        'sonata_type_model',
+                        array(
+                            'label' => 'Related Slideshow Block',
+                            'required' => false
+                        )
+                    )
+                    ->add(
+                        'mapImage',
+                        'sonata_type_model',
+                        array(
+                            'label' => 'Related Image Block',
+                            'required' => false
+                        )
+                    )
                 ->end()
             ->end();
     }

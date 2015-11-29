@@ -24,11 +24,10 @@ class ImageLinkAdmin extends Admin
         configureFormFields as traitFormFields;
     }
 
-    protected $videoSlide;
     protected $findParent = '/seven-manager/images-link';
 
     /**
-     * {@inheritdoc}
+     * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper)
     {

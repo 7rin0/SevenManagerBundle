@@ -23,19 +23,7 @@ class SlideshowAdmin extends Admin
         configureFormFields as traitFormFields;
     }
 
-    protected $imageOne;
     protected $baseRoutePattern = '/seven-manager/slideshow';
-
-    /**
-     * @param $imageOne
-     *
-     * @return $this
-     */
-    public function setImageOne($imageOne)
-    {
-        $this->imageOne = $imageOne;
-        return $this;
-    }
 
     /**
      * @param FormMapper $formMapper
@@ -56,7 +44,7 @@ class SlideshowAdmin extends Admin
                         array(
                             'edit' => 'inline',
                             'inline' => 'table',
-                            'admin_code' => $this->imageOne,
+                            'admin_code' => 'seven_manager.admin.blocks.slideone',
                             'sortable'  => 'position',
                         )
                     )
