@@ -75,7 +75,42 @@ class HomepageAdmin extends Admin
                 ->end()
             ->end()
             ->tab('Slideshow')
+
                 ->with('Slideshow')
+
+                    ->add(
+                        'choice',
+                        'choice_field_mask',
+                        array(
+                            'choices' => array(
+                                'choiceOne' => 'choiceOne',
+                                'choiceTwo' => 'choiceTwo',
+                            ),
+                            'map' => array(
+                                'choiceOne' => array(
+                                    'mapSlideshow',
+                                ),
+                                'choiceTwo' => array(
+                                    'childrenMany',
+                                ),
+                            ),
+                            'required' => true
+                        )
+                    )
+                    ->add(
+                        'childrenMany',
+                        'sonata_type_collection',
+                        array(
+                            'label' => 'Create Slideshow',
+                            'by_reference' => false,
+                        ),
+                        array(
+                            'edit'       => 'inline',
+                            'inline'     => 'table',
+                            'sortable'   => 'position',
+                            'admin_code' => 'seven_manager.admin.blocks.slideone',
+                        )
+                    )
                     ->add(
                         'mapSlideshow',
                         'sonata_type_model',
@@ -86,6 +121,7 @@ class HomepageAdmin extends Admin
                             'multiple' => false,
                         )
                     )
+
                 ->end()
             ->end();
     }

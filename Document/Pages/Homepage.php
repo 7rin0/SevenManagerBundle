@@ -7,7 +7,9 @@
 
 namespace SevenManagerBundle\Document\Pages;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use SevenManagerBundle\Document\Classes\StructurePages;
+use SevenManagerBundle\Document\Traits\Fields\PHPCR\Children;
 use SevenManagerBundle\Document\Traits\Fields\PHPCR\ReferenceMany;
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 
@@ -17,4 +19,21 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 class Homepage extends StructurePages
 {
     use ReferenceMany;
+    use Children {
+        __construct as __constructChildren;
+    }
+
+    /**
+     * @PHPCR\ReferenceMany(targetDocument="SevenManagerBundle\Document\Blocks\ImageOne", strategy="hard", cascade={"persist"})
+     */
+    protected $childrenMany;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->__constructChildren();
+        $this->childrenMany = new ArrayCollection();
+    }
 }

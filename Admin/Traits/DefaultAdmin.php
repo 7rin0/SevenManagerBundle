@@ -331,10 +331,9 @@ trait DefaultAdmin
      */
     public function persistAllChildren($document)
     {
-        $storeChildren = array();
-
         // Set prefix Name
-        $fatherPrefix = !empty($this->classnameLabel) ? strtolower($this->classnameLabel) : 'undefined_father';
+        $fatherPrefix = !empty($this->classnameLabel) ?
+            strtolower($this->classnameLabel) : 'undefined_father';
 
         // Possible Children Methods
         $getAllChildren = array(
@@ -347,8 +346,12 @@ trait DefaultAdmin
         // Evaluate and store children if true
         foreach ($getAllChildren as $childrenMethod) {
             if (method_exists($document, $childrenMethod)) {
-                $storeChildren[$childrenMethod] = $document->$childrenMethod();
+                // Skip if false
+                if (!$document->$childrenMethod()) {
+                    continue;
+                }
 
+                // Parse each child of each children method
                 foreach ($document->$childrenMethod() as $child) {
                     if (!$this->modelManager->getNormalizedIdentifier($child)) {
                         if (!$child->getName()) {
@@ -358,7 +361,6 @@ trait DefaultAdmin
                             $child->setParentDocument($document);
                         }
                     }
-
                 }
             }
         }

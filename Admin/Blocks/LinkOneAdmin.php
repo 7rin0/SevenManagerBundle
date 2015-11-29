@@ -7,7 +7,7 @@
 
 namespace SevenManagerBundle\Admin\Blocks;
 
-use SevenManagerBundle\Admin\Traits\DefaultMenuAdmin;
+use SevenManagerBundle\Admin\Traits\DefaultAdmin;
 use SevenManagerBundle\Document\Blocks\LinkOne;
 use Sonata\DoctrinePHPCRAdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -18,7 +18,7 @@ use Sonata\AdminBundle\Form\FormMapper;
  */
 class LinkOneAdmin extends Admin
 {
-    use DefaultMenuAdmin {
+    use DefaultAdmin {
         configureFormFields as traitFormFields;
     }
 

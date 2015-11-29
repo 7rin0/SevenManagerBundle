@@ -7,7 +7,7 @@
 
 namespace SevenManagerBundle\Admin\Menu;
 
-use SevenManagerBundle\Admin\Traits\DefaultMenuAdmin;
+use SevenManagerBundle\Admin\Traits\DefaultAdmin;
 use SevenManagerBundle\Document\Menu\Menu;
 use Sonata\DoctrinePHPCRAdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -19,7 +19,7 @@ use Sonata\AdminBundle\Form\FormMapper;
  */
 class MenuAdmin extends Admin
 {
-    use DefaultMenuAdmin {
+    use DefaultAdmin {
         configureFormFields as traitFormFields;
     }
 
