@@ -82,9 +82,10 @@ class HomepageAdmin extends Admin
                         'choice',
                         'choice_field_mask',
                         array(
+                            'label' => 'Add or select a slideshow',
                             'choices' => array(
-                                'choiceOne' => 'choiceOne',
-                                'choiceTwo' => 'choiceTwo',
+                                'choiceOne' => 'Select a slideshow',
+                                'choiceTwp' => 'Create a slideshow',
                             ),
                             'map' => array(
                                 'choiceOne' => array(
