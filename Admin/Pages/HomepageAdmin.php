@@ -77,7 +77,6 @@ class HomepageAdmin extends Admin
             ->tab('Slideshow')
 
                 ->with('Slideshow')
-
                     ->add(
                         'choice',
                         'choice_field_mask',
@@ -85,7 +84,7 @@ class HomepageAdmin extends Admin
                             'label' => 'Add or select a slideshow',
                             'choices' => array(
                                 'choiceOne' => 'Select a slideshow',
-                                'choiceTwp' => 'Create a slideshow',
+                                'choiceTwo' => 'Create a slideshow',
                             ),
                             'map' => array(
                                 'choiceOne' => array(
