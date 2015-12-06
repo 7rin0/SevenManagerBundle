@@ -8,15 +8,23 @@
 
 namespace SevenManagerBundle\DataFixtures\PHPCR;
 
+use Symfony\Component\DependencyInjection\ContainerAware;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ODM\PHPCR\DocumentManager;
 use SevenManagerBundle\Document\Containers\Slideshow;
-use Symfony\Component\DependencyInjection\ContainerAware;
 
+/**
+ * Class LoadSliderSlideshow
+ *
+ * @package SevenManagerBundle\DataFixtures\PHPCR
+ */
 class LoadSliderSlideshow extends ContainerAware implements FixtureInterface, OrderedFixtureInterface
 {
+    /**
+     * @return int
+     */
     public function getOrder()
     {
         return 1;
