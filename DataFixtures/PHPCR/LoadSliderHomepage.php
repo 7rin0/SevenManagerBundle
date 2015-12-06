@@ -8,19 +8,21 @@
 
 namespace SevenManagerBundle\DataFixtures\PHPCR;
 
+use SevenManagerBundle\Document\Blocks\ImageOne;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ODM\PHPCR\DocumentManager;
 use SevenManagerBundle\Document\Containers\Slideshow;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * Class LoadSliderSlideshow
+ * Class LoadSliderHomepage
  *
  * @package SevenManagerBundle\DataFixtures\PHPCR
  */
-class LoadSliderSlideshow extends ContainerAware implements FixtureInterface, OrderedFixtureInterface
+class LoadSliderHomepage extends ContainerAware implements FixtureInterface, OrderedFixtureInterface
 {
     /**
      * @return int
@@ -37,14 +39,25 @@ class LoadSliderSlideshow extends ContainerAware implements FixtureInterface, Or
             throw new \RuntimeException("Fixture requires a PHPCR ODM DocumentManager instance, instance of '$class' given.");
         }
 
+        // If Parent is null create one
+        if (!$objectManager->find(null, '/seven-manager/slideshow')) {
+            global $kernel;
+            $dm = $kernel->getContainer()->get('seven_manager.parent_manager');
+            $dm->createRecursivePaths('/seven-manager/slideshow');
+        }
+
         // Parent Document
         $parentPath = $objectManager->find(null, '/seven-manager/slideshow');
 
         // Child Document - create a new Page object
         $slideshow = new Slideshow();
-        $slideshow->setName('slideshow'); // the name of the node
-        $slideshow->setTitle('Main page');
-        $slideshow->setContent('Edit me with Create JS or using Admin');
+        $image = new ImageOne();
+        $upload = new UploadedFile('/home/lseverino/Documents/7rin0/SevenManager/vendor/7rin0/seven-manager-bundle/Resources/public/img/slides/1.jpg', '1.jpg');
+        $image->setName('ImageOne');
+
+        // Add slideshow
+        $slideshow->setName('home-slideshow');
+        $slideshow->addChildren($image->setImage($upload));
 
         // Atach document to parent
         $slideshow->setParentDocument($parentPath);
