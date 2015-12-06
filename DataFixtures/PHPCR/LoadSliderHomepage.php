@@ -12,10 +12,10 @@ use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ODM\PHPCR\DocumentManager;
-use SevenManagerBundle\Document\Pages\Homepage;
+use SevenManagerBundle\Document\Containers\Slideshow;
 use Symfony\Component\DependencyInjection\ContainerAware;
 
-class LoadHomepage extends ContainerAware implements FixtureInterface, OrderedFixtureInterface
+class LoadSliderSlideshow extends ContainerAware implements FixtureInterface, OrderedFixtureInterface
 {
     public function getOrder()
     {
@@ -30,19 +30,19 @@ class LoadHomepage extends ContainerAware implements FixtureInterface, OrderedFi
         }
 
         // Parent Document
-        $parentPath = $objectManager->find(null, '/seven-manager/homepage');
+        $parentPath = $objectManager->find(null, '/seven-manager/slideshow');
 
         // Child Document - create a new Page object
-        $homepage = new Homepage();
-        $homepage->setName('homepage'); // the name of the node
-        $homepage->setTitle('Main page');
-        $homepage->setContent('Edit me with Create JS or using Admin');
+        $slideshow = new Slideshow();
+        $slideshow->setName('slideshow'); // the name of the node
+        $slideshow->setTitle('Main page');
+        $slideshow->setContent('Edit me with Create JS or using Admin');
 
         // Atach document to parent
-        $homepage->setParentDocument($parentPath);
+        $slideshow->setParentDocument($parentPath);
 
         // Persist and flush
-        $objectManager->persist($homepage);
+        $objectManager->persist($slideshow);
         $objectManager->flush();
     }
 
@@ -53,17 +53,16 @@ class LoadHomepage extends ContainerAware implements FixtureInterface, OrderedFi
      * @param                 $title
      * @param                 $content
      *
-     * @return Homepage
+     * @return Slideshow
      */
-    protected function createHomepage(DocumentManager $documentManager, $parent, $name, $title, $content)
+    protected function createSlideshow(DocumentManager $documentManager, $parent, $name, $title, $content)
     {
-        $homepage = new Homepage();
-        $homepage->setPosition($parent, $name);
-        $homepage->setTitle($title);
-        $homepage->setContent($content);
+        $slideshow = new Slideshow();
+        $slideshow->setTitle($title);
+        $slideshow->setContent($content);
 
-        $documentManager->persist($homepage);
+        $documentManager->persist($slideshow);
 
-        return $homepage;
+        return $slideshow;
     }
 }
