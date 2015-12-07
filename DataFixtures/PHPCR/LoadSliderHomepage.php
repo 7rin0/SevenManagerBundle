@@ -32,8 +32,14 @@ class LoadSliderHomepage extends ContainerAware implements FixtureInterface, Ord
         return 1;
     }
 
+    /**
+     * @param ObjectManager $objectManager
+     */
     public function load(ObjectManager $objectManager)
     {
+        global $kernel;
+        $docRoot = $kernel->getRootDir();
+
         if (!$objectManager instanceof DocumentManager) {
             $class = get_class($objectManager);
             throw new \RuntimeException("Fixture requires a PHPCR ODM DocumentManager instance, instance of '$class' given.");
@@ -41,10 +47,8 @@ class LoadSliderHomepage extends ContainerAware implements FixtureInterface, Ord
 
         // If Parent is null create one
         if (!$objectManager->find(null, '/seven-manager/slideshow')) {
-            global $kernel;
             $dm = $kernel->getContainer()->get('seven_manager.parent_manager');
-            $dm->createRecursivePaths('/seven-manager/slideshow/ImageOne');
-            $dm->createRecursivePaths('/seven-manager/slideshow/home-slideshow');
+            $dm->createRecursivePaths('/seven-manager/slideshow');
         }
 
         // Parent Document
@@ -53,7 +57,7 @@ class LoadSliderHomepage extends ContainerAware implements FixtureInterface, Ord
         // Child Document - create a new Page object
         $slideshow = new Slideshow();
         $image = new ImageOne();
-        $upload = new UploadedFile('/home/lseverino/Documents/7rin0/SevenManager/vendor/7rin0/seven-manager-bundle/Resources/public/img/slides/1.jpg', '1.jpg');
+        $upload = new UploadedFile($docRoot . '/vendor/7rin0/seven-manager-bundle/Resources/public/img/slides/1.jpg', '1.jpg');
         $image->setName('ImageOne');
 
         // Add slideshow
@@ -80,8 +84,8 @@ class LoadSliderHomepage extends ContainerAware implements FixtureInterface, Ord
         $slideshow = new Slideshow();
         $slideshow->setTitle($title);
         $slideshow->setContent($content);
-
         $documentManager->persist($slideshow);
+        $documentManager->flush();
 
         return $slideshow;
     }
