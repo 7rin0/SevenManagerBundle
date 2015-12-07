@@ -45,31 +45,29 @@ class LoadSliderHomepage extends ContainerAware implements FixtureInterface, Ord
             $class = get_class($objectManager);
             throw new \RuntimeException("Fixture requires a PHPCR ODM DocumentManager instance, instance of '$class' given.");
         }
-
-        // If Parent is null create one
-        $thisParent = $objectManager->find(null, '/seven-manager/slideshow');
-        if (!$thisParent) {
-            $dm = $kernel->getContainer()->get('seven_manager.parent_manager');
-            $dm->createRecursivePaths('/seven-manager/slideshow');
-        }
-
         // Parent Document
         $parentPath = $objectManager->find(null, '/seven-manager/slideshow');
 
-        // Child Document - create a new Page object
-        $slideshow = new Slideshow();
+        // Create Image Document and load image
         $image = new ImageOne();
         $upload = new UploadedFile($publicResources . '/img/slides/1.jpg', '1.jpg');
         $image->setName('ImageOne');
+        $image->setTitle('First Image loaded by fixture');
+        $image->setParentDocument($parentPath);
+        $image->setImage($upload);
+        //$objectManager->persist($image);
+        //$objectManager->flush();
 
-        // Add slideshow
-        $slideshow->setName('home-slideshow');
+        // Create Image Document and load image
+        $slideshow = new Slideshow();
+        $slideshow->setName('SlideshowOne');
+        $slideshow->setTitle('First Slideshow loaded by fixture');
         $slideshow->setParentDocument($parentPath);
-        $slideshow->addChildren($image->setImage($upload));
+        $slideshow->addChildren($image);
 
         // Persist and flush
         $objectManager->persist($slideshow);
-        //$objectManager->flush();
+        $objectManager->flush();
     }
 
     /**
