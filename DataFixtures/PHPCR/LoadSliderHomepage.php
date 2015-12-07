@@ -43,7 +43,8 @@ class LoadSliderHomepage extends ContainerAware implements FixtureInterface, Ord
         if (!$objectManager->find(null, '/seven-manager/slideshow')) {
             global $kernel;
             $dm = $kernel->getContainer()->get('seven_manager.parent_manager');
-            $dm->createRecursivePaths('/seven-manager/slideshow');
+            $dm->createRecursivePaths('/seven-manager/slideshow/ImageOne');
+            $dm->createRecursivePaths('/seven-manager/slideshow/home-slideshow');
         }
 
         // Parent Document

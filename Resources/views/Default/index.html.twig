@@ -14,10 +14,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="{{ document.content }}">
+    {% if document.content is defined %}
+        <meta name="description" content="{{ document.content }}">
+    {% endif %}
     <meta name="author" content="">
-
-    <title> {{ document.title }} - Seven Manager </title>
+    {% if document.title is defined %}
+        <title> {{ document.title }} - Seven Manager </title>
+    {% endif %}
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
