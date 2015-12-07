@@ -39,6 +39,7 @@ class LoadSliderHomepage extends ContainerAware implements FixtureInterface, Ord
     {
         global $kernel;
         $docRoot = $kernel->getRootDir();
+        $publicResources = dirname(__FILE__) . '/../../Resources/public';
 
         if (!$objectManager instanceof DocumentManager) {
             $class = get_class($objectManager);
@@ -46,7 +47,8 @@ class LoadSliderHomepage extends ContainerAware implements FixtureInterface, Ord
         }
 
         // If Parent is null create one
-        if (!$objectManager->find(null, '/seven-manager/slideshow')) {
+        $thisParent = $objectManager->find(null, '/seven-manager/slideshow');
+        if (!$thisParent) {
             $dm = $kernel->getContainer()->get('seven_manager.parent_manager');
             $dm->createRecursivePaths('/seven-manager/slideshow');
         }
@@ -57,7 +59,7 @@ class LoadSliderHomepage extends ContainerAware implements FixtureInterface, Ord
         // Child Document - create a new Page object
         $slideshow = new Slideshow();
         $image = new ImageOne();
-        $upload = new UploadedFile($docRoot . '/vendor/7rin0/seven-manager-bundle/Resources/public/img/slides/1.jpg', '1.jpg');
+        $upload = new UploadedFile($publicResources . '/img/slides/1.jpg', '1.jpg');
         $image->setName('ImageOne');
 
         // Add slideshow
@@ -67,7 +69,7 @@ class LoadSliderHomepage extends ContainerAware implements FixtureInterface, Ord
 
         // Persist and flush
         $objectManager->persist($slideshow);
-        $objectManager->flush();
+        //$objectManager->flush();
     }
 
     /**
