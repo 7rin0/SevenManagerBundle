@@ -57,10 +57,8 @@ class LoadSliderHomepage extends ContainerAware implements FixtureInterface, Ord
 
         // Add slideshow
         $slideshow->setName('home-slideshow');
-        $slideshow->addChildren($image->setImage($upload));
-
-        // Atach document to parent
         $slideshow->setParentDocument($parentPath);
+        $slideshow->addChildren($image->setImage($upload));
 
         // Persist and flush
         $objectManager->persist($slideshow);

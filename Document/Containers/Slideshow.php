@@ -7,6 +7,7 @@
 
 namespace SevenManagerBundle\Document\Containers;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use SevenManagerBundle\Document\Classes\StructureParent;
 use SevenManagerBundle\Document\Traits\Fields\PHPCR\Children;
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
@@ -19,7 +20,23 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
  */
 class Slideshow extends StructureParent
 {
-    use Children;
+    use Children {
+        __construct as __constructChildren;
+    }
+
+    /**
+     * @PHPCR\ReferenceMany(targetDocument="SevenManagerBundle\Document\Blocks\ImageOne", strategy="hard", cascade={"persist"})
+     */
+    protected $childrenMany;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->__constructChildren();
+        $this->childrenMany = new ArrayCollection();
+    }
 
     /**
      * @return string
