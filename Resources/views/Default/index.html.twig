@@ -66,10 +66,8 @@
         </div>
 
         <div class="collapse navbar-collapse">
-            {#{{ knp_menu_render('header-menu') }}#}
-            {% set header_menu = knp_menu_get('header-menu') %}
-            {% dump(knp_menu_get('header-menu')) %}
-            {% if header_menu is not empty %}
+            {#{% set header_menu = knp_menu_get('header-menu')|default('') %}#}
+            {% if header_menu|default(true) is not empty %}
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="index.html">Home</a></li>
                     <li><a href="about-us.html">About Us</a></li>

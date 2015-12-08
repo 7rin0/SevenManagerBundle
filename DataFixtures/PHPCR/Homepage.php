@@ -8,6 +8,8 @@
 
 namespace SevenManagerBundle\DataFixtures\PHPCR;
 
+use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -15,16 +17,25 @@ use Doctrine\ODM\PHPCR\DocumentManager;
 use SevenManagerBundle\Document\Blocks\ImageOne;
 use SevenManagerBundle\Document\Containers\Slideshow;
 use SevenManagerBundle\Document\Pages\Homepage as HomepageDocument;
-use Symfony\Component\DependencyInjection\ContainerAware;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
+/**
+ * Class Homepage
+ *
+ * @package SevenManagerBundle\DataFixtures\PHPCR
+ */
 class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtureInterface
 {
+    /**
+     * @return int
+     */
     public function getOrder()
     {
         return 1;
     }
 
+    /**
+     * @param ObjectManager $objectManager
+     */
     public function load(ObjectManager $objectManager)
     {
         if (!$objectManager instanceof DocumentManager) {
@@ -36,8 +47,10 @@ class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtur
         $slideshow = $this->createSlideshow($objectManager);
         $homepage = $this->createHomepage($objectManager);
 
+        // Reference One: Slideshow with Homepage
         $homepage->setMapSlideshow($slideshow);
 
+        // Flush Interface
         $objectManager->flush();
     }
 
