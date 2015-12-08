@@ -8,47 +8,68 @@
 
 namespace SevenManagerBundle\DataFixtures\PHPCR;
 
-use SevenManagerBundle\Document\Blocks\ImageOne;
-use Symfony\Component\DependencyInjection\ContainerAware;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ODM\PHPCR\DocumentManager;
+use SevenManagerBundle\Document\Blocks\ImageOne;
 use SevenManagerBundle\Document\Containers\Slideshow;
+use SevenManagerBundle\Document\Pages\Homepage as HomepageDocument;
+use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-/**
- * Class LoadSliderHomepage
- *
- * @package SevenManagerBundle\DataFixtures\PHPCR
- */
-class LoadSliderHomepage extends ContainerAware implements FixtureInterface, OrderedFixtureInterface
+class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtureInterface
 {
-    /**
-     * @return int
-     */
     public function getOrder()
     {
         return 1;
     }
 
-    /**
-     * @param ObjectManager $objectManager
-     */
     public function load(ObjectManager $objectManager)
     {
-        global $kernel;
-        $docRoot = $kernel->getRootDir();
-        $publicResources = dirname(__FILE__) . '/../../Resources/public';
-
         if (!$objectManager instanceof DocumentManager) {
             $class = get_class($objectManager);
             throw new \RuntimeException("Fixture requires a PHPCR ODM DocumentManager instance, instance of '$class' given.");
         }
-        // Parent Document
-        $parentPath = $objectManager->find(null, '/seven-manager/slideshow');
 
+        // Child Document - create a new Page object
+        $slideshow = $this->createSlideshow($objectManager);
+        $homepage = $this->createHomepage($objectManager);
+
+        $homepage->setMapSlideshow($slideshow);
+
+        $objectManager->flush();
+    }
+
+    /**
+     * @param DocumentManager $documentManager
+     *
+     * @return HomepageDocument
+     */
+    protected function createHomepage(DocumentManager $documentManager)
+    {
+        $parentPath = $documentManager->find(null, '/seven-manager/homepage');
+        $homepage = new HomepageDocument();
+        $homepage->setTitle('Seven Manager Project');
+        $homepage->setName('homepage');
+        $homepage->setContent('Powered by Symfony CMF');
+        $homepage->setParentDocument($parentPath);
+        $documentManager->persist($homepage);
+
+        return $homepage;
+    }
+
+    /**
+     * @param DocumentManager $documentManager
+     *
+     * @return Slideshow
+     */
+    protected function createSlideshow(DocumentManager $documentManager)
+    {
         // Create Image Document and load image
+        $publicResources = dirname(__FILE__) . '/../../Resources/public';
+        $parentPath = $documentManager->find(null, '/seven-manager/slideshow');
+
         $slideshow = new Slideshow();
         $slideshow->setName('SlideshowOne');
         $slideshow->setTitle('First Slideshow loaded by fixture');
@@ -67,26 +88,7 @@ class LoadSliderHomepage extends ContainerAware implements FixtureInterface, Ord
         }
 
         // Persist and flush
-        $objectManager->persist($slideshow);
-        $objectManager->flush();
-    }
-
-    /**
-     * @param DocumentManager $documentManager
-     * @param                 $parent
-     * @param                 $name
-     * @param                 $title
-     * @param                 $content
-     *
-     * @return Slideshow
-     */
-    protected function createSlideshow(DocumentManager $documentManager, $parent, $name, $title, $content)
-    {
-        $slideshow = new Slideshow();
-        $slideshow->setTitle($title);
-        $slideshow->setContent($content);
         $documentManager->persist($slideshow);
-        $documentManager->flush();
 
         return $slideshow;
     }
