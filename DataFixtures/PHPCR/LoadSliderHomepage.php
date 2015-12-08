@@ -49,21 +49,22 @@ class LoadSliderHomepage extends ContainerAware implements FixtureInterface, Ord
         $parentPath = $objectManager->find(null, '/seven-manager/slideshow');
 
         // Create Image Document and load image
-        $image = new ImageOne();
-        $upload = new UploadedFile($publicResources . '/img/slides/1.jpg', '1.jpg');
-        $image->setName('ImageOne');
-        $image->setTitle('First Image loaded by fixture');
-        $image->setParentDocument($parentPath);
-        $image->setImage($upload);
-        //$objectManager->persist($image);
-        //$objectManager->flush();
-
-        // Create Image Document and load image
         $slideshow = new Slideshow();
         $slideshow->setName('SlideshowOne');
         $slideshow->setTitle('First Slideshow loaded by fixture');
         $slideshow->setParentDocument($parentPath);
-        $slideshow->addChildren($image);
+
+        // Create Image Document and load image
+        for ($a = 1; $a <= 3; $a++) {
+            $image = new ImageOne();
+            $upload = new UploadedFile($publicResources . '/img/slides/'. $a .'.jpg', $a . '.jpg');
+            $image->setName('Image'. $a);
+            $image->setTitle('Image '. $a .' loaded by fixture');
+            $image->setSubtitle('Image ' . $a);
+            $image->setParentDocument($parentPath);
+            $image->setImage($upload);
+            $slideshow->addChildren($image);
+        }
 
         // Persist and flush
         $objectManager->persist($slideshow);
