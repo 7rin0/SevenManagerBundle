@@ -30,7 +30,6 @@ class PathCheckerExtension extends \Twig_Extension
      */
     public function pathCheckerFilter($value)
     {
-        //dump($value);die();
     }
 
     /**

@@ -63,9 +63,14 @@ class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtur
     {
         $parentPath = $documentManager->find(null, '/seven-manager/homepage');
         $homepage = new HomepageDocument();
-        $homepage->setTitle('Seven Manager Project');
         $homepage->setName('homepage');
+        $homepage->setTitle('Seven Manager Project');
+        $homepage->setSubtitle('So many examples of How to create a simple documents with Sonata');
         $homepage->setContent('Powered by Symfony CMF');
+        $homepage->setLabel('Section One');
+        $homepage->setLabelTwo('Section Two');
+        $homepage->setLabelThree('Section Three');
+        $homepage->setBody('This field used Ckeditor as main editor and frontjs to dynamic edition on the fly');
         $homepage->setParentDocument($parentPath);
         $documentManager->persist($homepage);
 
