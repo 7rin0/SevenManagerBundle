@@ -21,7 +21,7 @@ class StationManager extends DocumentManager
     public function __construct()
     {
         global $kernel;
-        $this->documentManager = $kernel->getContainer()->get( 'doctrine_phpcr' )->getManager();
+        $this->documentManager = $kernel->getContainer()->get('doctrine_phpcr')->getManager();
     }
 
     /**
@@ -87,13 +87,11 @@ class StationManager extends DocumentManager
 
         // If Homepage is defined
         if ($homepage) {
-
             // Selected slideshow
             $slideshowName = $homepage->getMapSlideshow();
 
             // If Slideshow is selected
             if ($slideshowName) {
-
                 // Get Slideshow
                 $slideshow = $this->getOneDocumentBy(
                     array(
@@ -109,17 +107,15 @@ class StationManager extends DocumentManager
 
                 // Dev Slideshow
                 foreach ($children as $imageBlock) {
-
                     // Get Slideshow
                     $slideTypeOne = $this->getOneDocumentBy(
                         array(
                             'document' => 'Blocks\\' . $this->getClassName($imageBlock),
                             'property' => 'name',
                             'value'    => $imageBlock->getName(),
-                            'dump'     => true,
+                            'dump'     => false,
                         )
                     );
-
                 }
                 return $children;
             }

@@ -121,7 +121,6 @@ class HomepageAdmin extends Admin
                             'multiple' => false,
                         )
                     )
-
                 ->end()
             ->end();
     }
