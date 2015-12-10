@@ -75,8 +75,7 @@ class HomepageAdmin extends Admin
                 ->end()
             ->end()
             ->tab('Slideshow')
-
-                ->with('Slideshow')
+                ->with('Select or Create')
                     ->add(
                         'choice',
                         'choice_field_mask',
@@ -97,6 +96,8 @@ class HomepageAdmin extends Admin
                             'required' => true
                         )
                     )
+            ->end()
+            ->with('Slideshow')
                     ->add(
                         'childrenMany',
                         'sonata_type_collection',

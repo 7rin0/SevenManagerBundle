@@ -1,25 +1,43 @@
-<div class="carousel-inner">
+<section id="main-slider" class="no-margin">
+    <div class="carousel slide">
+        <ol class="carousel-indicators">
+            <li data-target="#main-slider" data-slide-to="0" class="active"></li>
+            <li data-target="#main-slider" data-slide-to="1"></li>
+            <li data-target="#main-slider" data-slide-to="2"></li>
+        </ol>
 
-    {% for images in slideshow %}
+        <div class="carousel-inner">
 
-        <div class="item {{ loop.index == 1 ? 'active' : '' }}" style="background-image: url({{ cmf_media_display_url(images.image) }})">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="carousel-content centered">
-                            <h2 class="animation animated-item-1">
-                                {{ images.title }}
-                            </h2>
+            {% for images in slideshow %}
 
-                            <p class="animation animated-item-2">
-                                {{ images.subtitle }}
-                            </p>
+                <div class="item {{ loop.index == 1 ? 'active' : '' }}"
+                     style="background-image: url({{ cmf_media_display_url(images.image) }})">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="carousel-content centered">
+                                    <h2 class="animation animated-item-1">
+                                        {{ images.title }}
+                                    </h2>
+
+                                    <p class="animation animated-item-2">
+                                        {{ images.subtitle }}
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+
+            {% endfor %}
+
         </div>
 
-    {%  endfor %}
-
-</div>
+    </div>
+    <a class="prev hidden-xs" href="#main-slider" data-slide="prev">
+        <i class="fa fa-angle-left"></i>
+    </a>
+    <a class="next hidden-xs" href="#main-slider" data-slide="next">
+        <i class="fa fa-angle-right"></i>
+    </a>
+</section>

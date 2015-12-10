@@ -99,7 +99,7 @@ class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtur
             $upload = new UploadedFile($publicResources . '/img/slides/'. $a .'.jpg', $a . '.jpg');
             $image->setName('Image'. $a);
             $image->setTitle('Image '. $a .' loaded by fixture');
-            $image->setSubtitle('Image ' . $a);
+            $image->setSubtitle('Subtitle of Image ' . $a);
             $image->setParentDocument($parentPath);
             $image->setImage($upload);
             $slideshow->addChildren($image);

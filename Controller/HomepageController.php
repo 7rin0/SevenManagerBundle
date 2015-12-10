@@ -39,15 +39,11 @@ class HomepageController extends Controller implements ContainerAwareInterface
             $contentDocument = $stationManager->getHomepage();
         }
 
-        // Get associated slideshow and them childrens
-        $slideshow = $stationManager->getSlideshowByEntity($contentDocument);
-
         return $this->render(
             $contentTemplate,
             array(
                 'document' => $contentDocument,
-                'cmfMainContent' => $contentDocument,
-                'slideshow' => $slideshow,
+                'cmfMainContent' => $contentDocument
             )
         );
     }
