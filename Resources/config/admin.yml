@@ -90,11 +90,11 @@ services:
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
 
-    seven_manager.collections.font.title.desc.target:
+    seven_manager.admin.collections.font.title.desc.target:
         class: SevenManagerBundle\Admin\Collections\FontTitleDescTargetAdmin
         arguments: ['', SevenManagerBundle\Document\Collections\FontTitleDescTarget, 'SonataAdminBundle:CRUD']
         tags:
-            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Blocks', label: Font Awesome + Title + Desc + Target }
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Blocks', label: Font Awesome }
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
 

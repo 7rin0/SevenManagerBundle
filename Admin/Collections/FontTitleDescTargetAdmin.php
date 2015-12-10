@@ -35,17 +35,40 @@ class FontTitleDescTargetAdmin extends Admin
         $this->getFormFields($formMapper);
 
         $formMapper
-            ->tab('Image + Target')
+            ->remove('subtitle')
+            ->remove('body')
+            ->tab('Font Awesome')
                 ->with(
-                    'Select',
+                    'Font Awesome',
                     array(
                         'collapsed' => true,
                         'class'       => 'col-md-12',
                         'box_class'   => 'box box-solid box-danger',
-                        'description' => 'Magazine',
                     )
                 )
-
+                    ->add(
+                        'label',
+                        'text',
+                        array(
+                            'label' => 'Font Awesome class (ex: fa-angle-right'
+                        )
+                    )
+                    ->add(
+                        'resume',
+                        'textarea',
+                        array(
+                            'label' => 'Small description about the target link. Resume.'
+                        )
+                    )
+                    ->add(
+                        'internalLink',
+                        'doctrine_phpcr_odm_tree',
+                        array(
+                            'root_node' => '/seven-manager',
+                            'choice_list' => array(),
+                            'select_root_node' => false
+                        )
+                    )
                 ->end()
             ->end();
     }

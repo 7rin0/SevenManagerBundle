@@ -137,7 +137,7 @@ class HomepageAdmin extends Admin
                             'edit'       => 'inline',
                             'inline'     => 'table',
                             'sortable'   => 'position',
-                            'admin_code' => 'seven_manager.collections.font.title.desc.target',
+                            'admin_code' => 'seven_manager.admin.collections.font.title.desc.target',
                         )
                     )
                 ->end()

@@ -59,6 +59,11 @@ trait Texts
     /**
      * @PHPCR\String(nullable=true, translated=true)
      */
+    protected $description;
+
+    /**
+     * @PHPCR\String(nullable=true, translated=true)
+     */
     protected $content;
 
     /**
@@ -332,6 +337,25 @@ trait Texts
     {
         $this->richText1 = $richText1;
 
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param $description
+     *
+     * @return $this
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
         return $this;
     }
 }

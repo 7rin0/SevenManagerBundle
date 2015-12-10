@@ -3,3 +3,8 @@ services:
         class: SevenManagerBundle\Form\Type\SevenType
         tags: [{ name: "form.type", alias: "seven_manager_seven_type" }]
         arguments: [ '@translator' ]
+
+#    seven_manager.form.type.seven.internal.link:
+#        class: SevenManagerBundle\Form\Type\InternalLink
+#        tags: [{ name: "form.type", alias: "sm_internal_link" }]
+#        arguments: [ '@translator' ]

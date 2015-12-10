@@ -2,9 +2,11 @@
 
 namespace SevenManagerBundle\Document\Collections;
 
-use SevenManagerBundle\Document\Classes\StructureCollections;
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 use SevenManagerBundle\Document\Traits\Fields\HTML\Links;
+use SevenManagerBundle\Document\Traits\Fields\HTML\Texts;
+use Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\AbstractBlock;
+use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
 
 /**
  * Class FontTitleDescTarget
@@ -13,13 +15,20 @@ use SevenManagerBundle\Document\Traits\Fields\HTML\Links;
  *
  * @package SevenManagerBundle\Document\Collections
  */
-class FontTitleDescTarget extends StructureCollections
+class FontTitleDescTarget extends AbstractBlock implements TranslatableInterface
 {
+    use Links, Texts;
+
+    /**
+     * @PHPCR\Locale()
+     */
+    protected $locale;
+
     /**
      * @return string
      */
     public function getType()
     {
-        return 'seven_manager.collections.font.title.desc.target';
+        return 'seven_manager.admin.collections.font.title.desc.target';
     }
 }
