@@ -4,6 +4,7 @@ namespace SevenManagerBundle\Document\Collections;
 
 use SevenManagerBundle\Document\Classes\StructureCollections;
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
+use SevenManagerBundle\Document\Traits\Fields\HTML\Links;
 
 /**
  * Class FontTitleDescTarget

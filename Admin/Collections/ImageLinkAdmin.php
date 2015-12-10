@@ -42,7 +42,6 @@ class ImageLinkAdmin extends Admin
                         'collapsed' => true,
                         'class'       => 'col-md-12',
                         'box_class'   => 'box box-solid box-danger',
-                        'description' => 'Magazine',
                     )
                 )
                     ->add(

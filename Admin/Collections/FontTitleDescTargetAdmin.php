@@ -45,57 +45,7 @@ class FontTitleDescTargetAdmin extends Admin
                         'description' => 'Magazine',
                     )
                 )
-                    ->add(
-                        'image',
-                        'cmf_media_image',
-                        array(
-                            'label' => 'Image',
-                            'required' => false
-                        )
-                    )
-                    ->add('choice', 'choice_field_mask', array(
-                            'choices' => array(
-                                'external' => 'External',
-                                'internal' => 'Internal'
-                            ),
-                            'map' => array(
-                                'external' => array(
-                                    'link',
-                                ),
-                                'internal' => array(
-                                    'internalLink',
-                                ),
-                            ),
-                            'required' => true
-                        ))
-                    ->end()
-                    ->add(
-                        'internalLink',
-                        'doctrine_phpcr_odm_tree',
-                        array(
-                            'root_node' => '/seven-manager',
-                            'choice_list' => array(),
-                            'select_root_node' => false
-                        )
-                    )
-                    ->add(
-                        'link',
-                        'text',
-                        array(
-                            'label' => 'External Link'
-                        )
-                    )
-                    ->add(
-                        'choice',
-                        'choice',
-                        array(
-                            'expanded' => true,
-                            'choices' => array(
-                                'self' => 'Self',
-                                'blank' => 'Blank',
-                            )
-                        )
-                    )
+
                 ->end()
             ->end();
     }

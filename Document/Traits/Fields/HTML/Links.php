@@ -36,6 +36,11 @@ trait Links
     protected $target;
 
     /**
+     * @PHPCR\String(nullable=true)
+     */
+    protected $link;
+
+    /**
      * @return mixed
      */
     public function getExternalLink()
@@ -127,6 +132,25 @@ trait Links
     public function setTarget($target)
     {
         $this->target = $target;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    /**
+     * @param $link
+     *
+     * @return $this
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
         return $this;
     }
 }
