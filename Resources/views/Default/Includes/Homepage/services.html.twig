@@ -1,0 +1,19 @@
+<div class="section section-white">
+    <div class="container">
+        <div class="row">
+
+            {% for service in document.childrenManyTwo %}
+                <div class="col-md-4 col-sm-6">
+                    <div class="service-wrapper">
+                        <i class="fa {{ service.label }}"></i>
+                        <h3>{{ service.title }}</h3>
+                        <p>{{ service.body }}</p>
+                        {% set targetLink = cmf_is_linkable(service.internalLink) ? path(service.internalLink) : '#' %}
+                        <a href="{{ targetLink }}" class="btn">Read more</a>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
