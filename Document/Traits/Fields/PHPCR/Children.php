@@ -69,6 +69,46 @@ trait Children
     }
 
     /**
+     * @return mixed
+     */
+    public function getChildrenManyTwo()
+    {
+        return $this->childrenManyTwo;
+    }
+
+    /**
+     * @param $childrenManyTwo
+     * @return $this
+     */
+    public function setChildrenManyTwo($childrenManyTwo)
+    {
+        $this->childrenManyTwo = $childrenManyTwo;
+        return $this;
+    }
+
+    /**
+     * @param $childrenManyTwo
+     *
+     * @return $this
+     */
+    public function addChildrenManyTwo($childrenManyTwo)
+    {
+        $this->childrenManyTwo->add($childrenManyTwo);
+        return $this;
+    }
+
+    /**
+     * @param $childrenManyTwo
+     *
+     * @return $this
+     */
+    public function removeChildrenManyTwo($childrenManyTwo)
+    {
+        $this->childrenManyTwo->add($childrenManyTwo);
+        return $this;
+    }
+
+    /**
      * Get children
      *
      * @return ArrayCollection|ChildrenCollection

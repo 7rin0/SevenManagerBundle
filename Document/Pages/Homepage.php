@@ -29,11 +29,17 @@ class Homepage extends StructurePages
     protected $childrenMany;
 
     /**
+     * @PHPCR\ReferenceMany(targetDocument="SevenManagerBundle\Document\Collections\FontTitleDescTarget", strategy="hard", cascade={"persist"})
+     */
+    protected $childrenManyTwo;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->__constructChildren();
         $this->childrenMany = new ArrayCollection();
+        $this->childrenManyTwo = new ArrayCollection();
     }
 }
