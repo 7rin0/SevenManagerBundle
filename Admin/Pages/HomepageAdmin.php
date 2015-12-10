@@ -96,8 +96,8 @@ class HomepageAdmin extends Admin
                             'required' => true
                         )
                     )
-            ->end()
-            ->with('Slideshow')
+                ->end()
+                ->with('Slideshow')
                     ->add(
                         'childrenMany',
                         'sonata_type_collection',
@@ -120,6 +120,24 @@ class HomepageAdmin extends Admin
                             'model_manager' => $this->modelManager,
                             'required' => false,
                             'multiple' => false,
+                        )
+                    )
+                ->end()
+            ->end()
+            ->tab('Action Bar')
+                ->with('Action Bar')
+                    ->add(
+                        'childrenManyTwo',
+                        'sonata_type_collection',
+                        array(
+                            'label' => 'Add elements to action bar',
+                            'by_reference' => false,
+                        ),
+                        array(
+                            'edit'       => 'inline',
+                            'inline'     => 'table',
+                            'sortable'   => 'position',
+                            'admin_code' => 'seven_manager.collections.font.title.desc.target',
                         )
                     )
                 ->end()
