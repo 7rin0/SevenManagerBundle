@@ -52,11 +52,14 @@ class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtur
         $homepage->setMapSlideshow($slideshow);
 
         // Atach services to Services Bar @Homepage
+        $fontAwesomeList = array('fa-automobile', 'fa-commenting', 'fa-child');
         for ($a = 1; $a <= 3; $a++) {
             $service = new FontTitleDescTarget();
             $service->setName('Service'. $a);
             $service->setTitle('Service '. $a .' loaded by fixture');
+            $service->setLabel($fontAwesomeList[$a-1]);
             $service->setSubtitle('Subtitle of Service ' . $a);
+            $service->setResume('Resume of Service ' . $a);
             $service->setParentDocument($homepage);
             $homepage->addChildrenManyTwo($service);
         }
