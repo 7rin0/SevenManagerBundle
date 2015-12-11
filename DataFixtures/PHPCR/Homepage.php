@@ -51,6 +51,9 @@ class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtur
         // Reference One: Slideshow with Homepage
         $homepage->setMapSlideshow($slideshow);
 
+        // Reference One: Slideshow with Homepage
+        // $homepage = $this->createSlideshow($homepage);
+
         // Atach services to Services Bar @Homepage
         $fontAwesomeList = array('fa-automobile', 'fa-commenting', 'fa-child');
         for ($a = 1; $a <= 3; $a++) {
@@ -63,6 +66,9 @@ class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtur
             $service->setParentDocument($homepage);
             $homepage->addChildrenManyTwo($service);
         }
+
+        // Persist
+        $objectManager->persist($homepage);
 
         // Flush Interface
         $objectManager->flush();
@@ -123,5 +129,28 @@ class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtur
         $documentManager->persist($slideshow);
 
         return $slideshow;
+    }
+
+    /**
+     * @param $homepage
+     *
+     * @return mixed
+     */
+    protected function createServices($homepage)
+    {
+        // Atach services to Services Bar @Homepage
+        $fontAwesomeList = array('fa-automobile', 'fa-commenting', 'fa-child');
+        for ($a = 1; $a <= 3; $a++) {
+            $service = new FontTitleDescTarget();
+            $service->setName('Service'. $a);
+            $service->setTitle('Service '. $a .' loaded by fixture');
+            $service->setLabel($fontAwesomeList[$a-1]);
+            $service->setSubtitle('Subtitle of Service ' . $a);
+            $service->setResume('Resume of Service ' . $a);
+            $service->setParentDocument($homepage);
+            $homepage->addChildrenManyTwo($service);
+        }
+
+        return $homepage;
     }
 }
