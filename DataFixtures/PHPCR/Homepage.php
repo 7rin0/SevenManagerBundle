@@ -8,6 +8,7 @@
 
 namespace SevenManagerBundle\DataFixtures\PHPCR;
 
+use SevenManagerBundle\Document\Collections\FontTitleDescTarget;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\Common\DataFixtures\FixtureInterface;
@@ -49,6 +50,16 @@ class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtur
 
         // Reference One: Slideshow with Homepage
         $homepage->setMapSlideshow($slideshow);
+
+        // Atach services to Services Bar @Homepage
+        for ($a = 1; $a <= 3; $a++) {
+            $service = new FontTitleDescTarget();
+            $service->setName('Service'. $a);
+            $service->setTitle('Service '. $a .' loaded by fixture');
+            $service->setSubtitle('Subtitle of Service ' . $a);
+            $service->setParentDocument($homepage);
+            $homepage->addChildrenManyTwo($service);
+        }
 
         // Flush Interface
         $objectManager->flush();
