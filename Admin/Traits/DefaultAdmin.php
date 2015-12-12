@@ -343,6 +343,7 @@ trait DefaultAdmin
             'getRouteChild',
             'getChildrenMany',
             'getChildrenManyTwo',
+            'getChildrenManyThree',
         );
 
         // Evaluate and store children if true

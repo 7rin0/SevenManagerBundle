@@ -155,7 +155,7 @@ class HomepageAdmin extends Admin
                             'edit'       => 'inline',
                             'inline'     => 'table',
                             'sortable'   => 'position',
-                            'admin_code' => 'seven_manager.admin.block.title.sub.image.target',
+                            'admin_code' => 'seven_manager.admin.blocks.linkone',
                         )
                     )
                 ->end()
