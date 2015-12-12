@@ -64,7 +64,7 @@ trait Children
      */
     public function removeChildrenMany($childrenMany)
     {
-        $this->childrenMany->add($childrenMany);
+        $this->childrenMany->remove($childrenMany);
         return $this;
     }
 
@@ -104,7 +104,48 @@ trait Children
      */
     public function removeChildrenManyTwo($childrenManyTwo)
     {
-        $this->childrenManyTwo->add($childrenManyTwo);
+        $this->childrenManyTwo->remove($childrenManyTwo);
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getChildrenManyThree()
+    {
+        return $this->childrenManyThree;
+    }
+
+    /**
+     * @param $childrenManyThree
+     *
+     * @return $this
+     */
+    public function setChildrenManyThree($childrenManyThree)
+    {
+        $this->childrenManyThree = $childrenManyThree;
+        return $this;
+    }
+
+    /**
+     * @param $childrenManyThree
+     *
+     * @return $this
+     */
+    public function addChildrenManyThree($childrenManyThree)
+    {
+        $this->childrenManyThree->add($childrenManyThree);
+        return $this;
+    }
+
+    /**
+     * @param $childrenManyThree
+     *
+     * @return $this
+     */
+    public function removeChildrenManyThree($childrenManyThree)
+    {
+        $this->childrenManyThree->remove($childrenManyThree);
         return $this;
     }
 
