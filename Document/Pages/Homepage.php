@@ -33,6 +33,12 @@ class Homepage extends StructurePages
      */
     protected $childrenManyTwo;
 
+
+    /**
+     * @PHPCR\ReferenceMany(targetDocument="SevenManagerBundle\Document\Collections\TitleSubImageTarget", strategy="hard", cascade={"persist"})
+     */
+    protected $childrenManyThree;
+
     /**
      * Constructor
      */
@@ -41,5 +47,6 @@ class Homepage extends StructurePages
         $this->__constructChildren();
         $this->childrenMany = new ArrayCollection();
         $this->childrenManyTwo = new ArrayCollection();
+        $this->childrenManyThree = new ArrayCollection();
     }
 }
