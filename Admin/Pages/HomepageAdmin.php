@@ -141,6 +141,24 @@ class HomepageAdmin extends Admin
                         )
                     )
                 ->end()
+            ->end()
+            ->tab('Activities gallery')
+                ->with('Activities')
+                    ->add(
+                        'childrenManyThree',
+                        'sonata_type_collection',
+                        array(
+                            'label' => 'Add activites',
+                            'by_reference' => false,
+                        ),
+                        array(
+                            'edit'       => 'inline',
+                            'inline'     => 'table',
+                            'sortable'   => 'position',
+                            'admin_code' => 'seven_manager.admin.block.title.sub.image.target',
+                        )
+                    )
+                ->end()
             ->end();
     }
 
