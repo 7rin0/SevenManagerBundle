@@ -9,6 +9,7 @@
 namespace SevenManagerBundle\DataFixtures\PHPCR;
 
 use SevenManagerBundle\Document\Collections\FontTitleDescTarget;
+use SevenManagerBundle\Document\Collections\TitleSubDescImageTarget;
 use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\Common\DataFixtures\FixtureInterface;
@@ -44,6 +45,9 @@ class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtur
             throw new \RuntimeException("Fixture requires a PHPCR ODM DocumentManager instance, instance of '$class' given.");
         }
 
+        // Create Image Document and load image
+        $publicResources = dirname(__FILE__) . '/../../Resources/public';
+
         // Child Document - create a new Page object
         $slideshow = $this->createSlideshow($objectManager);
         $homepage = $this->createHomepage($objectManager);
@@ -54,7 +58,7 @@ class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtur
         // Reference One: Slideshow with Homepage
         // $homepage = $this->createSlideshow($homepage);
 
-        // Atach services to Services Bar @Homepage
+        // Attach services to Services Bar @Homepage
         $fontAwesomeList = array('fa-automobile', 'fa-commenting', 'fa-child');
         for ($a = 1; $a <= 3; $a++) {
             $service = new FontTitleDescTarget();
@@ -65,6 +69,18 @@ class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtur
             $service->setResume('Resume of Service ' . $a);
             $service->setParentDocument($homepage);
             $homepage->addChildrenManyTwo($service);
+        }
+
+        // Attach Activities @Homepage
+        for ($a = 1; $a <= 3; $a++) {
+            $titleSubDescImageTarget = new TitleSubDescImageTarget();
+            $upload = new UploadedFile($publicResources . '/img/activities/'. $a .'.jpg', $a . '.jpg');
+            $titleSubDescImageTarget->setName('Activity'. $a);
+            $titleSubDescImageTarget->setTitle('Activity '. $a .' loaded by fixture');
+            $titleSubDescImageTarget->setSubtitle('Subtitle of Activity ' . $a);
+            $titleSubDescImageTarget->setParentDocument($homepage);
+            $titleSubDescImageTarget->setImage($upload);
+            $homepage->addChildrenManyThree($titleSubDescImageTarget);
         }
 
         // Persist
