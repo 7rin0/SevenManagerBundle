@@ -90,6 +90,14 @@ services:
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
 
+    seven_manager.admin.collections.title.sub.desc.image.target:
+        class: SevenManagerBundle\Admin\Collections\TitleSubDescImageTargetAdmin
+        arguments: ['', SevenManagerBundle\Document\Collections\TitleSubDescImageTarget, 'SonataAdminBundle:CRUD']
+        tags:
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Blocks', label: Image + Title + Subtitle + Desc }
+        calls:
+            - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
+
     seven_manager.admin.collections.font.title.desc.target:
         class: SevenManagerBundle\Admin\Collections\FontTitleDescTargetAdmin
         arguments: ['', SevenManagerBundle\Document\Collections\FontTitleDescTarget, 'SonataAdminBundle:CRUD']

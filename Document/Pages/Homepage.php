@@ -35,7 +35,7 @@ class Homepage extends StructurePages
 
 
     /**
-     * @PHPCR\ReferenceMany(targetDocument="SevenManagerBundle\Document\Blocks\LinkOne", strategy="hard", cascade={"persist"})
+     * @PHPCR\ReferenceMany(targetDocument="SevenManagerBundle\Document\Collections\TitleSubDescImageTarget", strategy="hard", cascade={"persist"})
      */
     protected $childrenManyThree;
 
