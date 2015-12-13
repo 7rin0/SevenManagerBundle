@@ -93,92 +93,10 @@
     {% endif %}
     <!-- End Services -->
 
-    <div class="section section-white">
-        <div class="container">
-            <div class="row">
-
-                <div class="section-title" {{ createphp_attributes( rdf.labelTwo ) }}>
-                    <h1>{{ createphp_content( rdf.labelTwo ) }}</h1>
-                </div>
-
-                <ul class="grid cs-style-3">
-                    <div class="col-md-4 col-sm-6">
-                        <figure>
-                            {% image '@SevenManagerBundle/Resources/public/img/portfolio/4.jpg' %}
-                            <img src="{{ asset_url }}" alt="img04">
-                            {% endimage %}
-                            <figcaption>
-                                <h3>Settings</h3>
-                                <span>Jacob Cummings</span>
-                                <a href="portfolio-item.html">Take a look</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <figure>
-                            {% image '@SevenManagerBundle/Resources/public/img/portfolio/1.jpg' %}
-                            <img src="{{ asset_url }}" alt="img01">
-                            {% endimage %}
-                            <figcaption>
-                                <h3>Camera</h3>
-                                <span>Jacob Cummings</span>
-                                <a href="portfolio-item.html">Take a look</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <figure>
-                            {% image '@SevenManagerBundle/Resources/public/img/portfolio/2.jpg' %}
-                            <img src="{{ asset_url }}" alt="img02">
-                            {% endimage %}
-                            <figcaption>
-                                <h3>Music</h3>
-                                <span>Jacob Cummings</span>
-                                <a href="portfolio-item.html">Take a look</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <figure>
-                            {% image '@SevenManagerBundle/Resources/public/img/portfolio/5.jpg' %}
-                            <img src="{{ asset_url }}" alt="img05">
-                            {% endimage %}
-                            <figcaption>
-                                <h3>Safari</h3>
-                                <span>Jacob Cummings</span>
-                                <a href="portfolio-item.html">Take a look</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <figure>
-                            {% image '@SevenManagerBundle/Resources/public/img/portfolio/3.jpg' %}
-                            <img src="{{ asset_url }}" alt="img03">
-                            {% endimage %}
-                            <figcaption>
-                                <h3>Phone</h3>
-                                <span>Jacob Cummings</span>
-                                <a href="portfolio-item.html">Take a look</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <figure>
-                            {% image '@SevenManagerBundle/Resources/public/img/portfolio/6.jpg' %}
-                            <img src="{{ asset_url }}" alt="img06">
-                            {% endimage %}
-                            <figcaption>
-                                <h3>Game Center</h3>
-                                <span>Jacob Cummings</span>
-                                <a href="portfolio-item.html">Take a look</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- Our Portfolio -->
+    {% if document.childrenManyThree is defined and document.childrenManyThree is not empty %}
+        {% include('SevenManagerBundle:Default/Includes:Homepage/activities.html.twig') %}
+    {% endif %}
+    <!-- Our Activities -->
 
     <hr>
 

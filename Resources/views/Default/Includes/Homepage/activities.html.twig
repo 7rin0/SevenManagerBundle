@@ -1,0 +1,27 @@
+<div class="section section-white">
+    <div class="container">
+        <div class="row">
+
+            <div class="section-title" {{ createphp_attributes( rdf.labelTwo ) }}>
+                <h1>{{ createphp_content( rdf.labelTwo ) }}</h1>
+            </div>
+
+            <ul class="grid cs-style-3">
+                {% for activity in document.childrenManyThree %}
+                    <div class="col-md-4 col-sm-6">
+                        <figure>
+                            <img src="{{ cmf_media_display_url(activity.image) }}" alt="{{ activity.title }}">
+                            <figcaption>
+                                <h3>{{ activity.title }}</h3>
+                                <span>{{ activity.subtitle }}</span>
+                                <a href="{% if cmf_is_linkable(activity) %}{{ path(activity) }}{% else %}#{% endif %}">
+                                    Take a look
+                                </a>
+                            </figcaption>
+                        </figure>
+                    </div>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
