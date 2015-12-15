@@ -159,6 +159,24 @@ class HomepageAdmin extends Admin
                         )
                     )
                 ->end()
+            ->end()
+            ->tab('Partners')
+                ->with('Partners')
+                    ->add(
+                        'childrenManyFour',
+                        'sonata_type_collection',
+                        array(
+                            'label' => 'Add partners',
+                            'by_reference' => false,
+                        ),
+                        array(
+                            'edit'       => 'inline',
+                            'inline'     => 'table',
+                            'sortable'   => 'position',
+                            'admin_code' => 'seven_manager.admin.blocks.title.image',
+                        )
+                    )
+                ->end()
             ->end();
     }
 
