@@ -150,6 +150,47 @@ trait Children
     }
 
     /**
+     * @return mixed
+     */
+    public function getChildrenManyFour()
+    {
+        return $this->childrenManyFour;
+    }
+
+    /**
+     * @param $childrenManyFour
+     *
+     * @return $this
+     */
+    public function setChildrenManyFour($childrenManyFour)
+    {
+        $this->childrenManyFour = $childrenManyFour;
+        return $this;
+    }
+
+    /**
+     * @param $childrenManyFour
+     *
+     * @return $this
+     */
+    public function addChildrenManyFour($childrenManyFour)
+    {
+        $this->childrenManyFour->add($childrenManyFour);
+        return $this;
+    }
+
+    /**
+     * @param $childrenManyFour
+     *
+     * @return $this
+     */
+    public function removeChildrenManyFour($childrenManyFour)
+    {
+        $this->childrenManyFour->remove($childrenManyFour);
+        return $this;
+    }
+
+    /**
      * Get children
      *
      * @return ArrayCollection|ChildrenCollection

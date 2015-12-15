@@ -344,6 +344,7 @@ trait DefaultAdmin
             'getChildrenMany',
             'getChildrenManyTwo',
             'getChildrenManyThree',
+            'getChildrenManyFour',
         );
 
         // Evaluate and store children if true
