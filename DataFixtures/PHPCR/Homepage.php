@@ -8,6 +8,7 @@
 
 namespace SevenManagerBundle\DataFixtures\PHPCR;
 
+use SevenManagerBundle\Document\Blocks\TitleImage;
 use SevenManagerBundle\Document\Collections\FontTitleDescTarget;
 use SevenManagerBundle\Document\Collections\TitleSubDescImageTarget;
 use Symfony\Component\DependencyInjection\ContainerAware;
@@ -81,6 +82,21 @@ class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtur
             $titleSubDescImageTarget->setParentDocument($homepage);
             $titleSubDescImageTarget->setImage($upload);
             $homepage->addChildrenManyThree($titleSubDescImageTarget);
+        }
+
+        // Attach Brands @Homepage
+        for ($a = 1; $a <= 11; $a++) {
+            $titleImage = new TitleImage();
+            $brandImagePath = $publicResources . '/img/brands/'. $a .'.jpg';
+
+            if(file_exists($brandImagePath)) {
+                $upload = new UploadedFile($brandImagePath, $a . '.jpg');
+                $titleImage->setName('Brand'. $a);
+                $titleImage->setTitle('Brand '. $a .' loaded by fixture');
+                $titleImage->setParentDocument($homepage);
+                $titleImage->setImage($upload);
+                $homepage->addChildrenManyFour($titleImage);
+            }
         }
 
         // Persist
