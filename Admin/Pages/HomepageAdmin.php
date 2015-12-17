@@ -142,13 +142,13 @@ class HomepageAdmin extends Admin
                     )
                 ->end()
             ->end()
-            ->tab('Activities gallery')
+            ->tab('Activities')
                 ->with('Activities')
                     ->add(
                         'childrenManyThree',
                         'sonata_type_collection',
                         array(
-                            'label' => 'Add activites',
+                            'label' => 'Add activities',
                             'by_reference' => false,
                         ),
                         array(
