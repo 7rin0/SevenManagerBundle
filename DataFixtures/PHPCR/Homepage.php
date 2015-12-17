@@ -87,10 +87,11 @@ class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtur
         // Attach Brands @Homepage
         for ($a = 1; $a <= 11; $a++) {
             $titleImage = new TitleImage();
-            $brandImagePath = $publicResources . '/img/brands/'. $a .'.jpg';
+            $brandImagePath = $publicResources . '/img/brands/'. $a;
+            $filenameByExtension = file_exists($brandImagePath . '.jpg') ? $brandImagePath . '.jpg' : $brandImagePath . '.png';
 
-            if(file_exists($brandImagePath)) {
-                $upload = new UploadedFile($brandImagePath, $a . '.jpg');
+            if(file_exists($filenameByExtension)) {
+                $upload = new UploadedFile($filenameByExtension, $a . '.jpg');
                 $titleImage->setName('Brand'. $a);
                 $titleImage->setTitle('Brand '. $a .' loaded by fixture');
                 $titleImage->setParentDocument($homepage);
