@@ -160,13 +160,13 @@ class HomepageAdmin extends Admin
                     )
                 ->end()
             ->end()
-            ->tab('Partners')
-                ->with('Partners')
+            ->tab('Brands')
+                ->with('Brands')
                     ->add(
                         'childrenManyFour',
                         'sonata_type_collection',
                         array(
-                            'label' => 'Add partners',
+                            'label' => 'Add brands',
                             'by_reference' => false,
                         ),
                         array(
