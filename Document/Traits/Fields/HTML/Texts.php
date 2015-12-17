@@ -121,7 +121,6 @@ trait Texts
         return $this;
     }
 
-
     /**
      * @return mixed
      */

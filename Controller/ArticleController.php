@@ -45,7 +45,6 @@ class ArticleController extends Controller implements ContainerAwareInterface
         $this->container = $container;
     }
 
-
     /**
      * @param $class
      *

@@ -323,7 +323,6 @@ trait DefaultAdmin
     }
 
 
-
     /**
      * @param $document
      *
