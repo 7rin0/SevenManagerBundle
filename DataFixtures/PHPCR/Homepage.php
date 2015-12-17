@@ -56,9 +56,6 @@ class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtur
         // Reference One: Slideshow with Homepage
         $homepage->setMapSlideshow($slideshow);
 
-        // Reference One: Slideshow with Homepage
-        // $homepage = $this->createSlideshow($homepage);
-
         // Attach services to Services Bar @Homepage
         $fontAwesomeList = array('fa-automobile', 'fa-commenting', 'fa-child');
         for ($a = 1; $a <= 3; $a++) {
@@ -75,11 +72,12 @@ class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtur
         // Attach Activities @Homepage
         for ($a = 1; $a <= 3; $a++) {
             $titleSubDescImageTarget = new TitleSubDescImageTarget();
-            $activityImagePath = $publicResources . '/img/activities/'. $a;
-            $filenameByExtension = file_exists($activityImagePath . '.jpg') ? $activityImagePath . '.jpg' : $activityImagePath . '.png';
+            $activityDirectoryPath = $publicResources . '/img/activities/';
+            $activityFilename = $a . '.jpg';
+            $activityExtension = file_exists($activityDirectoryPath . $activityFilename) ? $a . '.jpg' : $a . '.png';
 
-            if (file_exists($filenameByExtension)) {
-                $upload = new UploadedFile($publicResources . '/img/activities/'. $a .'.jpg', $a . '.jpg');
+            if (file_exists($activityDirectoryPath . $activityExtension)) {
+                $upload = new UploadedFile($activityDirectoryPath . $activityExtension, $activityExtension);
                 $titleSubDescImageTarget->setName('Activity'. $a);
                 $titleSubDescImageTarget->setTitle('Activity '. $a .' loaded by fixture');
                 $titleSubDescImageTarget->setSubtitle('Subtitle of Activity ' . $a);
@@ -92,11 +90,12 @@ class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtur
         // Attach Brands @Homepage
         for ($a = 1; $a <= 11; $a++) {
             $titleImage = new TitleImage();
-            $brandImagePath = $publicResources . '/img/brands/'. $a;
-            $filenameByExtension = file_exists($brandImagePath . '.jpg') ? $brandImagePath . '.jpg' : $brandImagePath . '.png';
+            $brandDirectoryPath = $publicResources . '/img/brands/';
+            $brandFilename = $a . '.jpg';
+            $brandExtension = file_exists($brandDirectoryPath . $brandFilename) ? $a . '.jpg' : $a . '.png';
 
-            if (file_exists($filenameByExtension)) {
-                $upload = new UploadedFile($filenameByExtension, $a . '.jpg');
+            if (file_exists($brandDirectoryPath . $brandExtension)) {
+                $upload = new UploadedFile($brandDirectoryPath . $brandExtension, $brandExtension);
                 $titleImage->setName('Brand'. $a);
                 $titleImage->setTitle('Brand '. $a .' loaded by fixture');
                 $titleImage->setParentDocument($homepage);
@@ -153,14 +152,20 @@ class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtur
 
         // Create Image Document and load image
         for ($a = 1; $a <= 3; $a++) {
-            $image = new ImageOne();
-            $upload = new UploadedFile($publicResources . '/img/slides/'. $a .'.jpg', $a . '.jpg');
-            $image->setName('Image'. $a);
-            $image->setTitle('Image '. $a .' loaded by fixture');
-            $image->setSubtitle('Subtitle of Image ' . $a);
-            $image->setParentDocument($parentPath);
-            $image->setImage($upload);
-            $slideshow->addChildren($image);
+            $slidesDirectoryPath = $publicResources . '/img/slides/';
+            $slidesFilename = $a . '.jpg';
+            $slidesExtension = file_exists($slidesDirectoryPath . $slidesFilename) ? $a . '.jpg' : $a . '.png';
+
+            if (file_exists($slidesDirectoryPath . $slidesExtension)) {
+                $upload = new UploadedFile($slidesDirectoryPath . $slidesExtension, $slidesExtension);
+                $image = new ImageOne();
+                $image->setName('Image'. $a);
+                $image->setTitle('Image '. $a .' loaded by fixture');
+                $image->setSubtitle('Subtitle of Image ' . $a);
+                $image->setParentDocument($parentPath);
+                $image->setImage($upload);
+                $slideshow->addChildren($image);
+            }
         }
 
         // Persist and flush
