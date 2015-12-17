@@ -78,7 +78,7 @@ class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtur
             $activityImagePath = $publicResources . '/img/activities/'. $a;
             $filenameByExtension = file_exists($activityImagePath . '.jpg') ? $activityImagePath . '.jpg' : $activityImagePath . '.png';
 
-            if(file_exists($filenameByExtension)) {
+            if (file_exists($filenameByExtension)) {
                 $upload = new UploadedFile($publicResources . '/img/activities/'. $a .'.jpg', $a . '.jpg');
                 $titleSubDescImageTarget->setName('Activity'. $a);
                 $titleSubDescImageTarget->setTitle('Activity '. $a .' loaded by fixture');
@@ -95,7 +95,7 @@ class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtur
             $brandImagePath = $publicResources . '/img/brands/'. $a;
             $filenameByExtension = file_exists($brandImagePath . '.jpg') ? $brandImagePath . '.jpg' : $brandImagePath . '.png';
 
-            if(file_exists($filenameByExtension)) {
+            if (file_exists($filenameByExtension)) {
                 $upload = new UploadedFile($filenameByExtension, $a . '.jpg');
                 $titleImage->setName('Brand'. $a);
                 $titleImage->setTitle('Brand '. $a .' loaded by fixture');
