@@ -75,13 +75,18 @@ class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtur
         // Attach Activities @Homepage
         for ($a = 1; $a <= 3; $a++) {
             $titleSubDescImageTarget = new TitleSubDescImageTarget();
-            $upload = new UploadedFile($publicResources . '/img/activities/'. $a .'.jpg', $a . '.jpg');
-            $titleSubDescImageTarget->setName('Activity'. $a);
-            $titleSubDescImageTarget->setTitle('Activity '. $a .' loaded by fixture');
-            $titleSubDescImageTarget->setSubtitle('Subtitle of Activity ' . $a);
-            $titleSubDescImageTarget->setParentDocument($homepage);
-            $titleSubDescImageTarget->setImage($upload);
-            $homepage->addChildrenManyThree($titleSubDescImageTarget);
+            $activityImagePath = $publicResources . '/img/activities/'. $a;
+            $filenameByExtension = file_exists($activityImagePath . '.jpg') ? $activityImagePath . '.jpg' : $activityImagePath . '.png';
+
+            if(file_exists($filenameByExtension)) {
+                $upload = new UploadedFile($publicResources . '/img/activities/'. $a .'.jpg', $a . '.jpg');
+                $titleSubDescImageTarget->setName('Activity'. $a);
+                $titleSubDescImageTarget->setTitle('Activity '. $a .' loaded by fixture');
+                $titleSubDescImageTarget->setSubtitle('Subtitle of Activity ' . $a);
+                $titleSubDescImageTarget->setParentDocument($homepage);
+                $titleSubDescImageTarget->setImage($upload);
+                $homepage->addChildrenManyThree($titleSubDescImageTarget);
+            }
         }
 
         // Attach Brands @Homepage
