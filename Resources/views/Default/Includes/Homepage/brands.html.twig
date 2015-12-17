@@ -1,0 +1,19 @@
+<div class="section">
+    <div class="container">
+
+        <div class="section-title" {{ createphp_attributes( rdf.labelThree ) }}>
+            <h1>{{ createphp_content( rdf.labelThree ) }}</h1>
+        </div>
+
+        <div class="clients-logo-wrapper text-center row">
+            {% for brand in document.childrenManyFour %}
+                <div class="col-lg-1 col-md-1 col-sm-3 col-xs-6">
+                    <a href="#">
+                        <img src="{{ cmf_media_display_url(brand.image) }}" alt="{{ brand.title }}">
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
