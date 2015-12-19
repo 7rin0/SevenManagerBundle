@@ -87,4 +87,20 @@ trait Child
         $this->childTwo = $childTwo;
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getChildOne()
+    {
+        return $this->childOne;
+    }
+
+    /**
+     * @param mixed $childOne
+     */
+    public function setChildOne($childOne)
+    {
+        $this->childOne = $childOne;
+    }
 }

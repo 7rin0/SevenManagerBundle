@@ -191,7 +191,7 @@ class HomepageAdmin extends Admin
                         'childOne',
                         'sonata_type_admin',
                         array(
-                            'label'       => 'First Block',
+                            'label'       => 'Block',
                             'required'     => false,
                             'by_reference' => true,
                             'btn_catalogue' => false,
@@ -201,7 +201,7 @@ class HomepageAdmin extends Admin
                             'inline'     => 'table',
                             'multiple'   => false,
                             'sortable'   => 'position',
-                            'seven_manager.admin.blocks.title.text',
+                            'admin_code' => 'seven_manager.admin.blocks.title.text',
                         )
                     )
                 ->end()
@@ -217,7 +217,7 @@ class HomepageAdmin extends Admin
                         'childTwo',
                         'sonata_type_admin',
                         array(
-                            'label'       => 'First Block',
+                            'label'       => 'Block',
                             'required'     => false,
                             'by_reference' => true,
                             'btn_catalogue' => false,
@@ -243,7 +243,7 @@ class HomepageAdmin extends Admin
                         'childThree',
                         'sonata_type_admin',
                         array(
-                            'label'       => 'First Block',
+                            'label'       => 'Block',
                             'required'     => false,
                             'by_reference' => true,
                             'btn_catalogue' => false,
