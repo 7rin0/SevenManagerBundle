@@ -22,7 +22,7 @@ class TitleImageAdmin extends Admin
         configureFormFields as getFormFields;
     }
 
-    protected $baseRoutePattern = '/seven-manager/images';
+    protected $baseRoutePattern = '/seven-manager/title-image';
 
     /**
      * @param FormMapper $formMapper
