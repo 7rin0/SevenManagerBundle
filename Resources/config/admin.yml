@@ -78,7 +78,7 @@ services:
         class: SevenManagerBundle\Admin\Blocks\ImageOneAdmin
         arguments: ['', SevenManagerBundle\Document\Blocks\ImageOne, 'SonataAdminBundle:CRUD']
         tags:
-            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Blocks', label: Image One }
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Blocks', label: Ttl + Sbt + Lbl + Img }
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
 
@@ -86,7 +86,7 @@ services:
         class: SevenManagerBundle\Admin\Blocks\LinkOneAdmin
         arguments: ['', SevenManagerBundle\Document\Blocks\LinkOne, 'SonataAdminBundle:CRUD']
         tags:
-            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Blocks', label: Link One }
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Blocks', label: Ttl + Lbl + Lnk }
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
 
@@ -94,7 +94,7 @@ services:
         class: SevenManagerBundle\Admin\Collections\TitleSubDescImageTargetAdmin
         arguments: ['', SevenManagerBundle\Document\Collections\TitleSubDescImageTarget, 'SonataAdminBundle:CRUD']
         tags:
-            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Blocks', label: Image + Title + Subtitle + Desc }
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Blocks', label: Ttl + Sbt + Txt }
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
 
@@ -102,7 +102,7 @@ services:
         class: SevenManagerBundle\Admin\Blocks\TitleImageAdmin
         arguments: ['', SevenManagerBundle\Document\Blocks\TitleImage, 'SonataAdminBundle:CRUD']
         tags:
-            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Blocks', label: Title + Image }
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Blocks', label: Ttl + Img }
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
 
@@ -110,7 +110,7 @@ services:
         class: SevenManagerBundle\Admin\Collections\FontTitleDescTargetAdmin
         arguments: ['', SevenManagerBundle\Document\Collections\FontTitleDescTarget, 'SonataAdminBundle:CRUD']
         tags:
-            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Blocks', label: Font Awesome }
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Blocks', label: Ttl + Lbl + Txt + Lnk }
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
 
@@ -118,7 +118,7 @@ services:
         class: SevenManagerBundle\Admin\Blocks\TitleTextAdmin
         arguments: ['', SevenManagerBundle\Document\Blocks\TitleText, 'SonataAdminBundle:CRUD']
         tags:
-            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Blocks', label: Title + Text }
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Blocks', label: Ttl + Txt }
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
 
