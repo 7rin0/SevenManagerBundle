@@ -114,14 +114,6 @@ services:
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
 
-    seven_manager.admin.blocks.textone:
-        class: SevenManagerBundle\Admin\Blocks\TextOneAdmin
-        arguments: ['', SevenManagerBundle\Document\Blocks\TextOne, 'SonataAdminBundle:CRUD']
-        tags:
-            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Blocks', label: Text One }
-        calls:
-            - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
-
     seven_manager.admin.blocks.title.text:
         class: SevenManagerBundle\Admin\Blocks\TitleTextAdmin
         arguments: ['', SevenManagerBundle\Document\Blocks\TitleText, 'SonataAdminBundle:CRUD']
