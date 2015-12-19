@@ -177,6 +177,86 @@ class HomepageAdmin extends Admin
                         )
                     )
                 ->end()
+            ->end()
+            ->tab('Footer')
+                ->with(
+                    'Column 1',
+                    array(
+                        'class'       => 'col-md-4',
+                        'box_class'   => 'box box-solid box-danger',
+                        'description' => 'Column 1',
+                    )
+                )
+                    ->add(
+                        'childOne',
+                        'sonata_type_admin',
+                        array(
+                            'label'       => 'First Block',
+                            'required'     => false,
+                            'by_reference' => true,
+                            'btn_catalogue' => false,
+                        ),
+                        array(
+                            'edit'       => 'inline',
+                            'inline'     => 'table',
+                            'multiple'   => false,
+                            'sortable'   => 'position',
+                            'seven_manager.admin.blocks.title.text',
+                        )
+                    )
+                ->end()
+                ->with(
+                    'Column 2',
+                    array(
+                        'class'       => 'col-md-4',
+                        'box_class'   => 'box box-solid box-danger',
+                        'description' => 'Column 2',
+                    )
+                )
+                    ->add(
+                        'childTwo',
+                        'sonata_type_admin',
+                        array(
+                            'label'       => 'First Block',
+                            'required'     => false,
+                            'by_reference' => true,
+                            'btn_catalogue' => false,
+                        ),
+                        array(
+                            'edit'       => 'inline',
+                            'inline'     => 'table',
+                            'multiple'   => false,
+                            'sortable'   => 'position',
+                            'admin_code' => 'seven_manager.admin.blocks.title.text',
+                        )
+                    )
+                ->end()
+                ->with(
+                    'Column 3',
+                    array(
+                        'class'       => 'col-md-4',
+                        'box_class'   => 'box box-solid box-danger',
+                        'description' => 'Column 3',
+                    )
+                )
+                    ->add(
+                        'childThree',
+                        'sonata_type_admin',
+                        array(
+                            'label'       => 'First Block',
+                            'required'     => false,
+                            'by_reference' => true,
+                            'btn_catalogue' => false,
+                        ),
+                        array(
+                            'edit'       => 'inline',
+                            'inline'     => 'table',
+                            'multiple'   => false,
+                            'sortable'   => 'position',
+                            'admin_code' => 'seven_manager.admin.blocks.title.text',
+                        )
+                    )
+                ->end()
             ->end();
     }
 

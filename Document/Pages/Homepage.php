@@ -9,6 +9,7 @@ namespace SevenManagerBundle\Document\Pages;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use SevenManagerBundle\Document\Classes\StructurePages;
+use SevenManagerBundle\Document\Traits\Fields\PHPCR\Child;
 use SevenManagerBundle\Document\Traits\Fields\PHPCR\Children;
 use SevenManagerBundle\Document\Traits\Fields\PHPCR\ReferenceMany;
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;

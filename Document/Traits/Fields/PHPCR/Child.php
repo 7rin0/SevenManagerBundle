@@ -19,6 +19,11 @@ trait Child
     /**
      * @PHPCR\Child(cascade="persist")
      */
+    protected $childOne;
+
+    /**
+     * @PHPCR\Child(cascade="persist")
+     */
     protected $childTwo;
 
     /**
