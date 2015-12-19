@@ -118,7 +118,7 @@ services:
         class: SevenManagerBundle\Admin\Blocks\TitleTextAdmin
         arguments: ['', SevenManagerBundle\Document\Blocks\TitleText, 'SonataAdminBundle:CRUD']
         tags:
-            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Blocks', label: Title Text Admin }
+            - { name: sonata.admin, manager_type: doctrine_phpcr, group: 'S7M - Blocks', label: Title + Text }
         calls:
             - [setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
 
