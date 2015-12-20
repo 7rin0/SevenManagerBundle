@@ -109,8 +109,8 @@ class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtur
         $childDocuments = array('setChildOne', 'setChildTwo', 'setChildThree');
         foreach ($childDocuments as $key => $value) {
             $child = new TitleText();
-            $child->setTitle('Child ' . $key . ' title');
-            $child->setBody('Child ' . $key . ' content');
+            $child->setTitle('Child ' . ($key+1) . ' title');
+            $child->setBody('Child ' . ($key+1) . ' content');
             $homepage->$value($child);
         }
 
