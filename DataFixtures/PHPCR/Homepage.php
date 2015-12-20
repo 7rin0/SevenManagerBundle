@@ -9,6 +9,7 @@
 namespace SevenManagerBundle\DataFixtures\PHPCR;
 
 use SevenManagerBundle\Document\Blocks\TitleImage;
+use SevenManagerBundle\Document\Blocks\TitleText;
 use SevenManagerBundle\Document\Collections\FontTitleDescTarget;
 use SevenManagerBundle\Document\Collections\TitleSubDescImageTarget;
 use Symfony\Component\DependencyInjection\ContainerAware;
@@ -102,6 +103,15 @@ class Homepage extends ContainerAware implements FixtureInterface, OrderedFixtur
                 $titleImage->setImage($upload);
                 $homepage->addChildrenManyFour($titleImage);
             }
+        }
+
+        // Footer Childs
+        $childDocuments = array('setChildOne', 'setChildTwo', 'setChildThree');
+        foreach ($childDocuments as $key => $value) {
+            $child = new TitleText();
+            $child->setTitle('Child ' . $key . ' title');
+            $child->setBody('Child ' . $key . ' content');
+            $homepage->$value($child);
         }
 
         // Persist
