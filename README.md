@@ -7,7 +7,7 @@ This bundle explores the default features of Symfony CMF/Sonata project . After 
 * [Seven Manager Project](https://github.com/7rin0/SevenManager)
 
 ### Juste install one of the required projects and execute:
-- composer require 7rin0/seven-manager-bundle
+- ``` composer require 7rin0/seven-manager-bundle ```
 
 ### Preview
 ![alt tag](https://github.com/7rin0/SevenManager/raw/master/web/images/preview.gif)
